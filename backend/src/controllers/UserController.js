@@ -12,14 +12,9 @@ module.exports = {
     async create(request, response, next){
         try{
             const { first_name, last_name, email } = request.body;
-
-            if(User.email === email){
-                return response.status(400).send({ error: 'User already exists' })
-            }
             
             const salt = await bcrypt.genSalt();
             const hashedPassword = await bcrypt.hash(request.body.password, salt);
-            //const password = hashedPassword;
 
             await User.insert({
                 first_name,
