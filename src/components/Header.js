@@ -1,9 +1,15 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+
+import Routes from '../routes'
 
 function Header(){
     return(
         <header>
-            <h1>Início</h1><h1>Planos</h1>            
+            <Link to='/'>
+                <h1>Início</h1>
+            </Link>
+            <h1>Planos</h1>            
         </header>
     )
 }

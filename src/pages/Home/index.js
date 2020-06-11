@@ -1,4 +1,7 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+
+import './styles.css';
 
 import Header from '../../components/Header'
 
@@ -64,6 +67,8 @@ function Home() {
               trabalhem em grupo sob sua supervisão.
             </p>
           </div>
+
+          <Link to='/cadastro'>Cadastrar</Link>
         </main>
 
       </div>
