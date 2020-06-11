@@ -8,7 +8,7 @@ module.exports = {
       host : '127.0.0.1',
       database: 'ead',
       user: 'root',
-      password: 'password'
+      password: ''
     },
     migrations: {
       directory: `${__dirname}/src/database/migrations`

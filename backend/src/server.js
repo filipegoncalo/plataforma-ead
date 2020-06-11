@@ -1,5 +1,6 @@
 const express = require('express');
 const routes = require('./routes');
+const {errors}=require("celebrate");
 
 const app = express();
 
@@ -11,5 +12,6 @@ app.use((error, request, response, next) => {
     response.json({ error: error.message })
 })
 
+app.use(errors());
 
 app.listen(3333, () => console.log('Server is running'));

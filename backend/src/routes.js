@@ -1,16 +1,33 @@
 const express = require('express');
-
+const {celebrate,Joi}= require("celebrate");
 const UserController = require('./controllers/UserController');
+const AuthController = require('./controllers/AuthController');
 
 const routes = express.Router();
 
-/**auth
-routes.post('/register', UserController.register);
-routes.post('/login', UserController.login);
-routes.post('/reset', UserController.reset);
-routes.post('/reset/:code', UserController.reset);
-routes.post('/forget', UserController.forget);
-*/
+routes.get('/login/:email/:password',
+    celebrate({
+        params:Joi.object().keys({
+            email: Joi.string().required().min(10).email(),
+            password: Joi.string().required().min(10)
+        })},{ abortEarly:false}),
+AuthController.login);
+
+routes.get('/forget/:email',
+    celebrate({
+        params:Joi.object().keys({
+             email: Joi.string().required().min(10),
+        })},{ abortEarly:false}),
+ AuthController.forget);
+
+routes.put('/reset',
+    celebrate({
+        body:Joi.object().keys({
+            email: Joi.string().required().min(10),
+            password: Joi.string().required().min(10),
+            date: Joi.string().required().min(10),
+        })},{ abortEarly:false}),
+ AuthController.reset);
 
 //users
 routes.get('/users', UserController.index);
