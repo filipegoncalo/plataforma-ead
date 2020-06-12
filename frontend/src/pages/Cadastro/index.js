@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { CustomDialog } from '../../components/Dialog';
+import CustomDialog from '../../components/Dialog';
 
 function Cadastro() {
     //Funções de controle do modal
