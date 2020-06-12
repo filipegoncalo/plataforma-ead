@@ -1,12 +1,13 @@
-import Knex from 'knex';
+
 exports.up = function(knex) {
-    return knex.schema.createTable('disciplines_classes', (table) => {
-        table.integer('id_disciplines').unsigned();
+    return knex.schema.createTable('time_classes', (table) => {
+
+        table.integer('id_time').unsigned();
         table.integer('id_classes').unsigned();
 
-        table.foreign('id_disciplines')
+        table.foreign('id_time')
             .references('id')
-            .inTable('disciplines')
+            .inTable('time')
             .onDelete('CASCADE')
             .onUpdate('NO ACTION');
 
@@ -15,8 +16,9 @@ exports.up = function(knex) {
                 .inTable('classes')
                 .onDelete('CASCADE')
             .onUpdate('NO ACTION');
-        
-        
+
+
+
     });
 };
 

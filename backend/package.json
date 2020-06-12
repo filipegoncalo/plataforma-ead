@@ -4,7 +4,10 @@
   "description": "",
   "main": "src/server.js",
   "scripts": {
-    "devStart": "nodemon src/server.js"
+    "devStart": "nodemon src/server.js",
+    "knex:migrate": "knex migrate:latest --knexfile knexfile.js",
+    "knex:seed": "knex seed:run --knexfile knexfile.js",
+    "knex:rollback": "knex migrate:rollback"
   },
   "keywords": [],
   "author": "",

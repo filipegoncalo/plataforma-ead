@@ -9,8 +9,9 @@ const BASEURL= "http://localhost:3333/reset/";
 module.exports = {
     async login(request, response){ 
         let { email, password } = request.params;
-
-        password=Crytography.decrypt(password);;
+        //return response.json({email:Crytography.crypt(email),password:Crytography.crypt(password)});
+        password=Crytography.decrypt(password);
+        //password="123456";
         var result = await User.select('id').where("email",email).where("password",password).first();
         if(result){
             return response.status(200).json(result);
@@ -34,7 +35,7 @@ module.exports = {
         if(result){
             await Email.enviar(_email,BASEURL+email+"/"+dateCrypto);
         }
-        return response.status(200).send("Caso o email exista você receber-a um email");
+        return response.status(200).send("Caso o email exista você receber-a um email "+_email);
     },
 
     async reset(request, response, next){

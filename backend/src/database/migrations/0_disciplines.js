@@ -1,5 +1,5 @@
 //modificar teacher id
-import Knex from 'knex';
+
 exports.up = function(knex) {
     return knex.schema.createTable('disciplines', (table) => {
         table.increments('id').primary();
