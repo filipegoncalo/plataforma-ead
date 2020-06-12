@@ -1,0 +1,70 @@
+@import url('https://fonts.googleapis.com/css2?family=Bungee+Inline&family=Open+Sans:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+
+.card {
+    margin-bottom: 10px; /* Added */
+    border-radius: 15px;
+}
+
+.card:hover{
+    box-shadow:0px 10px 20px 1px rgba(18, 3, 161, 0.253)!important;
+}
+
+.card-body{
+    padding:3rem !important;
+}
+
+.card-text{
+    font-size: .9rem;
+    padding: 0.4rem 1.9rem;
+}
+
+.container-fluid {
+    padding-top: 6rem;
+}
+
+.center-text {
+    padding-top: 25px;
+    padding-bottom: 50px;
+    color: #32C35B;
+    font-family: 'Open Sans', sans-serif;
+    font-style: bold;
+    font-weight: bolder;
+    font-size: 200%;
+    line-height: 65px;
+    text-align: center;
+}
+
+.btn {
+    font-size: 1.2rem;
+    font-size: 25px;
+    border-radius: 15px;
+    font-family: 'Open Sans', sans-serif;
+    font-style: bold;
+    background-color: #3185FC;
+    color: #fff;
+}
+
+.flex-center {
+    display: flex;
+    justify-content: center;
+}
+
+.border-1 {
+    border-style:solid;
+    border-bottom: none;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    border-color:#3185FC;
+    border-width: 1px;
+}
+
+.border-2 {
+    border-style:solid;
+    border-top: none;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+    border-color:#3185FC;
+    border-width: 1px;
+}
+

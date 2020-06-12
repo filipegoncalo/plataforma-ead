@@ -1,0 +1,30 @@
+@import url('https://fonts.googleapis.com/css2?family=Bungee+Inline&family=Open+Sans:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+/* SETUP BÁSICO*/
+* {
+    box-sizing: border-box;
+}  
+
+html {
+    font-weight: bold;
+    font-size: 20px;
+}
+
+/* ========== */
+ 
+.navcl1,
+.navcl1:hover,
+.navcl1:active {
+    font-size: 25px;
+    font-family: 'Roboto Condensed';
+    margin-left: 25px;
+    color:#26252D;
+    text-decoration: none;
+}
+
+.btnfont {
+    font-family: 'Roboto Condensed';
+}
+Button {
+    margin-right: 5px;
+}
