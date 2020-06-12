@@ -4,7 +4,10 @@
   "description": "",
   "main": "src/server.js",
   "scripts": {
-    "devStart": "nodemon src/server.js"
+    "devStart": "nodemon src/server.js",
+    "knex:migrate": "knex migrate:latest --knexfile knexfile.js",
+    "knex:seed": "knex seed:run --knexfile knexfile.js",
+    "knex:rollback": "knex migrate:rollback"
   },
   "keywords": [],
   "author": "",
@@ -14,8 +17,11 @@
   },
   "dependencies": {
     "bcrypt": "^5.0.0",
+    "celebrate": "^12.1.1",
+    "crypto": "^1.0.1",
     "express": "^4.17.1",
     "knex": "^0.21.1",
-    "mysql": "^2.18.1"
+    "mysql": "^2.18.1",
+    "nodemailer": "^6.4.8"
   }
 }
