@@ -1,69 +1,151 @@
 const express = require('express');
-const {celebrate,Joi}= require("celebrate");
-
-const UserController = require('./controllers/UserController');
-const AuthController = require('./controllers/AuthController');
-const DisciplinesController = require('./controllers/DisciplinesController');
-const ClassesController = require('./controllers/ClassesController');
+const { celebrate, Segments,  Joi } = require('celebrate');
 
 const routes = express.Router();
-//Auth
-routes.get('/login/:email/:password',
-    celebrate({
-        params:Joi.object().keys({
-            email: Joi.string().required().min(5).email(),
-            password: Joi.string().required().min(5)
-        })},{ abortEarly:false}),
-AuthController.login);
 
-routes.get('/forget/:email',
-    celebrate({
-        params:Joi.object().keys({
-             email: Joi.string().required().min(10),
-        })},{ abortEarly:false}),
- AuthController.forget);
+const AuthController = require('./controllers/AuthController');
+const UserController = require('./controllers/UserController');
+const DisciplineController = require('./controllers/DisciplineContoller');
+const ClasseController = require('./controllers/ClasseController');
 
-routes.put('/reset',
-    celebrate({
-        body:Joi.object().keys({
-            email: Joi.string().required().min(8),
-            password: Joi.string().required().min(5),
-            date: Joi.string().required().min(8),
-        })},{ abortEarly:false}), 
- AuthController.reset);
 
-//users
-//routes.get('/disciplines', UserController.index);
-routes.post('/disciplines',
-    celebrate({
-        body:Joi.object().keys({
-            name: Joi.string().required(),
-            description: Joi.string().required(),
-        })},{ abortEarly:false}),
-    DisciplinesController.create);
-//routes.put('/users/:id', UserController.update);
-//routes.delete('/users/:id', UserController.delete);
 
-/*disciplines*/
-// routes.get('/disciplines', UserController.index);
-// routes.post('/disciplines', UserController.index);
-// routes.put('/disciplines', UserController.index);
-// routes.delete('/disciplines', UserController.index);
+routes.post('/login', AuthController.login);
+routes.post('/reset', AuthController.reset);
+routes.get('/reset/:forget', AuthController.reset);
+routes.post('/forget', AuthController.forget);
 
-//classes
-/*
-routes.get('/disciplines', UserController.index);
-routes.put('/disciplines', UserController.index);
-routes.delete('/disciplines', UserController.index);
-*/
-routes.post('/classes',
-    celebrate({
-        body:Joi.object().keys({
-            name: Joi.string().required(),
-            period: Joi.string().required(),
-            email:Joi.string().required().email()
-        })},{ abortEarly:false}),
-ClassesController.create);
+
+/* ======== USERS ======= */
+//find users
+routes.get('/usuarios', UserController.index);
+
+//create users
+routes.post('/usuario', celebrate({
+  [Segments.BODY]: Joi.object().keys({
+    first_name: Joi.string().min(3).required(),
+    last_name: Joi.string().min(3).required(),
+    email: Joi.string().email().required(),
+    password: Joi.string().min(6).required(),
+    formation: Joi.string(),
+    institution: Joi.string()
+  }),
+}), UserController.register);
+
+//update users
+routes.put('/usuario/:id', celebrate({
+  [Segments.BODY]: Joi.object().keys({
+    first_name: Joi.string().min(3),
+    last_name: Joi.string().min(3),
+    formation: Joi.string(),
+    institution: Joi.string(),
+    genre: Joi.string(),
+    datebirth: Joi.string(),
+    document: Joi.string().min(9),
+    photo: Joi.string(),
+    curriculum: Joi.string()
+  }),
+  [Segments.PARAMS]: Joi.object({
+    id: Joi.number().required()
+  }),
+}), UserController.update);
+
+//delete users
+routes.delete('/usuario/:id', celebrate({
+  [Segments.PARAMS]: Joi.object({
+    id: Joi.number().required()
+  }).unknown(),
+}), UserController.delete);
+
+/* ====== DISCIPLINAS ======*/
+//find disciplinas
+routes.get('/disciplinas',celebrate({
+  [Segments.HEADERS]: Joi.object({
+    authorization: Joi.number().required()
+  }).unknown(),
+}), DisciplineController.index);
+
+//create discipline
+routes.post('/disciplina', celebrate({
+  [Segments.BODY]: Joi.object().keys({
+    name: Joi.string().required(),
+    institution: Joi.string().required(),
+    description: Joi.string().required()
+  }),
+  [Segments.HEADERS]: Joi.object({
+    authorization: Joi.number().required()
+  }).unknown(),
+}), DisciplineController.create);
+
+//update discipline
+routes.put('/disciplina/:id', celebrate({
+  [Segments.BODY]: Joi.object().keys({
+    name: Joi.string(),
+    institution: Joi.string(),
+    description: Joi.string()
+  }),
+  [Segments.HEADERS]: Joi.object({
+    authorization: Joi.number().required()
+  }).unknown(),
+  [Segments.PARAMS]: Joi.object({
+    id: Joi.number().required()
+  }),
+}), DisciplineController.update);
+
+//delete discipline
+routes.delete('/disciplina/:id', celebrate({
+  [Segments.HEADERS]: Joi.object({
+    authorization: Joi.number().required()
+  }).unknown(),
+  [Segments.PARAMS]: Joi.object({
+    id: Joi.number().required()
+  }),
+}), DisciplineController.delete);
+
+/* ======== CLASSES =========*/
+//find classes
+routes.get('/turmas',  celebrate({
+  [Segments.HEADERS]: Joi.object({
+    authorization: Joi.number().required()
+  }).unknown(),
+}), ClasseController.byDiscipline);
+
+//create classes
+routes.post('/turma', celebrate({
+  [Segments.BODY]: Joi.object().keys({
+    link: Joi.string(),
+    name: Joi.string().required(),
+    schedule: Joi.date().required()
+  }),
+  [Segments.HEADERS]: Joi.object({
+    authorization: Joi.number().required()
+  }).unknown(),
+}), ClasseController.create);
+
+//update classes
+routes.put('/turma/:id', celebrate({
+  [Segments.BODY]: Joi.object().keys({
+    link: Joi.string(),
+    name: Joi.string(),
+    schedule: Joi.string()
+  }),
+  [Segments.HEADERS]: Joi.object({
+    authorization: Joi.number().required()
+  }).unknown(),
+  [Segments.PARAMS]: Joi.object({
+    id: Joi.number().required()
+  }),
+}), ClasseController.update);
+
+//delete classes
+routes.delete('/turma/:id', celebrate({
+  [Segments.HEADERS]: Joi.object({
+    authorization: Joi.number().required()
+  }).unknown(),
+  [Segments.PARAMS]: Joi.object({
+    id: Joi.number().required()
+  }),
+}), ClasseController.delete);
 
 
 module.exports = routes;
