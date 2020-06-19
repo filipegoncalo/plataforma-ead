@@ -1,0 +1,129 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed&display=swap');
+
+/* ----------------------------------------------------------- */
+/*                         SETUP BÁSICO                        */
+/* ----------------------------------------------------------- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    background-color: #fff;
+    font-weight: 300;
+    font-size: 20px;
+    text-rendering: optimizeLegibility;
+}
+
+
+/* ----------------------------------------------------------- */
+/*                  COMPONENTES REUTILIZÁVEIS                  */
+/* ----------------------------------------------------------- */
+
+h1 {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 240%;
+}
+
+h2 {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 180%;
+}
+
+h3 {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 120%;
+    font-weight: 600;
+}
+
+.body1 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 150%;
+}
+
+.body2 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 120%;
+}
+
+.body3 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 150%;
+    font-weight: bold;
+}
+
+.body4 {
+    font-family: 'Roboto', sans-serif;
+    font-size: 60%;
+}
+
+/* ----------------------------------------------------------- */
+/*                            BOTÕES                           */
+/* ----------------------------------------------------------- */
+
+.btn {
+    text-transform: none !important;
+    text-decoration: none !important;
+    font-family: 'Roboto Condensed', sans-serif !important;
+    font-size: 1.4em !important;
+    font-weight: bold !important;
+    border-radius: 4px !important;
+    color: #fff !important;
+    outline: none !important;
+}
+
+.btnVermelho {
+    background-color: #F95A10 !important;
+    color: #fff !important;
+}
+.btnVermelho:hover {
+    background-color: #BE2400 !important;
+    color: #fff !important;
+}
+.btnVermelho:active {
+    background-color: #FF8C44 !important;
+    color: #fff !important;
+}
+
+.btnVerde {
+    background-color: #32C35B !important;
+    color: #fff !important;
+}
+.btnVerde:hover {
+    background-color: #00912E !important;
+    color: #fff !important;
+}
+.btnVerde:active {
+    background-color: #6FF78A !important;
+    color: #fff !important;
+}
+
+.btnBranco {
+    background-color: #fff !important;
+    color: #3185FC !important;
+}
+.btnBranco:hover {
+    background-color: #DADADA !important;
+    color: #3185FC;
+}
+.btnBranco:active  {
+    background-color: #F9F9F9 !important;
+    color: #3185FC;
+}
+
+.btnAzul {
+    background-color: #3185FC !important;
+    color: #fff !important;
+}
+.btnAzul:hover {
+    background-color: #77B4FF !important;
+    color: #fff; 
+}
+.btnAzul:active  {
+    background-color: #0059C8 !important; 
+    color: #fff !important;
+}
