@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import '../Aula/aula.css';
-import '../Utils/setup.css';
+import '../../pages/Aula/aula.css';
+import '../../assets/setup.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import logo from '../Utils/Img/logoBrancoM.png';
+import Logo from '../../assets/logoBrancoM.png';
 import EmojiEventsIcon from '@material-ui/icons/EmojiEvents';
 import SchoolIcon from '@material-ui/icons/School';
 import PlaylistAddCheckIcon from '@material-ui/icons/PlaylistAddCheck';
@@ -16,7 +16,7 @@ export default class aula extends Component {
           <nav className="col-md-2 sticky-top bg-color menuLateral ">
             <nav>
             <br></br>
-              <img className="navbar-brand col-sm-12 logo" src={logo}/>
+              <img className="navbar-brand col-sm-12 logo" src={Logo}/>
             </nav>
             <br></br>
             <div className="sidebar-sticky">             
@@ -42,14 +42,9 @@ export default class aula extends Component {
                   </a>
                 </li>
                 <li className="nav-item ">
-                  <a className="nav-link" href="#collapseExample" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="collapseExample">
+                <a className="nav-link" href="#">
                   <PersonIcon style={{ color: 'white'}}/>   Alunos
-                  </a>
-              <div class="row">
-                <div class="col">
-                  <div class="collapse" id="collapseExample"><div class="card card-body">nome1</div></div>
-                </div>
-              </div>
+                </a>
                 </li>
 
                 <div className="fixed-bottom">
