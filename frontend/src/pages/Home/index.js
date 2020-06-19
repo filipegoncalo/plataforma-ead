@@ -2,6 +2,9 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 import './styles.css';
+import '../../assets/setup.css';
+
+import Quiz from '../Quiz/Dialogs/CriarAtividade';
 
 import Header from '../../components/Header'
 
@@ -13,65 +16,69 @@ import imgQuiz from '../../assets/home-quiz.png'
 
 function Home() {
     return (
-      <div>
-        <Header />
+        <div>
+          <Quiz />
+        </div>
 
-        <main>
-          <div>
-            <h3>
-              Aqui é fácil ensinar e aprender!
-            </h3>
-            <p>
-              Comece a usar agora gratuitamente
-            </p>
+      // <div>
+      //   <Header />
 
-            <img src={imgGroup1} alt='Grupo de estudo' />
-          </div>
+      //   <main>
+      //     <div>
+      //       <h3>
+      //         Aqui é fácil ensinar e aprender!
+      //       </h3>
+      //       <p>
+      //         Comece a usar agora gratuitamente
+      //       </p>
 
-          <div>
-            <h4>
-              Sua aula nunca foi tão divertida!
-            </h4>
-            <p>
-              Um ambiente de aula completo para que o aluno consiga absorver 
-              o máximo do aprendizado, utilizando dinâmicas adptadas das salas 
-              de aulas presenciais.
-            </p>
+      //       <img src={imgGroup1} alt='Grupo de estudo' />
+      //     </div>
 
-            <img src={imgAtivo1} alt='Garota estudando' />
-          </div>
+      //     <div>
+      //       <h4>
+      //         Sua aula nunca foi tão divertida!
+      //       </h4>
+      //       <p>
+      //         Um ambiente de aula completo para que o aluno consiga absorver 
+      //         o máximo do aprendizado, utilizando dinâmicas adptadas das salas 
+      //         de aulas presenciais.
+      //       </p>
 
-          <div>
-            <p>
-              <img src={imgGirls} alt='Garotas estudando' />
+      //       <img src={imgAtivo1} alt='Garota estudando' />
+      //     </div>
 
-              <br />Seus alunos terão a mesma experiência, seja utilizando a plataforma 
-              em um computador ou celular.
-            </p>
-          </div>
+      //     <div>
+      //       <p>
+      //         <img src={imgGirls} alt='Garotas estudando' />
 
-          <div>
-            <p>
-              <img src={imgQuiz} alt='Quiz' />
+      //         <br />Seus alunos terão a mesma experiência, seja utilizando a plataforma 
+      //         em um computador ou celular.
+      //       </p>
+      //     </div>
 
-              <br />Engaje os estudantes com desafios e em um sistema gamificado 
-              utilizando as ferramentas que oferecemos.
-            </p>
-          </div>
+      //     <div>
+      //       <p>
+      //         <img src={imgQuiz} alt='Quiz' />
 
-          <div>
-            <p>
-              <img src={imgNetworking} alt='Jovens se comunicando remotamente' />
+      //         <br />Engaje os estudantes com desafios e em um sistema gamificado 
+      //         utilizando as ferramentas que oferecemos.
+      //       </p>
+      //     </div>
 
-              <br />Crie grupo de discussões nas aulas on-line para que seus alunos 
-              trabalhem em grupo sob sua supervisão.
-            </p>
-          </div>
+      //     <div>
+      //       <p>
+      //         <img src={imgNetworking} alt='Jovens se comunicando remotamente' />
 
-          <Link to='/cadastro'>Cadastrar</Link>
-        </main>
+      //         <br />Crie grupo de discussões nas aulas on-line para que seus alunos 
+      //         trabalhem em grupo sob sua supervisão.
+      //       </p>
+      //     </div>
 
-      </div>
+      //     <Link to='/cadastro'>Cadastrar</Link>
+      //   </main>
+
+      // </div>
     );
   }
   

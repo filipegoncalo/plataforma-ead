@@ -9,7 +9,7 @@ function Header(){
             <Link to='/'>
                 <h1>Início</h1>
             </Link>
-            <h1>Planos</h1>            
+            <h1>Planos</h1>          
         </header>
     )
 }
