@@ -3,7 +3,7 @@ import { Route, BrowserRouter } from 'react-router-dom';
 
 import Home from './pages/Home';
 import Cadastro from './pages/Cadastro';
-import Quiz from './pages/Quiz/Dialogs/CriarAtividade';
+import Quiz from './pages/Quiz/Dialogs/Atividade';
 
 
 function Routes() {

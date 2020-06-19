@@ -1,8 +1,12 @@
 import React, { Component } from 'react';
 
-
 import {
     Button,
+    FormControl,
+    FormHelperText,
+    MenuItem,
+    InputLabel,
+    Select,
     Dialog,
     DialogActions,
     DialogContent,
@@ -12,9 +16,14 @@ import {
 import CustomDialog from '../../../components/Dialog';
 
 
-export default class Quiz extends Component {
+export default class CriarQuiz extends Component {
     state = {
-        open: false
+        open: false,
+        form: {
+            title: '',
+            description: '',
+            categoria: ''
+        }
     }
 
     handleToggle = () => {
@@ -23,39 +32,59 @@ export default class Quiz extends Component {
         });
     }
 
+    handleChange = categoria => ({target: {value}}) => {
+        this.setState({
+            form: {
+                ...this.state.categoria,
+                [categoria]: value
+            }
+        })
+    }
+
     render() {
-        const { open } = this.state
+        const { open, form: {title, description, categoria} } = this.state
 
         return (
             <div>
                 <Button
-                variant="outlined"
+                variant="contained"
                 color="primary"
                 onClick={this.handleToggle}
                 >
-                    Open form dialog
+                    Criar
                 </Button>
                 <Dialog open={open} onClose={this.handleToggle} aria-labelledby="form-dialog-title">
-                    <DialogTitle id="form-dialog-title">Atividades</DialogTitle>
+                    <DialogTitle id="form-dialog-title">Selecione uma atividade</DialogTitle>
                     <DialogContent>
-                        <Button
-                        variant="outlined"
-                        color="primary"
+                    <FormControl variant="outlined" className={React.classes.formControl}>
+                        <InputLabel id="demo-simple-select-outlined-label">Categoria</InputLabel>
+                        <Select
+                        labelId="demo-simple-select-outlined-label"
+                        id="demo-simple-select-outlined"
+                        value={categoria}
+                        onChange={this.handleChange}
+                        label="Categoria"
                         >
-                            Criar
-                        </Button>
+                        <MenuItem value="">
+                            <em>None</em>
+                        </MenuItem>
+                        <MenuItem value={10}>Exercício</MenuItem>
+                        <MenuItem value={20}>Quiz</MenuItem>
+                        </Select>
+                    </FormControl>
+                        <br />
                         <Button
-                        variant="outlined"
+                        variant="contained"
                         color="primary">
                             Abrir
                         </Button>
                     </DialogContent>
                     <DialogActions>
                         <Button
-                        variant="outlined"
+                        variant="contained"
                         onClick={this.handleToggle}
                         color="primary">
-                            Cancel
+                            Cancelar
                         </Button>
                     </DialogActions>
                 </Dialog>
@@ -63,4 +92,3 @@ export default class Quiz extends Component {
         )
     }
 }
-

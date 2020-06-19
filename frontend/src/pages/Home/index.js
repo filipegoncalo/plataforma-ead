@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import './styles.css';
 import '../../assets/setup.css';
 
-import Quiz from '../Quiz/Dialogs/CriarAtividade';
+import Quiz from '../Quiz/Dialogs/Atividade'
 
 import Header from '../../components/Header'
 
