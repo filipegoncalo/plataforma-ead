@@ -7,6 +7,7 @@ const AuthController = require('./controllers/AuthController');
 const UserController = require('./controllers/UserController');
 const DisciplineController = require('./controllers/DisciplineContoller');
 const ClasseController = require('./controllers/ClasseController');
+const TestController = require('./controllers/TestController');
 
 
 
@@ -147,5 +148,8 @@ routes.delete('/turma/:id', celebrate({
   }),
 }), ClasseController.delete);
 
+// create test
+
+routes.get('/test/',TestController.index);
 
 module.exports = routes;

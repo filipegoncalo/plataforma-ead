@@ -30,6 +30,7 @@ exports.up = function (knex) {
       .nullable();
 
     table.timestamp('created_at')
+    .defaultTo(knex.fn.now())
       .notNullable();
 
     table.timestamp('updated_at')
@@ -41,5 +42,5 @@ exports.up = function (knex) {
 };
 
 exports.down = function (knex) {
-  return knex.schema.dropTable('contents ');
+  return knex.schema.dropTable('contents');
 };

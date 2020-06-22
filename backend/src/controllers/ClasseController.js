@@ -48,12 +48,9 @@ module.exports = {
           name,
           schedule: dt
         });
-
         return response.status(201).json({ message: "Class created successfully" });
       }
-
       return response.status(401).json({ error: 'Operation not permited.' });
-
     } catch (error) {
       next(error);
     }
@@ -63,7 +60,6 @@ module.exports = {
     const { link, name, schedule } = request.body;
     const { id } = request.params;
     const discipline_id = request.headers.authorization;
-
     //date update
     const parts = schedule.split(" ");
     const date = parts[0].split("/");
