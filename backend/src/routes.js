@@ -154,15 +154,15 @@ routes.delete('/turma/:id', celebrate({
 
 //disciplina/turma/test
 routes.post("/test",TestController.addTest);
-routes.get("/teste/student/:id_disciplines/:id_classe/:id_test",TestController.studentByDisciplineClass);
-routes.get("/teste/teacher/:id_disciplines/:id_classe/:id_test",TestController.teacherByDisciplineClass);
+//routes.get("/teste/student/:id_disciplines/:id_classe/:id_test",TestController.studentByDisciplineClass);
+routes.get("/teste/user/:id_disciplines/:id_classes/:id_test",TestController.userByDisciplineClass);
 //por classe
-routes.get("/teste/classe/:id_classe",TestController.classesByTest);
-routes.get("/teste/studentTest/:id_user",TestController.studentByTest);
-routes.get("/teste/classesAluno/:id_user/:id_classe",TestController.classesAlunoByTest);
-routes.get("/teste/classesDiscipline/:id_user/:id_discipline",TestController.classesDisciplineByTest);
-routes.get("/teste/simple",TestController.simpleTest);
-routes.get("/teste/multiple",TestController.multipleChoiceTest);
+routes.get("/teste/classe/:id_classes",TestController.classesByTest);
+routes.get("/teste/classesAluno/:id_classes/:id_user",TestController.classesAlunoByTest);
+routes.get("/teste/classesDiscipline/:id_discipline/:id_user",TestController.classesDisciplineByTest);
+routes.get("/teste/studentTest/:id_user",TestController.userByTest);
+routes.get("/teste/tipo/:id_type",TestController.ByTestType);
+routes.get("/teste/tipo/:id_type/:id_user",TestController.ByTestTypeUser);
 
 //disciplina/test/usuario
 //teste de determinado usuario de tal disciplina
@@ -182,8 +182,8 @@ routes.get("/questions",QuestionsController.index);
 routes.get("/questions/teste",QuestionsController.selectByTest);
 routes.post("/questions",QuestionsController.addQuestion);
 routes.put("/questions",QuestionsController.changeQuestion);
-routes.remove("/questions",QuestionsController.removeQuestion);
-routes.remove("/questionsTeste",QuestionsController.removeQuestionByTest);
+routes.delete("/questions",QuestionsController.removeQuestion);
+routes.delete("/questions/teste",QuestionsController.removeQuestionByTest);
 
 //adicionar question
 //adicionar alternatives

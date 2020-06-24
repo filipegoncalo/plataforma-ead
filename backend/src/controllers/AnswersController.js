@@ -7,6 +7,7 @@ module.exports = {
 
     try {
       const results = await Answer.query();
+      
       return response.json(results);
 
     } catch (error) {
