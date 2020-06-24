@@ -5,9 +5,10 @@ const routes = express.Router();
 
 const AuthController = require('./controllers/AuthController');
 const UserController = require('./controllers/UserController');
-const DisciplineController = require('./controllers/DisciplineContoller');
+const DisciplineController = require('./controllers/DisciplineController');
 const ClasseController = require('./controllers/ClasseController');
 const TestController = require('./controllers/TestController');
+const QuestionsController = require('./controllers/QuestionsController');
 
 
 
@@ -150,6 +151,42 @@ routes.delete('/turma/:id', celebrate({
 
 // create test
 
-routes.get('/test/',TestController.index);
+
+//disciplina/turma/test
+routes.post("/test",TestController.addTest);
+routes.get("/teste/student/:id_disciplines/:id_classe/:id_test",TestController.studentByDisciplineClass);
+routes.get("/teste/teacher/:id_disciplines/:id_classe/:id_test",TestController.teacherByDisciplineClass);
+//por classe
+routes.get("/teste/classe/:id_classe",TestController.classesByTest);
+routes.get("/teste/studentTest/:id_user",TestController.studentByTest);
+routes.get("/teste/classesAluno/:id_user/:id_classe",TestController.classesAlunoByTest);
+routes.get("/teste/classesDiscipline/:id_user/:id_discipline",TestController.classesDisciplineByTest);
+routes.get("/teste/simple",TestController.simpleTest);
+routes.get("/teste/multiple",TestController.multipleChoiceTest);
+
+//disciplina/test/usuario
+//teste de determinado usuario de tal disciplina
+//multipla escolha
+//dissertativa
+//quiz
+//prova
+//exercicio
+
+//todas as provas de um aluno
+
+
+//adicionar prova
+//add exercicio
+//add resposta
+routes.get("/questions",QuestionsController.index);
+routes.get("/questions/teste",QuestionsController.selectByTest);
+routes.post("/questions",QuestionsController.addQuestion);
+routes.put("/questions",QuestionsController.changeQuestion);
+routes.remove("/questions",QuestionsController.removeQuestion);
+routes.remove("/questionsTeste",QuestionsController.removeQuestionByTest);
+
+//adicionar question
+//adicionar alternatives
+//adicionar answer
 
 module.exports = routes;

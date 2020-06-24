@@ -1,16 +1,15 @@
 
 exports.seed = function (knex) {
     // Deletes ALL existing entries
-    return knex('classes').del()
+    return knex('test').del()
       .then(function () {
         // Inserts seed entries
-        return knex('classes').insert([
+        return knex('test').insert([
           {
-            teacher: 2,
-            discipline_id:1,
-            link:"url",
+            name:"p1",
             name:"4 ano",
-            schedule:"2020-06-10 22:51:54"
+            id_type:"1",
+            id_classes:1
           },
 
         ]);
