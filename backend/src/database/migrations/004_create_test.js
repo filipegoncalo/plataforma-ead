@@ -3,7 +3,7 @@ exports.up = function(knex) {
         table.increments('id').primary();
         table.string('name').notNullable();
         table.integer('id_type').notNullable();
-
+        table.float("note");
         table.integer('id_classes').unsigned();
 
         table.foreign('id_classes')
