@@ -39,12 +39,7 @@ export default class Quiz extends Component {
                 <Dialog open={open} onClose={this.handleToggle} aria-labelledby="form-dialog-title">
                     <DialogTitle id="form-dialog-title">Atividades</DialogTitle>
                     <DialogContent>
-                        <Button
-                        variant="contained"
-                        color="primary"
-                        >
-                            Criar
-                        </Button>
+                        <CriarQuiz />
                         <br />
                         <Button
                         variant="contained"
