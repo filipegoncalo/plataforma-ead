@@ -14,12 +14,11 @@ export default class FormSelectQuiz extends Component{
         form: {
             title: '',
             description: '',
-            categoria: '',
-            selecao: ''
+            categoria: ''
         }
     }
 
-    handleChangeCategoria = categoria => ({target: {value}}) => {
+    handleChange = categoria => ({target: {value}}) => {
         this.setState({
             form: {
                 ...this.state.categoria,
@@ -28,17 +27,8 @@ export default class FormSelectQuiz extends Component{
         })
     }
 
-    handleChangeSelecao = selecao => ({target: {value}}) => {
-        this.setState({
-            form: {
-                ...this.state.selecao,
-                [selecao]: value
-            }
-        })
-    }
-
     render(){
-        const { form: {title, description, categoria, selecao} } = this.state
+        const { form: {title, description, categoria} } = this.state
     
         return(
             <div>
@@ -51,20 +41,9 @@ export default class FormSelectQuiz extends Component{
                     onChange={this.handleChangeCategoria}
                     label="Categoria"
                     >
-                    <MenuItem value={10}>Exercício</MenuItem>
-                    <MenuItem value={20}>Quiz</MenuItem>
-                    </Select>
-
-                    <Select
-                    labelId="demo-simple-select-outlined-label"
-                    id="demo-simple-select-outlined"
-                    value={this.selecao}
-                    onChange={this.handleChangeSelecao}
-                    label="Seleção"
-                    >
-                    <MenuItem value="">
-                        Nenhuma seleção disponível
-                    </MenuItem>
+                    <MenuItem value={10}>Exercício Múltipla Escolha</MenuItem>
+                    <MenuItem value={20}>Exercício Dissertativo</MenuItem>
+                    <MenuItem value={30}>Quiz</MenuItem>
                     </Select>
                 </form>  
             </div>

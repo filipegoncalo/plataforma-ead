@@ -15,10 +15,10 @@ import {
 } from '@material-ui/core';
 import CustomDialog from '../../../components/Dialog';
 
-import FormSelectQuiz from '../../../components/FormSelectQuiz';
+import FormCriarAtividade from '../../../components/FormCriarAtividade';
 
 
-export default class CriarQuiz extends Component {
+export default class CriarAtividade extends Component {
     state = {
         open: false
     }
@@ -44,14 +44,14 @@ export default class CriarQuiz extends Component {
                 <Dialog open={open} onClose={this.handleToggle} aria-labelledby="form-dialog-title">
                     <DialogTitle id="form-dialog-title">Selecione uma atividade</DialogTitle>
                     <DialogContent>
-                        <FormSelectQuiz />
+                        <FormCriarAtividade />
                         <br />
                     </DialogContent>
                     <DialogActions>
                         <Button
                         variant="contained"
                         color="primary">
-                            Abrir
+                            Criar
                         </Button>
                         <Button
                         variant="contained"
