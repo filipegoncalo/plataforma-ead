@@ -7,9 +7,9 @@ module.exports = {
 
   async index(request, response, next) {
     try {
-       const {id} = request.headers.authorization;
-      const results = await Questions.query()
-        .select("*").where("id",id);
+        const {id} = request.headers.authorization;
+        const results = await Questions.query()
+        .select("*")//.where("id",id);
 
         if(results!=""){
           return response.status(200).json(results);
@@ -42,12 +42,14 @@ module.exports = {
     //const {} = request.headers.authorization;
 
     try {
+     
       const results = await Questions.query()
         .insert({
           ds_description,
           answer,
           id_test
         });
+        
       if(results!=0){
         return response.status(200).json(results);
       }
@@ -78,7 +80,7 @@ module.exports = {
     
   },
   async removeQuestion(request, response, next) {
-    const {id_question} = request.headers.authorization;
+    const id_question = request.headers.authorization;
 
     try {
       const results = await Questions.query().deleteById(id_question)
@@ -93,7 +95,7 @@ module.exports = {
 
   },
   async removeQuestionByTest(request, response, next) {
-    const {id_test} = request.headers.authorization;
+    const id_test = request.headers.authorization;
 
     try {
       const results = await Questions.query().deleteById(id_test)
@@ -108,7 +110,7 @@ module.exports = {
 
   },
   async changeQuestion(request, response, next) {
-    const {id_question} = request.headers.authorization;
+    const id_question = request.headers.authorization;
     const { ds_description, answer,id_test } = request.body;
 
     try {
@@ -116,7 +118,6 @@ module.exports = {
       .patch({
         ds_description,
         answer,
-        id_test,
       })
       if(results!=0){
         return response.status(200).json(results);
