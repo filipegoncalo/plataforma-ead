@@ -15,15 +15,12 @@ import {
 } from '@material-ui/core';
 import CustomDialog from '../../../components/Dialog';
 
+import FormCriarAtividade from '../../../components/FormCriarAtividade';
 
-export default class CriarQuiz extends Component {
+
+export default class CriarAtividade extends Component {
     state = {
-        open: false,
-        form: {
-            title: '',
-            description: '',
-            categoria: ''
-        }
+        open: false
     }
 
     handleToggle = () => {
@@ -32,17 +29,8 @@ export default class CriarQuiz extends Component {
         });
     }
 
-    handleChange = categoria => ({target: {value}}) => {
-        this.setState({
-            form: {
-                ...this.state.categoria,
-                [categoria]: value
-            }
-        })
-    }
-
     render() {
-        const { open, form: {title, description, categoria} } = this.state
+        const { open } = this.state
 
         return (
             <div>
@@ -56,30 +44,15 @@ export default class CriarQuiz extends Component {
                 <Dialog open={open} onClose={this.handleToggle} aria-labelledby="form-dialog-title">
                     <DialogTitle id="form-dialog-title">Selecione uma atividade</DialogTitle>
                     <DialogContent>
-                    <FormControl variant="outlined" className={React.classes.formControl}>
-                        <InputLabel id="demo-simple-select-outlined-label">Categoria</InputLabel>
-                        <Select
-                        labelId="demo-simple-select-outlined-label"
-                        id="demo-simple-select-outlined"
-                        value={categoria}
-                        onChange={this.handleChange}
-                        label="Categoria"
-                        >
-                        <MenuItem value="">
-                            <em>None</em>
-                        </MenuItem>
-                        <MenuItem value={10}>Exercício</MenuItem>
-                        <MenuItem value={20}>Quiz</MenuItem>
-                        </Select>
-                    </FormControl>
+                        <FormCriarAtividade />
                         <br />
+                    </DialogContent>
+                    <DialogActions>
                         <Button
                         variant="contained"
                         color="primary">
-                            Abrir
+                            Criar
                         </Button>
-                    </DialogContent>
-                    <DialogActions>
                         <Button
                         variant="contained"
                         onClick={this.handleToggle}

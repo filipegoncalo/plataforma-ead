@@ -6,10 +6,6 @@ function Cadastro() {
     //Funções de controle do modal
     const [isOpen, setIsOpen] = React.useState(false);
 
-    const handleDialogOpen = () => {
-        setIsOpen(true);
-    }
-
     const handleDialogClose = () => {
         setIsOpen(false);
     }

@@ -2,6 +2,11 @@ import React, { Component } from 'react';
 
 import {
     Button,
+    FormControl,
+    FormHelperText,
+    MenuItem,
+    InputLabel,
+    Select,
     Dialog,
     DialogActions,
     DialogContent,
@@ -10,10 +15,10 @@ import {
 } from '@material-ui/core';
 import CustomDialog from '../../../components/Dialog';
 
-import CriarQuiz from './AbrirAtividade'
+import FormSelectQuiz from '../../../components/FormSelectQuiz';
 
 
-export default class Quiz extends Component {
+export default class CriarQuiz extends Component {
     state = {
         open: false
     }
@@ -22,10 +27,10 @@ export default class Quiz extends Component {
         this.setState({
             open: !this.state.open
         });
-    }    
+    }
 
     render() {
-        const { open } = this.state;
+        const { open } = this.state
 
         return (
             <div>
@@ -34,20 +39,20 @@ export default class Quiz extends Component {
                 color="primary"
                 onClick={this.handleToggle}
                 >
-                    Atividade
+                    Criar
                 </Button>
                 <Dialog open={open} onClose={this.handleToggle} aria-labelledby="form-dialog-title">
-                    <DialogTitle id="form-dialog-title">Atividades</DialogTitle>
+                    <DialogTitle id="form-dialog-title">Selecione uma atividade</DialogTitle>
                     <DialogContent>
-                        <CriarQuiz />
+                        <FormSelectQuiz />
                         <br />
+                    </DialogContent>
+                    <DialogActions>
                         <Button
                         variant="contained"
                         color="primary">
                             Abrir
                         </Button>
-                    </DialogContent>
-                    <DialogActions>
                         <Button
                         variant="contained"
                         onClick={this.handleToggle}
@@ -60,4 +65,3 @@ export default class Quiz extends Component {
         )
     }
 }
-
