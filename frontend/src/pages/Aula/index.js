@@ -8,6 +8,7 @@ import SchoolIcon from '@material-ui/icons/School';
 import PlaylistAddCheckIcon from '@material-ui/icons/PlaylistAddCheck';
 import PersonIcon from '@material-ui/icons/Person';
 import CancelIcon from '@material-ui/icons/Cancel';
+import JitsiRoom from '../../components/JitsiMeet';
 
 export default class aula extends Component {
   state = {open: false,};
@@ -73,7 +74,7 @@ export default class aula extends Component {
             </div>
           </nav>
           <div className="col">
-            <h1>Código do Jitsi ---------------------------------------------------</h1>
+            <JitsiRoom/>
           </div>        
       </div>
     );
