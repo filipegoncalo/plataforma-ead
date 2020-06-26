@@ -54,7 +54,7 @@ export default class FormSelectQuiz extends Component{
                     <MenuItem value={10}>Exercício</MenuItem>
                     <MenuItem value={20}>Quiz</MenuItem>
                     </Select>
-
+                    <br />
                     <Select
                     labelId="demo-simple-select-outlined-label"
                     id="demo-simple-select-outlined"
