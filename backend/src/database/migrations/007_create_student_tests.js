@@ -1,6 +1,6 @@
 
 exports.up = function (knex) {
-  return knex.schema.createTable('classes_schedules', (table) => {
+  return knex.schema.createTable('student_test', (table) => {
     table.integer('student_id').unsigned();
     table.integer('tests_id').unsigned();
 
@@ -16,5 +16,5 @@ exports.up = function (knex) {
 };
 
 exports.down = function (knex) {
-  return knex.schema.dropTable('classes_schedules');
+  return knex.schema.dropTable('student_test');
 };

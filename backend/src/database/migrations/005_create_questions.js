@@ -9,9 +9,7 @@ exports.up = function (knex) {
 
         table.foreign('teacher')
             .references('id')
-            .inTable('users')
-            .onDelete('CASCADE')
-            .onUpdate('NO ACTION');
+            .inTable('users');
 
         table.foreign('discipline_id')
             .references('id')
@@ -20,7 +18,7 @@ exports.up = function (knex) {
 
         table.foreign('test_id')
             .references('id')
-            .inTable('test')
+            .inTable('tests')
             .onDelete('CASCADE')
             .onUpdate('NO ACTION');
 

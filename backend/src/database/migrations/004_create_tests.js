@@ -4,7 +4,7 @@ exports.up = function (knex) {
         table.integer('teacher').unsigned();
         table.integer('discipline_id').unsigned();
         table.string('name').notNullable();
-        table.integer('type').notNullable();
+        table.string('type').notNullable();
         table.float("note").notNullable();
 
         table.foreign('teacher')
