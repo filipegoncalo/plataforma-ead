@@ -1,4 +1,4 @@
-![logo](<img width="456" alt="Group 328" src="https://user-images.githubusercontent.com/54011223/86034287-ae9d2a00-ba10-11ea-84da-81a451bba05a.png">)
+![logo](https://user-images.githubusercontent.com/54011223/86034287-ae9d2a00-ba10-11ea-84da-81a451bba05a.png)
 
 # Plataforma EAD
     Projeto desenvolvido durante programa de formação da Fcamara 2020.
