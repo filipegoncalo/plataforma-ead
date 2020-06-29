@@ -1,6 +1,18 @@
+.menuSalaDeAula {
+  background-color: #000;
+}
 .menuLateral {
   height: 100vh!important;
   border-top-right-radius: 15px;
+}
+.o-jitsi {
+  object-fit: cover;
+  height: 100%;
+  width: 80%;
+  position: absolute;
+  right: 0;
+  top: 0;
+  padding: 0;
 }
 .logo {
   width: 60px;

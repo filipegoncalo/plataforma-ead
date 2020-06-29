@@ -12,25 +12,25 @@
   font-display: swap;
   src: local('Open Sans SemiBold'), local('OpenSans-SemiBold'), url(https://fonts.gstatic.com/s/opensans/v17/mem5YaGs126MiZpBA-UNirk-VQ.ttf) format('truetype');
 }
-.menuComponente {
-  width: 100%;
+.o-menu {
+  width: 20%;
   height: 100vh!important;
   border-top-right-radius: 15px;
   border-bottom-right-radius: 15px;
 }
-.logo {
+.o-menu .logo {
   padding: 15px 50px 15px 10px!important;
+}
+.o-menu .nav-link,
+.o-menu .nav-link:hover,
+.o-menu .nav-link:active {
+  color: white;
+  font-family: 'Roboto Condensed', sans-serif !important;
 }
 .bg-color {
   background-color: #282544;
   color: #FFFFFF;
   box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3);
-}
-.nav-link,
-.nav-link:hover,
-.nav-link:active {
-  color: white;
-  font-family: 'Roboto Condensed', sans-serif !important;
 }
 .navbar-wrapper {
   position: absolute;

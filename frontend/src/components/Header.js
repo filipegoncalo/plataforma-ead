@@ -24,7 +24,7 @@ function Header(){
                     </Link>
                 </div>
                 <div className="c-botao">
-                    <Button className="o-btn blue" type='submit' variant="contained"><Link to='/dashboard'>Entrar</Link></Button>
+                    <Button className="o-btn blue" to="/provas" variant="contained"  component={Link}>Entrar </Button>
                 </div>
             </div>
         </header>

@@ -22,7 +22,7 @@ var str_hora = hora + ':' + min;
 
 function MenuLateral({ items }){
     return(
-            <div className="col-md-2 bg-color menuComponente ">
+            <div className="o-menu bg-color menuComponente ">
                 <nav className="AvatarTexto">
                     <br></br>
                     <img align="left" src={imgperfil} className="col-md-4 borderimg"/>
@@ -37,15 +37,15 @@ function MenuLateral({ items }){
                 <br></br> 
                 <br></br>
                 <div className="menuItem">
+                    <ul className="nav flex-column">               
                     {items.map(({ label, name, icone, link, ...rest }) => (             
-                        <ul className="nav flex-column">               
                             <li className="nav-item">   
                                 <a className="nav-link" href= {link}>
                                     {icone} {label}
                                 </a>
                             </li>
-                        </ul>
                     ))}
+                    </ul>
                 </div>
 
                 <div className="botao-sair col-md-2">
