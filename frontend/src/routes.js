@@ -1,18 +1,22 @@
 import React from 'react';
-import { Route, BrowserRouter } from 'react-router-dom';
+import { Route, BrowserRouter, Switch } from 'react-router-dom';
 
 import Home from './pages/Home';
 import Cadastro from './pages/Cadastro';
-import Quiz from './pages/Quiz/Dialogs/Atividade';
+import Dashboard from './pages/DashBoard';
+import Aula from './pages/Aula';
 
 
 function Routes() {
-    return(
+    return (
         <BrowserRouter>
-            <Route component={Home} path='/' exact />
-            <Route component={Cadastro} path='/cadastro' />
+            <Switch>
+                <Route path='/' exact component={Home}/>
+                <Route path='/cadastro' component={Cadastro}/>
+                <Route path='/dashboard' component={Dashboard}/>
+                <Route path='/dashboard/aula' component={Aula}/>
+                </Switch>
         </BrowserRouter>
     )
 }
-
 export default Routes;

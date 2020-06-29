@@ -1,18 +1,80 @@
+@font-face {
+  font-family: "Roboto-Regular";
+  src: url('fonts/Roboto-Regular.ttf');
+}
+@font-face {
+  font-family: "Roboto-Bold";
+  src: url('fonts/Roboto-Bold.ttf');
+}
+@font-face {
+  font-family: "RobotoCondensed-Bold";
+  src: url('fonts/RobotoCondensed-Bold.ttf');
+  font-weight: 900;
+}
+@font-face {
+  font-family: "OpenSans-Regular";
+  src: url('fonts/OpenSans-Regular.ttf');
+}
+@font-face {
+  font-family: "OpenSans-Bold";
+  src: url('fonts/OpenSans-Bold.ttf');
+}
+@font-face {
+  font-family: "OpenSans-SemiBold";
+  src: url('fonts/OpenSans-SemiBold.ttf');
+}
+@font-face {
+  font-family: "Montserrat-Light";
+  src: url('fonts/Montserrat-Light.ttf');
+}
+@font-face {
+  font-family: "Montserrat-Bold";
+  src: url('fonts/Montserrat-Bold.ttf');
+}
+p {
+  font-size: 20px;
+  font-family: "Montserrat-Light";
+}
+.o-row {
+  display: flex;
+  flex-wrap: wrap;
+}
+.o-espaco-padrao {
+  padding: 5% 0;
+}
+.o-img {
+  width: 100%;
+}
+.u-pr-5 {
+  padding-right: 5%;
+}
+#root {
+  background-color: #ffffff;
+}
+.o-p {
+  padding: 0;
+}
+.o-pt-0 {
+  padding-top: 0;
+}
+.o-pb-5 {
+  padding-bottom: 5%;
+}
+.o-text-center {
+  text-align: center;
+}
 .App {
   text-align: center;
 }
-
 /* .App-logo {
-  height: 40vmin;
-  pointer-events: none;
-} */
-
+    height: 40vmin;
+    pointer-events: none;
+  } */
 /* @media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-} */
-
+    .App-logo {
+      animation: App-logo-spin infinite 20s linear;
+    }
+  } */
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
@@ -23,11 +85,9 @@
   font-size: calc(10px + 2vmin);
   color: white;
 }
-
 .App-link {
   color: #61dafb;
 }
-
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
@@ -35,4 +95,126 @@
   to {
     transform: rotate(360deg);
   }
+}
+.o-center {
+  position: relative;
+  margin: 0 auto;
+  padding-left: 10px;
+  padding-right: 10px;
+  width: auto;
+  height: inherit;
+  max-width: 1366px;
+}
+.o-center {
+  position: relative;
+  margin: 0 auto;
+  padding-left: 10px;
+  padding-right: 10px;
+  width: auto;
+  height: inherit;
+  max-width: 1104px;
+}
+.o-title-1 {
+  font-size: 48px;
+  font-family: 'OpenSans-Bold';
+}
+.o-title-2 {
+  font-size: 34px;
+  font-family: "OpenSans-Bold";
+}
+.o-title-3 {
+  font-size: 24px;
+  font-family: "OpenSans-SemiBold";
+}
+.o-text-1 {
+  font-family: 'Montserrat-Light';
+  font-size: 36px;
+}
+.o-text-2 {
+  font-family: 'Montserrat-Light';
+  font-size: 24px;
+}
+.o-text-3 {
+  font-family: 'Montserrat-Bold';
+  font-size: 24px;
+}
+.o-text-4 {
+  font-family: 'Roboto-Regular';
+  font-size: 16px;
+}
+.o-button {
+  font-family: 'RobotoCondensed-Bold';
+  font-size: 34;
+}
+.o-btn {
+  text-transform: capitalize !important;
+}
+.o-btn.blue {
+  background-color: #3185FC !important;
+  color: #F9F9F9 !important;
+}
+.o-btn.blue:hover {
+  color: #DADADA !important;
+  background-color: #0059C8 !important;
+}
+.o-btn.gray {
+  background-color: #F9F9F9 !important;
+  color: #3185FC !important;
+}
+.o-btn.gray:hover {
+  color: #0059C8 !important;
+  background-color: #DADADA !important;
+}
+.o-background-gray {
+  background-color: #ffffff;
+}
+.o-background-blue {
+  background-color: #3185FC;
+}
+.c-header {
+  display: flex;
+  justify-content: space-between;
+  padding: 30px;
+}
+.c-header a {
+  display: flex;
+}
+.c-header img {
+  width: 85%;
+}
+.c-header .c-links {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  width: 35%;
+}
+.c-header .c-links a {
+  font-family: 'RobotoCondensed-Bold';
+  font-size: 25px;
+}
+.c-banner .o-title-1 {
+  color: #F9F9F9;
+  padding-bottom: 10%;
+}
+.c-banner p {
+  display: flex;
+  color: #F9F9F9;
+}
+.c-banner .o-btn {
+  margin-top: 5%;
+}
+.c-ambiente .o-title-2 {
+  color: #32C35B;
+  padding-bottom: 5%;
+}
+.c-ambiente p {
+  padding-right: 40%;
+}
+.c-boxes-home .MuiGrid-item {
+  padding: 0 30px;
+}
+.c-boxes-home p {
+  text-align: justify;
+  padding-top: 15%;
+  font-size: 18px;
 }

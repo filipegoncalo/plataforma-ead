@@ -1,85 +1,89 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-
+import Grid from '@material-ui/core/Grid';
 import './styles.css';
 import '../../assets/setup.css';
 
-import Quiz from '../Quiz/Dialogs/Atividade'
+import Quiz from '../Quiz/Dialogs/Atividade';
 
-import Header from '../../components/Header'
+import Header from '../../components/Header';
 
-import imgGroup1 from '../../assets/home-group-1.png'
-import imgAtivo1 from '../../assets/home-ativo-1.png'
-import imgGirls from '../../assets/home-girls.png'
-import imgNetworking from '../../assets/home-networking.png'
-import imgQuiz from '../../assets/home-quiz.png'
+import imgGroup1 from '../../assets/home-group-1.png';
+import imgAtivo1 from '../../assets/home-ativo-1.png';
+import imgGirls from '../../assets/home-girls.png';
+import imgNetworking from '../../assets/home-networking.png';
+import imgQuiz from '../../assets/home-quiz.png';
+import { Button } from '@material-ui/core';
+
+import api from '../../services/api';
 
 function Home() {
-    return (
-        <div>
-          <Quiz />
+
+  return (
+    <div>
+      <Header />
+      <main>
+        <div className="o-background-blue">
+          <Grid className="o-center c-banner o-espaco-padrao o-row">
+              <Grid item xs={6}>
+                <h1 className="o-title-1"> Aqui é fácil<br/> ensinar <br/> e aprender!</h1>
+                <p>Comece a usar agora gratuitamente</p>
+                <Button className="o-btn gray" variant="contained"><Link to='/cadastro'>Cadastrar</Link></Button>
+              </Grid>
+              <Grid item xs={6}>
+                <img className="o-img" src={imgGroup1} alt='Grupo de estudo' />
+              </Grid>
+          </Grid>
         </div>
 
-      // <div>
-      //   <Header />
+        <div className="c-ambiente o-center o-espaco-padrao">
+          <Grid className="o-row"> 
+            <Grid item xs={8} className="u-pr-5">
+              <h2 className="o-title-2">Sua aula nunca foi tão divertida!</h2>
+              <p className="pr-15">
+                Um ambiente de aula completo para que o aluno consiga absorver
+                o máximo do aprendizado, utilizando dinâmicas adptadas das salas
+                de aulas presenciais.
+              </p>
+            </Grid>
+            <Grid item xs={4} >
+              <img className="o-img" src={imgAtivo1} alt='Garota estudando' />
+            </Grid>
+          </Grid>
+        </div>
 
-      //   <main>
-      //     <div>
-      //       <h3>
-      //         Aqui é fácil ensinar e aprender!
-      //       </h3>
-      //       <p>
-      //         Comece a usar agora gratuitamente
-      //       </p>
 
-      //       <img src={imgGroup1} alt='Grupo de estudo' />
-      //     </div>
+        <div className="c-boxes-home o-center o-espaco-padrao o-pt-0">
+          <Grid className="o-row" >
 
-      //     <div>
-      //       <h4>
-      //         Sua aula nunca foi tão divertida!
-      //       </h4>
-      //       <p>
-      //         Um ambiente de aula completo para que o aluno consiga absorver 
-      //         o máximo do aprendizado, utilizando dinâmicas adptadas das salas 
-      //         de aulas presenciais.
-      //       </p>
+            <Grid item xs={4}>
+              <img className="o-img" src={imgGirls} alt='Garotas estudando' />
+              <p>Seus alunos terão a mesma experiência, seja utilizando a plataforma
+                em um computador ou celular.</p>
+            </Grid>
 
-      //       <img src={imgAtivo1} alt='Garota estudando' />
-      //     </div>
+            <Grid item xs={4} >
+              <img className="o-img" src={imgQuiz} alt='Quiz' />
+              <p>Engaje os estudantes com desafios e em um sistema gamificado
+                utilizando as ferramentas que oferecemos.
+              </p>
+            </Grid>
 
-      //     <div>
-      //       <p>
-      //         <img src={imgGirls} alt='Garotas estudando' />
+            <Grid item xs={4}>
+              <img className="o-img" src={imgNetworking} alt='Jovens se comunicando remotamente' />
+              <p>Crie grupo de discussões nas aulas on-line para que seus alunos
+                trabalhem em grupo sob sua supervisão.
+              </p>
+            </Grid>
 
-      //         <br />Seus alunos terão a mesma experiência, seja utilizando a plataforma 
-      //         em um computador ou celular.
-      //       </p>
-      //     </div>
+          </Grid>
+         </div>
+          <div className="o-center o-text-center o-pb-5">
+          <Button className="o-btn blue"  type='submit' variant="contained"><Link to='/cadastro'>Cadastrar</Link></Button>
+          </div>
+      </main>
+    </div>
+  );
+}
 
-      //     <div>
-      //       <p>
-      //         <img src={imgQuiz} alt='Quiz' />
-
-      //         <br />Engaje os estudantes com desafios e em um sistema gamificado 
-      //         utilizando as ferramentas que oferecemos.
-      //       </p>
-      //     </div>
-
-      //     <div>
-      //       <p>
-      //         <img src={imgNetworking} alt='Jovens se comunicando remotamente' />
-
-      //         <br />Crie grupo de discussões nas aulas on-line para que seus alunos 
-      //         trabalhem em grupo sob sua supervisão.
-      //       </p>
-      //     </div>
-
-      //     <Link to='/cadastro'>Cadastrar</Link>
-      //   </main>
-
-      // </div>
-    );
-  }
-  
-  export default Home;
+export default Home;
