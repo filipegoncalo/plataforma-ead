@@ -1,3 +1,5 @@
+![logo](https://user-images.githubusercontent.com/54011223/86034070-55cd9180-ba10-11ea-9452-127df3c5ef43.png)
+
 # Plataforma EAD
     Projeto desenvolvido durante programa de formação da Fcamara 2020.
 
