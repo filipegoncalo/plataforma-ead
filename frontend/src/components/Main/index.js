@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../../assets/setup.css';
-import './DashBoard.css';
+import './styles.css';
 import Logo from '../../assets/logoPreto.png';
 import Vip from '../../assets/vip.png';
 import SchoolIcon from '@material-ui/icons/School';
 import AddCircleIcon from '@material-ui/icons/AddCircle';
 
-function DashBoard({items, atividade}) {
+function Main({items, atividade}) {
     return(
         <div className="row col">
             <div className="col tituloMateria">
@@ -50,4 +50,4 @@ function DashBoard({items, atividade}) {
         </div>
     )
 };
-export default DashBoard;
+export default Main;
