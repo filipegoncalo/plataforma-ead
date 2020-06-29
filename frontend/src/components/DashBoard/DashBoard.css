@@ -1,45 +1,37 @@
 .row {
-    margin-left: 0px;
-    margin-right: 0px;
+  margin-left: 0px;
+  margin-right: 0px;
 }
-
 .tituloMateria {
-    margin-left: 20px;
-    margin-top: 20px; 
-
+  margin-left: 20px;
+  margin-top: 20px;
 }
-
 .logoPreto {
-    height: 50px;
-    width: 150px; 
-    margin-right: 20px;
-    margin-top: 15px;
+  height: 50px;
+  width: 150px;
+  margin-right: 20px;
+  margin-top: 15px;
 }
-
 .card {
-    display:inline-block;
-    margin-bottom: 30px;
-    border-radius: 10px;
-    margin-left:50px;
-    background-color: #0059C8;
-    color: #fff;
+  display: inline-block;
+  margin-bottom: 30px;
+  border-radius: 10px;
+  margin-left: 50px;
+  background-color: #0059C8;
+  color: #fff;
 }
-
 .card_adicionar {
-    background-color: #282544;
+  background-color: #282544;
 }
-
-
 .div-wrapper {
-    align-content: center;
-    margin-left: 20%;
-    position: relative;
-    height: 300px;
-    width: 300px;
+  align-content: center;
+  margin-left: 20%;
+  position: relative;
+  height: 300px;
+  width: 300px;
 }
-
 .div-wrapper img {
-    position: absolute;
-    left: 0;
-    bottom: 0;
-} 
+  position: absolute;
+  left: 0;
+  bottom: 0;
+}

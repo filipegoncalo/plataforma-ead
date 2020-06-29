@@ -1,0 +1,267 @@
+//cores
+@primary:#3185FC;
+@primary-light:#77B4FF;
+@primary-dark:#0059C8;
+
+@gray:#F9F9F9;
+@gray-light:#FFFFFF;
+@gray-dark:#DADADA;
+
+@purple:#282544;
+@purple-light:#524D6F;
+@purple-dark:#00001E;
+
+@orange:#F95A10;
+@orange-light:#FF8C44;
+@orange-dark:#BE2400;
+
+@green:#32C35B;
+@green-light:#6FF78A;
+@green-dark:#00912E;
+
+@dark:#26252D;
+
+@background-gray:#ffffff;
+
+@font-face {
+  font-family: "Roboto-Regular";
+  src: url('./fonts/Roboto-Regular.ttf');
+}
+@font-face {
+  font-family: "Roboto-Bold";
+  src: url('./fonts/Roboto-Bold.ttf');
+}
+@font-face {
+  font-family: "RobotoCondensed-Bold";
+  src: url('./fonts/RobotoCondensed-Bold.ttf');
+  font-weight: 900;
+}
+@font-face {
+  font-family: "OpenSans-Regular";
+  src: url('./fonts/OpenSans-Regular.ttf');
+}
+@font-face {
+  font-family: "OpenSans-Bold";
+  src: url('./fonts/OpenSans-Bold.ttf');
+}
+@font-face {
+  font-family: "OpenSans-SemiBold";
+  src: url('./fonts/OpenSans-SemiBold.ttf');
+}
+@font-face {
+  font-family: "Montserrat-Light";
+  src: url('./fonts/Montserrat-Light.ttf');
+}
+@font-face {
+  font-family: "Montserrat-Bold";
+  src: url('./fonts/Montserrat-Bold.ttf');
+}
+//pra todas as telas
+
+p{
+  font-size: 20px;//24px
+  font-family: "Montserrat-Light";
+}
+.o-row{
+  display: flex;
+  flex-wrap: wrap;
+}
+.o-espaco-padrao{
+  padding: 5% 0;
+}
+.o-img{
+  width: 100%;
+}
+.u-pr-5{
+  padding-right: 5%;
+}
+#root{
+  background-color:@background-gray;
+}
+.o-p{
+  padding: 0;
+}
+.o-pt-0{
+  padding-top: 0;
+}
+.o-pb-5{
+  padding-bottom: 5%;
+}
+
+.o-text-center{
+  text-align: center;
+}
+.App {
+    text-align: center;
+  }
+  
+  /* .App-logo {
+    height: 40vmin;
+    pointer-events: none;
+  } */
+  
+  /* @media (prefers-reduced-motion: no-preference) {
+    .App-logo {
+      animation: App-logo-spin infinite 20s linear;
+    }
+  } */
+  
+  .App-header {
+    background-color: #282c34;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: calc(10px + 2vmin);
+    color: white;
+  }
+  
+  .App-link {
+    color: #61dafb;
+  }
+  
+  @keyframes App-logo-spin {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  //containers
+  .o-center{
+    position: relative;
+    margin: 0 auto;
+    padding-left: 10px;
+    padding-right: 10px;
+    width: auto;
+    height: inherit;
+    max-width: 1366px;
+  }
+  .o-center{
+    position: relative;
+    margin: 0 auto;
+    padding-left: 10px;
+    padding-right: 10px;
+    width: auto;
+    height: inherit;
+    max-width: 1104px;
+  }
+  //textos
+  .o-title-1{
+    font-size: 48px;
+    font-family: 'OpenSans-Bold'; 
+  }
+  .o-title-2{
+    font-size: 34px;
+    font-family: "OpenSans-Bold";
+  }
+  .o-title-3{
+    font-size: 24px;
+    font-family: "OpenSans-SemiBold";
+  }
+  .o-text-1{
+    font-family: 'Montserrat-Light';
+    font-size: 36px;
+  }
+  .o-text-2{
+    font-family:'Montserrat-Light';
+    font-size: 24px;
+  }
+  .o-text-3{
+    font-family: 'Montserrat-Bold';
+    font-size: 24px;
+  }
+  .o-text-4{
+    font-family: 'Roboto-Regular';
+    font-size: 16px;
+  }
+  //botoes
+  .o-button{
+    font-family: 'RobotoCondensed-Bold';
+    font-size: 34;
+  }
+  .o-btn{
+    text-transform: capitalize !important;
+    &.blue{
+      background-color: @primary !important;
+      color: @gray !important;
+      &:hover{
+        color: @gray-dark !important; 
+        background-color: @primary-dark !important;
+      }
+    }
+    &.gray{
+      background-color: @gray !important;
+      color: @primary !important;
+      &:hover{
+        color: @primary-dark !important;
+        background-color: @gray-dark !important; 
+      }
+    }
+  }
+  //fundos
+  .o-background-gray{
+    background-color: @background-gray;
+  }
+  .o-background-blue{
+    background-color: @primary; 
+  }
+  //paginas
+  .c-header{
+    display: flex;
+    justify-content: space-between;
+    padding: 30px;
+      a{
+        display: flex;
+      }
+      img{
+        width: 85%;
+      }
+      .c-links{
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        width: 35%;
+        a{
+          font-family: 'RobotoCondensed-Bold';
+          font-size: 25px;
+        }
+
+      }
+  }
+  .c-banner{
+    //padding: 5% 0;
+    .o-title-1{
+      color: @gray;
+      padding-bottom: 10%;
+    }
+    p{
+      display: flex;
+      color: @gray;
+    }
+    .o-btn{
+      margin-top: 5%;
+    }
+  }
+.c-ambiente{
+  .o-title-2{
+    color: @green;
+    padding-bottom: 5%;
+  }
+  p{
+    padding-right: 40%;
+  }
+}
+.c-boxes-home{
+  .MuiGrid-item{
+    padding:0 30px;
+
+  }
+  p{
+    text-align: justify;
+    padding-top: 15%;
+    font-size: 18px;//20
+  }
+}
