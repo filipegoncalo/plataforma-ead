@@ -6,10 +6,11 @@ exports.seed = function (knex) {
         // Inserts seed entries
         return knex('test').insert([
           {
-            name:"p1",
-            name:"4 ano",
-            id_type:"1",
-            id_classes:1
+            teacher: 1,
+            discipline_id:1,
+            name:"Função 1",
+            type:"Prova",
+            note: 10.0,
           },
 
         ]);

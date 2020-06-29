@@ -4,20 +4,22 @@ import Grid from '@material-ui/core/Grid';
 import './styles.css';
 import '../../assets/setup.css';
 
-import Quiz from '../Quiz/Dialogs/Atividade'
+import Quiz from '../Quiz/Dialogs/Atividade';
 
-import Header from '../../components/Header'
+import Header from '../../components/Header';
 
-import imgGroup1 from '../../assets/home-group-1.png'
-import imgAtivo1 from '../../assets/home-ativo-1.png'
-import imgGirls from '../../assets/home-girls.png'
-import imgNetworking from '../../assets/home-networking.png'
-import imgQuiz from '../../assets/home-quiz.png'
+import imgGroup1 from '../../assets/home-group-1.png';
+import imgAtivo1 from '../../assets/home-ativo-1.png';
+import imgGirls from '../../assets/home-girls.png';
+import imgNetworking from '../../assets/home-networking.png';
+import imgQuiz from '../../assets/home-quiz.png';
 import { Button } from '@material-ui/core';
 
-function Home() {
-  return (
+import api from '../../services/api';
 
+function Home() {
+
+  return (
     <div>
       <Header />
       <main>
@@ -26,7 +28,7 @@ function Home() {
               <Grid item xs={6}>
                 <h1 className="o-title-1"> Aqui é fácil<br/> ensinar <br/> e aprender!</h1>
                 <p>Comece a usar agora gratuitamente</p>
-                <Button className="o-btn gray" href="#" variant="contained"  component={Link}>Cadastrar</Button>
+                <Button className="o-btn gray" variant="contained"><Link to='/cadastro'>Cadastrar</Link></Button>
               </Grid>
               <Grid item xs={6}>
                 <img className="o-img" src={imgGroup1} alt='Grupo de estudo' />
@@ -77,7 +79,7 @@ function Home() {
           </Grid>
          </div>
           <div className="o-center o-text-center o-pb-5">
-            <Button className="o-btn blue" href="#" variant="contained"  component={Link}>Cadastrar</Button>
+          <Button className="o-btn blue"  type='submit' variant="contained"><Link to='/cadastro'>Cadastrar</Link></Button>
           </div>
       </main>
     </div>

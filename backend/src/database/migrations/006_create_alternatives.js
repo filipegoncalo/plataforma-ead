@@ -1,17 +1,14 @@
 exports.up = function(knex) {
     return knex.schema.createTable('alternatives', (table) => {
         table.increments('id').primary();
-        table.string('ds_alternative',500).notNullable();
+        table.integer('questions_id').unsigned();
+        table.string('alternative',500).notNullable();
 
-        table.integer('id_questions').unsigned();
-
-        table.foreign('id_questions')
+        table.foreign('questions_id')
             .references('id')
             .inTable('questions')
             .onDelete('CASCADE')
             .onUpdate('NO ACTION');
-
-
     });
 };
 

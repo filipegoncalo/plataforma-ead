@@ -5,8 +5,8 @@
   "main": "src/server.js",
   "scripts": {
     "start": "nodemon src/server.js",
-    "knex:migrate": "knex migrate:latest --knexfile knexfile.js",
-    "knex:seed": "knex seed:run --knexfile knexfile.js"
+    "migrate": "knex migrate:latest",
+    "seed": "knex seed:run"
   },
   "keywords": [],
   "author": "",

@@ -73,9 +73,9 @@ export default class aula extends Component {
                   </li>
             </div>
           </nav>
-          <div className="col">
+          <main className="col">
             <JitsiRoom/>
-          </div>        
+          </main>        
       </div>
     );
   }

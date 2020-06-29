@@ -6,21 +6,18 @@ exports.seed = function (knex) {
       // Inserts seed entries
       return knex('users').insert([
         {
-          first_name: 'filipe',
-          last_name: 'Gonçalo',
-          email: 'filipe@mail.com',
+          first_name: 'João',
+          last_name: 'Santos',
+          email: 'joao@email.com',
           password: '123456',
           formation: "Professor",
-          institution: "Escola estadual Dulce Maria"
+          institution: "Escola Estadual Dulce Maria",
+          genre: "Masculino",
+          datebirth: "25/11/1975",
+          document: 987654321,
+          photo: "https://avatars3.githubusercontent.com/u/31941580?s=400&u=c9c2f62c62dcf5c5db67d92fd31184533f2bceb2&v=4",
+          curriculum: "https://br.linkedin.com/joao",
         },
-        {
-          first_name: 'William',
-          last_name: 'Cabral',
-          email: 'william8cabral@gmail.com',
-          password: '12345678',
-          formation: "Professor",
-          institution: "Lions Clube"
-        }
       ]);
     });
 };

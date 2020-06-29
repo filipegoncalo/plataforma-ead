@@ -1,11 +1,11 @@
 exports.up = function (knex) {
-    return knex.schema.createTable('questions', (table) => {
+    return knex.schema.createTable('tests', (table) => {
         table.increments('id').primary();
         table.integer('teacher').unsigned();
         table.integer('discipline_id').unsigned();
-        table.integer('test_id').unsigned();
-        table.string('description').notNullable();
-        table.text("answer").notNullable();
+        table.string('name').notNullable();
+        table.integer('type').notNullable();
+        table.float("note").notNullable();
 
         table.foreign('teacher')
             .references('id')
@@ -16,13 +16,6 @@ exports.up = function (knex) {
         table.foreign('discipline_id')
             .references('id')
             .inTable('disciplines');
-
-
-        table.foreign('test_id')
-            .references('id')
-            .inTable('test')
-            .onDelete('CASCADE')
-            .onUpdate('NO ACTION');
 
         table.timestamp('created_at')
             .defaultTo(knex.fn.now())
@@ -35,5 +28,5 @@ exports.up = function (knex) {
 };
 
 exports.down = function (knex) {
-    return knex.schema.dropTable('questions');
+    return knex.schema.dropTable('tests');
 };

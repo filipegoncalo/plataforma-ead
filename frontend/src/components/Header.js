@@ -16,17 +16,15 @@ function Header(){
                     <Link to="/">
                         <img src={logo}></img>
                     </Link>
-                    <Link to='#'>
+                    <Link to='/'>
                         Início
                     </Link>
-                    <Link to='#'>
+                    <Link to='/planos'>
                         Planos
                     </Link>
                 </div>
                 <div className="c-botao">
-                    <Button className="o-btn blue"
-                     href="#" variant="contained"  component={Link}>Entrar
-                    </Button>
+                    <Button className="o-btn blue" type='submit' variant="contained"><Link to='/dashboard'>Entrar</Link></Button>
                 </div>
             </div>
         </header>

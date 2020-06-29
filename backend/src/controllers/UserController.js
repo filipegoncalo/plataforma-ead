@@ -63,7 +63,6 @@ module.exports = {
     //convert string to date
     const parts = datebirth.split("/");
     const dt = new Date(parts[2], parts[1] - 1, parts[0]);
-    const updateAt = new Date();
 
     try {
       let user = await User.query().findById(id);
@@ -71,7 +70,7 @@ module.exports = {
       if (!user) {
         return response.status(404).json({ error: "User doesn't exist" });
       }
-
+    
       if (user.id == id) {
         user = await User.query().patch({
           first_name,
@@ -83,8 +82,8 @@ module.exports = {
           document,
           photo,
           curriculum,
-          updated_at: updateAt
-        }).where(id);
+          updated_at: new Date()
+        }).where({id});
 
         return response.status(201).json({ message: 'Successfully updated' });
       }
