@@ -1,6 +1,6 @@
 import React from 'react';
 import MenuLateral from '../../components/MenuLateral/MenuLateral';
-import DashBoard from '../../components/DashBoard/DashBoard';
+import Main from '../../components/Main';
 import ScreenShareIcon from '@material-ui/icons/ScreenShare';
 import HomeIcon from '@material-ui/icons/Home';
 import SchoolIcon from '@material-ui/icons/School';
@@ -35,7 +35,7 @@ function Exercicios() {
             <div>
                 <div className="row">
                     <MenuLateral items={items}/>
-                    <DashBoard items={materia} atividade={exercicios}/>
+                    <Main items={materia} atividade={exercicios}/>
                 </div>
             </div>
         )

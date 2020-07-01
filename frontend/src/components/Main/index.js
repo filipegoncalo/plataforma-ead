@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../../assets/setup.css';
-import './DashBoard.css';
+import './main.css';
 import Logo from '../../assets/logoPreto.png';
 import Vip from '../../assets/vip.png';
 import SchoolIcon from '@material-ui/icons/School';

@@ -7,6 +7,8 @@ import Routes from '../routes'
 import { createMuiTheme } from '@material-ui/core/styles';
 import purple from '@material-ui/core/colors/purple';
 
+import Login from '../pages/Login/Login';
+
 
 function Header(){
     return(
@@ -23,8 +25,8 @@ function Header(){
                         Planos
                     </Link>
                 </div>
-                <div className="c-botao">
-                    <Button className="o-btn blue" type='submit' variant="contained"><Link to='/dashboard'>Entrar</Link></Button>
+                <div>
+                    <Login />
                 </div>
             </div>
         </header>

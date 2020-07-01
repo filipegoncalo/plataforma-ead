@@ -3,7 +3,7 @@ import { Route, BrowserRouter, Switch } from 'react-router-dom';
 
 import Home from './pages/Home';
 import Cadastro from './pages/Cadastro';
-import Dashboard from './pages/DashBoard';
+import Main from './components/Main';
 import Aula from './pages/Aula';
 
 
@@ -13,9 +13,9 @@ function Routes() {
             <Switch>
                 <Route path='/' exact component={Home}/>
                 <Route path='/cadastro' component={Cadastro}/>
-                <Route path='/dashboard' component={Dashboard}/>
-                <Route path='/dashboard/aula' component={Aula}/>
-                </Switch>
+                {/* <Route path='/dashboard' component={Dashboard}/>
+                <Route path='/dashboard/aula' component={Aula}/> */}
+            </Switch>
         </BrowserRouter>
     )
 }
