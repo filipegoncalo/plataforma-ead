@@ -19,18 +19,18 @@ const items = [
 ]
 
 const materia = [
-    { name: 'Matemática', link: '#', tipo: 'Exercícios'},
+    { name: 'Matemática', link: '#', tipo: 'Turmas'},
 ]
 
 const exercicios = [
-    { name: 'Função - Lista 1', link: '#'},   
-    { name: 'Função - Lista 2', link: '#'},
-    { name: 'Função - Lista 3', link: '#'},   
-    { name: 'Função - Lista 4', link: '#'},
-    { name: 'Função - Lista 5', link: '#'},   
+    { name: '5°A - E.E. Estevam Placêncio', link: '#'},   
+    { name: '5°B - E.E. Estevam Placêncio', link: '#'},
+    { name: '5°C - E.E. Estevam Placêncio', link: '#'},   
+    { name: '3°A - Colégio Objetivo', link: '#'},
+    { name: '3°B - Colégio Objetivo', link: '#'},   
 ]
 
-function Exercicios() {
+function Disciplinas() {
         return (
             <div>
                 <div className="row">
@@ -41,4 +41,4 @@ function Exercicios() {
         )
 };
 
-export default Exercicios;
+export default Disciplinas;

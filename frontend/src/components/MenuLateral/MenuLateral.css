@@ -41,8 +41,8 @@
   z-index: 20;
 }
 .botao-sair {
-  width: 100% !important;
   bottom: 0;
+  width: 20% !important;
   font-family: 'Roboto Condensed', sans-serif !important;
   list-style: none;
   padding-bottom: 40px;
@@ -61,4 +61,8 @@
 .AvatarTexto a {
   font-family: 'Open Sans', sans-serif;
   font-size: 18px;
+}
+
+.nav-link:hover {
+  background-color: #F95A10;
 }

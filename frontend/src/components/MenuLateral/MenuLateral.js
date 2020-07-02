@@ -38,22 +38,22 @@ function MenuLateral({ items }){
                 <br></br>
                 <div className="menuItem">
                     <ul className="nav flex-column">               
-                    {items.map(({ label, name, icone, link, ...rest }) => (             
-                            <li className="nav-item">   
-                                <a className="nav-link" href= {link}>
-                                    {icone} {label}
-                                </a>
-                            </li>
-                    ))}
+                        {items.map(({ label, name, icone, link, ...rest }) => (             
+                                <li className="nav-item">   
+                                    <a className="nav-link" href= {link}>
+                                        {icone} {label}
+                                    </a>
+                                </li>
+                        ))}
                     </ul>
                 </div>
 
-                <div className="botao-sair col-md-2">
-                    <li className="nav-item">
-                        <a className="nav-link " href="#">
-                        <ExitToAppIcon style={{ color: 'white'}}/>   Sair
-                        </a>
-                    </li>
+                <div className="">
+                        <li className="nav flex-column botao-sair">
+                            <a className="nav-link " href="#">
+                            <ExitToAppIcon style={{ color: 'white'}}/>   Sair
+                            </a>
+                        </li>
                 </div>
             </div>
 
