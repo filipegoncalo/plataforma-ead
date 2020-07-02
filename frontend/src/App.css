@@ -165,6 +165,14 @@ p {
   color: #0059C8 !important;
   background-color: #DADADA !important;
 }
+.o-btn.green {
+  color: #DADADA !important;
+  background-color: #32C35B !important;
+}
+.o-btn.green:hover {
+  color: #DADADA !important;
+  background-color: #00912E !important;
+}
 .o-background-gray {
   background-color: #ffffff;
 }

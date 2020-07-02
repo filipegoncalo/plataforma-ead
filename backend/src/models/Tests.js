@@ -5,7 +5,7 @@ Model.knex(knex)
 
 class Test extends Model {
   static get tableName() {
-    return 'test';
+    return 'tests';
   }
 }
 

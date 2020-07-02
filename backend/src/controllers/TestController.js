@@ -1,6 +1,4 @@
-const bcrypt = require('bcrypt');
-
-const Test = require('../models/Test');
+const Test = require('../models/Tests');
 
 module.exports = {
   //disciplina/turma/test
@@ -24,22 +22,29 @@ module.exports = {
   },
 
   async addTest(request, response, next) {
-    const { name,note,id_classes } = request.body;
-    const id_type = request.headers.authorization;
+    const { name, type, note } = request.body;
+    const teacher = request.headers.authorization;
+
+    const discipline_id = 1;
+
+    console.log(teacher, discipline_id, name, type, note)
 
     try {
       const results = await Test.query()
         .insert({
+          teacher,
+          discipline_id,
           name,
-          id_type,
-          note,
-          id_classes
+          type,
+          note
         });
 
-      if(results!=0){
+        console.log(results)
+
+      if(results === true){
         return response.status(200).json(results);
       }
-      return response.status(404).send("Erro ao inserir");
+      return response.status(402).json("Erro ao inserir");
 
     } catch (error) {
       next(error);

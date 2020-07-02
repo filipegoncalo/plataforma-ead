@@ -8,8 +8,11 @@ import { createMuiTheme } from '@material-ui/core/styles';
 import purple from '@material-ui/core/colors/purple';
 
 
-function Header(){
-    return(
+import Login from '../pages/Login/Login';
+
+
+function Header() {
+    return (
         <header className="o-center">
             <div className="c-header">
                 <div className="c-links">
@@ -23,8 +26,8 @@ function Header(){
                         Planos
                     </Link>
                 </div>
-                <div className="c-botao">
-                    <Button className="o-btn blue" to="/provas" variant="contained"  component={Link}>Entrar </Button>
+                <div >
+                    <Login />
                 </div>
             </div>
         </header>
