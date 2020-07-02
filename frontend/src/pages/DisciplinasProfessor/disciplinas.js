@@ -1,6 +1,6 @@
 import React from 'react';
 import MenuLateral from '../../components/MenuLateral/MenuLateral';
-import Main from '../../components/Main';
+import DashBoard from '../../components/Main/index';
 import ScreenShareIcon from '@material-ui/icons/ScreenShare';
 import HomeIcon from '@material-ui/icons/Home';
 import SchoolIcon from '@material-ui/icons/School';
@@ -19,26 +19,26 @@ const items = [
 ]
 
 const materia = [
-    { name: 'Matemática', link: '#', tipo: 'Exercícios'},
+    { name: 'Matemática', link: '#', tipo: 'Turmas'},
 ]
 
 const exercicios = [
-    { name: 'Função - Lista 1', link: '#'},   
-    { name: 'Função - Lista 2', link: '#'},
-    { name: 'Função - Lista 3', link: '#'},   
-    { name: 'Função - Lista 4', link: '#'},
-    { name: 'Função - Lista 5', link: '#'},   
+    { name: '5°A - E.E. Estevam Placêncio', link: '#'},   
+    { name: '5°B - E.E. Estevam Placêncio', link: '#'},
+    { name: '5°C - E.E. Estevam Placêncio', link: '#'},   
+    { name: '3°A - Colégio Objetivo', link: '#'},
+    { name: '3°B - Colégio Objetivo', link: '#'},   
 ]
 
-function Exercicios() {
+function Disciplinas() {
         return (
             <div>
                 <div className="row">
                     <MenuLateral items={items}/>
-                    <Main items={materia} atividade={exercicios}/>
+                    <DashBoard items={materia} atividade={exercicios}/>
                 </div>
             </div>
         )
 };
 
-export default Exercicios;
+export default Disciplinas;
