@@ -1,6 +1,6 @@
 import React from 'react';
 import MenuLateral from '../../components/MenuLateral/MenuLateral';
-import DashBoard from '../../components/DashBoard/DashBoard';
+import DashBoard from '../../components/Main/index';
 import ScreenShareIcon from '@material-ui/icons/ScreenShare';
 import HomeIcon from '@material-ui/icons/Home';
 import SchoolIcon from '@material-ui/icons/School';
