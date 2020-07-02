@@ -48,8 +48,8 @@ export default class Login extends Component {
                         Entrar
                     </Button>
                 </div>
-                <div className="o-center o-espaco-padrao">
-                    <Dialog open={open} onClose={this.handleToggle} aria-labelledby="form-dialog-title">
+                <Dialog open={open} onClose={this.handleToggle} aria-labelledby="form-dialog-title">
+                    <div className="o-center o-espaco-padrao o-text-center">
                         <DialogTitle id="form-dialog-title">Entrar</DialogTitle>
                         <DialogContent>
                             <form className={useStyles.root}>
@@ -59,6 +59,7 @@ export default class Login extends Component {
                                     label="E-mail"
                                     variant="outlined"
                                     />
+                                    <br />
                                     <br />
                                     <TextField
                                     id="outlined-password-input"
@@ -70,24 +71,23 @@ export default class Login extends Component {
                             </form>
                         </DialogContent>
                         <DialogActions>
-                        <div className="c-botao">
-                            <Button
-                            className="o-btn green"
-                            variant="contained"
-                            color="primary"
-                            >
-                                <Link to='/dashboard'>
-                                    Entrar
-                                </Link>
-                            </Button>
-                        </div>
-                        <div>
-                            <br />
-                            <p>Ainda não se cadastrou? <Link to='cadastro'>Cadastro</Link></p>
-                        </div>
+                            <div className="c-botao o-center">
+                                <Button
+                                className="o-btn green"
+                                variant="contained"
+                                color="primary"
+                                >
+                                    <Link to='/dashboard'>
+                                        Entrar
+                                    </Link>
+                                </Button>
+                            </div>
                         </DialogActions>
-                    </Dialog>
-                </div>
+                        <div>
+                            <p>Ainda não se cadastrou? <Link to='/cadastro'>Cadastro</Link></p>
+                        </div>
+                    </div>
+                </Dialog>
             </div>
         )
     }
