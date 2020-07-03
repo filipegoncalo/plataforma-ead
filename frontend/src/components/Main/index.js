@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../../assets/setup.css';
 import './styles.css';
@@ -6,6 +7,7 @@ import Logo from '../../assets/logoPreto.png';
 import Vip from '../../assets/vip.png';
 import SchoolIcon from '@material-ui/icons/School';
 import AddCircleIcon from '@material-ui/icons/AddCircle';
+
 
 function Main({items, atividade}) {
     return(
@@ -27,20 +29,24 @@ function Main({items, atividade}) {
             <div className="row ">
                 <div className="">
                 {atividade.map(({ name, link, ...rest }) => (
-                <div type="button" className="card text-center" style={{ width: '20em' }}>
-                    <br></br><br></br><br></br>
-                    <div className="card-body">
-                        <h3>{name}</h3>
+                <Link to={link}>
+                    <div type="button" className="card text-center" style={{ width: '20em' }}>
+                        <br></br><br></br>
+                        <div className="card-body">
+                                <h3>{name}</h3>
+                        </div>
                     </div>
-                </div>
+                </Link>
                 ))}
 
-                <div type="button" className="card card_adicionar text-center" style={{ width: '20em' }}>
-                    <br></br><br></br><br></br>
-                    <div className="card-body">
-                        <AddCircleIcon  style={{ color: 'white', fontSize: 30}}/><a>  Adicionar</a>
+                <Link to="/">
+                    <div type="button" className="card card_adicionar text-center" style={{ width: '20em' }}>
+                        <br></br><br></br>
+                        <div className="card-body">
+                            <AddCircleIcon style={{ color: 'white', fontSize: 25}}/><h3 className="adicionar_texto"> &nbsp;Adicionar</h3>
+                        </div>
                     </div>
-                </div>
+                </Link>
 
                 </div>
                 <div className="div-wrapper">
