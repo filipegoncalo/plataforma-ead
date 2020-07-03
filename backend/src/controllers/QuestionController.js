@@ -1,6 +1,6 @@
 const bcrypt = require('bcrypt');
 
-const Questions = require('../models/Questions');
+const Questions = require('../models/Question');
 const { transaction } = require('objection');
 
 module.exports = {

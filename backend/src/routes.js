@@ -8,7 +8,7 @@ const UserController = require('./controllers/UserController');
 const DisciplineController = require('./controllers/DisciplineController');
 const ClasseController = require('./controllers/ClasseController');
 const TestController = require('./controllers/TestController');
-const QuestionsController = require('./controllers/QuestionsController');
+const QuestionController = require('./controllers/QuestionController');
 
 
 
@@ -179,12 +179,12 @@ routes.get("/teste/tipo/:id_type/:id_user",TestController.ByTestTypeUser);
 //adicionar prova
 //add exercicio
 //add resposta
-routes.get("/questions",QuestionsController.index);
-routes.get("/questions/teste",QuestionsController.selectByTest);
-routes.post("/questions",QuestionsController.addQuestion);
-routes.put("/questions",QuestionsController.changeQuestion);
-routes.delete("/questions",QuestionsController.removeQuestion);
-routes.delete("/questions/teste",QuestionsController.removeQuestionByTest);
+routes.get("/questions",QuestionController.index);
+routes.get("/questions/teste",QuestionController.selectByTest);
+routes.post("/questions",QuestionController.addQuestion);
+routes.put("/questions",QuestionController.changeQuestion);
+routes.delete("/questions",QuestionController.removeQuestion);
+routes.delete("/questions/teste",QuestionController.removeQuestionByTest);
 
 //adicionar question
 //adicionar alternatives
