@@ -7,8 +7,8 @@ import InsertInvitationIcon from '@material-ui/icons/InsertInvitationOutlined';
 import PlaylistAddCheckIcon from '@material-ui/icons/PlaylistAddCheck';
 
 const items = [
-    { name: 'home', label: 'Home', icone: <HomeIcon style={{ color: 'white'}}/>, link: '#'  },
-    { name: 'iniciarAula', label: 'Iniciar aula', icone: <ScreenShareIcon style={{ color: 'white'}}/>, link: '#' },
+    { name: 'home', label: 'Home', icone: <HomeIcon style={{ color: 'white'}}/>, link: '/dashboard'  },
+    { name: 'iniciarAula', label: 'Iniciar aula', icone: <ScreenShareIcon style={{ color: 'white'}}/>, link: '/aula' },
     { name: 'cronograma', label: 'Cronograma', icone: <InsertInvitationIcon style={{ color: 'white'}}/>, link: '#' },
     { name: 'perfil', label: 'Perfil', icone: <PlaylistAddCheckIcon  style={{ color: 'white'}}/>, link: '#' },
 ]
@@ -18,8 +18,8 @@ const materia = [
 ]
 
 const exercicios = [
-    { name: 'Matemática', link: '#'},   
-    { name: 'Geometria', link: '#'},
+    { name: 'Matemática', link: '/disciplinas'},   
+    { name: 'Geometria', link: '/disciplinas'},
 
 ]
 
