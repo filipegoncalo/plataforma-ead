@@ -66,3 +66,7 @@
 .nav-link:hover {
   background-color: #F95A10;
 }
+
+a {
+  text-decoration: none;
+}
