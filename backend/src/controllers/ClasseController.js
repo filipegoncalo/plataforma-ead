@@ -1,9 +1,11 @@
+const User = require('../models/User');
 const Discipline = require('../models/Discipline');
 const Classe = require('../models/Classe');
 
 module.exports = {
   async byDiscipline(request, response, next) {
     const discipline_id = request.headers.authorization;
+
 
     try {
       const discipline = await Discipline.query().findById(discipline_id);
@@ -25,13 +27,8 @@ module.exports = {
   },
 
   async create(request, response, next) {
-    const { link, name, schedule } = request.body;
+    const { link, name, institution } = request.body;
     const discipline_id = request.headers.authorization;
-
-    const parts = schedule.split(" ");
-    const date = parts[0].split("/");
-    const hour = parts[1].split(":");
-    const dt = new Date(date[2], date[1] - 1, date[0], hour[0], hour[1], hour[2]);
 
     try {
       const discipline = await Discipline.query().findById(discipline_id);
@@ -46,7 +43,7 @@ module.exports = {
           discipline_id: discipline.id,
           link,
           name,
-          schedule: dt
+          institution
         });
         return response.status(201).json({ message: "Class created successfully" });
       }
@@ -57,15 +54,9 @@ module.exports = {
   },
 
   async update(request, response, next) {
-    const { link, name, schedule } = request.body;
+    const { link, name, institution } = request.body;
     const { id } = request.params;
     const discipline_id = request.headers.authorization;
-    //date update
-    const parts = schedule.split(" ");
-    const date = parts[0].split("/");
-    const hour = parts[1].split(":");
-    const dt = new Date(date[2], date[1] - 1, date[0], hour[0], hour[1], hour[2]);
-    const updateAt = new Date();
     
     try {
       const discipline = await Discipline.query().findById(discipline_id);
@@ -83,8 +74,8 @@ module.exports = {
         classe = await Classe.query().patch({
           link,
           name,
-          schedule: dt,
-          updated_at: updateAt
+          institution,
+          updated_at: new Date()
         }).where( {id} );
 
         return response.status(201).json({ message: "Discipline updated successfully" });

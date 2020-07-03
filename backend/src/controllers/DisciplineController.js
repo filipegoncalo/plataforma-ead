@@ -14,7 +14,7 @@ module.exports = {
       }
       if(user.id == teacher_id){
         const disciplines = await Discipline.query().select('name').where('teacher', teacher_id);
-        return response.status(201).json(disciplines);
+        return response.jsonSuccess(disciplines);
       }
 
       return response.status(401).json({ error: 'Operation not permited.' });

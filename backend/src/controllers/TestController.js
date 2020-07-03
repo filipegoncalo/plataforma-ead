@@ -1,7 +1,6 @@
 const Test = require('../models/Test');
 
 module.exports = {
-  //disciplina/turma/test
   async index(request, response, next) {
     try {
        // .join('test', '.id', '=', 'point_items.point_id')
