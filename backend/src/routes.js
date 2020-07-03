@@ -12,27 +12,28 @@ const QuestionsController = require('./controllers/QuestionsController');
 
 
 
-routes.post('/login', AuthController.login);
+routes.post('/sign-in', AuthController.login);
+
+routes.post('/sign-up', celebrate({
+  [Segments.BODY]: Joi.object().keys({
+    first_name: Joi.string().min(3).required(),
+    last_name: Joi.string().min(3).required(),
+    email: Joi.string().email().required(),
+    password: Joi.string().pattern(new RegExp('^[a-zA-Z-0-9]{8,30}$')).required(),
+    password_confirmation: Joi.string().valid(Joi.ref('password')).required(),
+  }),
+}), AuthController.register);
+
 routes.post('/reset', AuthController.reset);
+
 routes.get('/reset/:forget', AuthController.reset);
-routes.post('/forget', AuthController.forget);
+
+routes.post('/forgot', AuthController.forgot);
 
 
 /* ======== USERS ======= */
 //find users
 routes.get('/usuarios', UserController.index);
-
-//create users
-routes.post('/usuario', celebrate({
-  [Segments.BODY]: Joi.object().keys({
-    first_name: Joi.string().min(3).required(),
-    last_name: Joi.string().min(3).required(),
-    email: Joi.string().email().required(),
-    password: Joi.string().min(6).required(),
-    formation: Joi.string(),
-    institution: Joi.string()
-  }),
-}), UserController.register);
 
 //update users
 routes.put('/usuario/:id', celebrate({

@@ -2,13 +2,11 @@ const bcrypt = require('bcrypt');
 const { uuid } = require('uuidv4');
 
 const sendgrid = require('@sendgrid/mail');
-sendgrid.setApiKey('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');//deve ir para o arquivo .env
+sendgrid.setApiKey('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');//deve ir para um arquivo .env
 
-const BASEURL = "http://localhost:3333/reset";//deve ir para o arquivo .env
+const BASEURL = "http://localhost:3333/reset";//deve ir para um arquivo .env
 
 const User = require('../models/User');
-const { update } = require('../database');
-//const email = require('../utils/email');//criar emails
 
 module.exports = {
   async login(request, response, next) {
@@ -24,7 +22,7 @@ module.exports = {
 
       if (user.email == email && (await bcrypt.compare(password, user.password))) {
 
-        return response.status(200).json({ login: true, message: "Success" });
+        return response.status(200).json({ login: true, id: user.id, name: user.first_name, message: "Success" });
 
       } else {
 
@@ -38,7 +36,38 @@ module.exports = {
 
   },
 
-  async forget(request, response, next) {
+  async register(request, response, next) {
+    const { first_name, last_name, email, password, password_confirmation } = request.body;
+
+    if (password_confirmation !== password) return response.status(400).json({ error: "passwords do not match" });
+
+    const salt = await bcrypt.genSalt();
+    const hashedPassword = await bcrypt.hash(password, salt);
+
+    try {
+      let user = await User.query().findOne({ email });
+
+      if (user) {
+        return response.status(404).json({ error: "User exist" });
+      }
+      if (!user) {
+        user = await User.query().insert({
+          first_name,
+          last_name,
+          email,
+          password: hashedPassword
+        });
+        return response.status(201).json({ message: 'Successfully created' });
+      }
+
+      return response.status(401).json({ error: 'Operation not permited.' });
+
+    } catch (error) {
+      next(error);
+    }
+  },
+
+  async forgot(request, response, next) {
     const { email } = request.body;
     const code = uuid();
     const url = `${BASEURL}/${code}`;
@@ -52,7 +81,7 @@ module.exports = {
       }
 
 
-      if (user.forget == null) {
+      if (user.forget === null) {
 
         user = await User.query().update({ forget: code }).where('id', user.id);
 
@@ -71,7 +100,7 @@ module.exports = {
             return response.status(400).json({ error: error });
           }
           else {
-            return response.status(200).json({ error: "email has been sent, kindly activate your account" });
+            return response.status(200).json({ message: "email has been sent, kindly activate your account" });
           }
         });
 
@@ -85,25 +114,22 @@ module.exports = {
 
   async reset(request, response, next) {
     const { forget } = request.params;
-    const { password, repeatpassaword } = request.body;
+    const { password, password_confirmation } = request.body;
 
+    
     if (!forget) {
       return response.status(400).json({ error: "Code to reset password does not exist" });
     }
     try {
       let user = await User.query().findOne({ forget });
-
-      console.log('criou')
-      if ((user.forget == forget) && (password == repeatpassaword)) {
-        console.log(user.forget == forget)
-
+      
+      if ((user.forget === forget) && (password_confirmation === password)) {
+        
         const salt = await bcrypt.genSalt();
-        const hashedPassword = await bcrypt.hash(password, salt);
-
-        console.log(hashedPassword)
+        const newPassword = await bcrypt.hash(password, salt);
 
         user = await User.query().update({
-          password: hashedPassword,
+          password: newPassword,
           forget: null,
           updated_at: new Date()
         }).where('id', user.id);

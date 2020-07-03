@@ -15,37 +15,6 @@ module.exports = {
 
   },
 
-  async register(request, response, next) {
-    const { first_name, last_name, email, password, formation, institution } = request.body;
-
-    const salt = await bcrypt.genSalt();
-    const hashedPassword = await bcrypt.hash(password, salt);
-
-    try {
-      let user = await User.query().findOne({ email });
-
-      if (user) {
-        return response.status(404).json({ error: "User exist" });
-      }
-      if (!user) {
-        user = await User.query().insert({
-          first_name,
-          last_name,
-          email,
-          password: hashedPassword,
-          formation,
-          institution
-        });
-        return response.status(201).json({ message: 'Successfully created' });
-      }
-
-      return response.status(401).json({ error: 'Operation not permited.' });
-
-    } catch (error) {
-      next(error);
-    }
-  },
-
   async update(request, response, next) {
     const {
       first_name,

@@ -5,6 +5,8 @@ exports.up = function (knex) {
     table.integer('user_id').unsigned();
     table.integer('discipline_id').unsigned();
     table.integer('classe_id').unsigned();
+    table.date('start').notNullable();
+    table.date('end').notNullable();
 
     table.foreign('user_id')
       .references('id')

@@ -1,4 +1,4 @@
-const Test = require('../models/Tests');
+const Test = require('../models/Test');
 
 module.exports = {
   //disciplina/turma/test
