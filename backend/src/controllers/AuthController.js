@@ -1,76 +1,52 @@
+require('dotenv').config();
 const bcrypt = require('bcrypt');
 const { uuid } = require('uuidv4');
-
 const sendgrid = require('@sendgrid/mail');
-sendgrid.setApiKey('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');//deve ir para um arquivo .env
+sendgrid.setApiKey(process.env.SENDGRID_API_KEY);
 
-const BASEURL = "http://localhost:3333/reset";//deve ir para um arquivo .env
+const { getMessage } = require('../helpers/messages');
+
+const { generateJwt, generateRefreshJwt } = require('../helpers/jwt');
 
 const User = require('../models/User');
+const salt = 10;
 
 module.exports = {
-  async login(request, response, next) {
+  async signIn(request, response, next) {
     const { email, password } = request.body;
 
-    try {
+    const user = await User.query().findOne({ email });
+  
+    const match = user ? bcrypt.compareSync(password, user.password) : null;  
+    if (!match) return response.jsonBadRequest(null, getMessage('auth.signin.invalid'));
 
-      const user = await User.query().findOne({ email });
+    const token =  generateJwt({ id: user.id });
+    const refreshToken =  generateRefreshJwt({ id: user.id });
 
-      if (!user) {
-        return response.status(404).json({ error: "User is not registered" });
-      }
-
-      if (user.email == email && (await bcrypt.compare(password, user.password))) {
-
-        return response.status(200).json({ login: true, id: user.id, name: user.first_name, message: "Success" });
-
-      } else {
-
-        return response.status(401).json({ login: false, message: "Not Allowed" });
-
-      }
-
-    } catch (error) {
-      next(error);
-    }
-
+    return response.jsonSuccess(user, getMessage('auth.signin.success'), { token, refreshToken });
   },
 
-  async register(request, response, next) {
-    const { first_name, last_name, email, password, password_confirmation } = request.body;
+  async signUp(request, response) {
+    const { first_name, last_name, email, password } = request.body;
 
-    if (password_confirmation !== password) return response.status(400).json({ error: "passwords do not match" });
+    const user = await User.query().findOne({ email });
+    
+    if (user) return response.jsonBadRequest(null, getMessage('auth.signup.email_exists'));
+    
+    const hash = bcrypt.hashSync(password, salt);
+    const newUser = await User.query().insert({first_name, last_name, email, password: hash});
 
-    const salt = await bcrypt.genSalt();
-    const hashedPassword = await bcrypt.hash(password, salt);
+    const token =  generateJwt({ id: newUser.id });
+    const refreshToken =  generateRefreshJwt({ id: newUser.id });
 
-    try {
-      let user = await User.query().findOne({ email });
+    return response.jsonSuccess(newUser, getMessage('auth.signup.success'), { token, refreshToken });
 
-      if (user) {
-        return response.status(404).json({ error: "User exist" });
-      }
-      if (!user) {
-        user = await User.query().insert({
-          first_name,
-          last_name,
-          email,
-          password: hashedPassword
-        });
-        return response.status(201).json({ message: 'Successfully created' });
-      }
-
-      return response.status(401).json({ error: 'Operation not permited.' });
-
-    } catch (error) {
-      next(error);
-    }
   },
 
   async forgot(request, response, next) {
     const { email } = request.body;
     const code = uuid();
-    const url = `${BASEURL}/${code}`;
+    const url = `${process.env.BASE_URL}/reset/${code}`;
 
     try {
 
@@ -116,15 +92,15 @@ module.exports = {
     const { forget } = request.params;
     const { password, password_confirmation } = request.body;
 
-    
+
     if (!forget) {
       return response.status(400).json({ error: "Code to reset password does not exist" });
     }
     try {
       let user = await User.query().findOne({ forget });
-      
+
       if ((user.forget === forget) && (password_confirmation === password)) {
-        
+
         const salt = await bcrypt.genSalt();
         const newPassword = await bcrypt.hash(password, salt);
 
