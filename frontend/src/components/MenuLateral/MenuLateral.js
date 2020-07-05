@@ -40,25 +40,18 @@ function MenuLateral({ items }){
                 <div className="menuItem">
                     <ul className="nav flex-column">               
                         {items.map(({ label, name, icone, link, ...rest }) => (     
-     
-                                <li className="nav-item">   
-                                <Link to={link} style={{ textDecoration: 'none'}}>        
-                                    <a className="nav-link">
-                                        {icone} {label}
-                                    </a>
-                                </Link>
-                                </li>
+    
+                            <li key={Math.random()+""} className="nav-item">   
+                            <Link to={link} className="nav-link" style={{ textDecoration: 'none'}}>        
+                                    {icone} {label}
+                            </Link> 
+                            </li>
 
                         ))}
                     </ul>
-                </div>
-
-                <div className="">
                         <li className="nav flex-column botao-sair">
-                            <Link to={"/"}>
-                            <a className="nav-link " href="#">
-                            <ExitToAppIcon style={{ color: 'white'}}/>   Sair
-                            </a>
+                            <Link to={"/"} className="nav-link ">
+                               <ExitToAppIcon style={{ color: 'white'}}/>   Sair
                             </Link>
                         </li>
                 </div>

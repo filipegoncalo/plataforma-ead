@@ -28,7 +28,7 @@ function Home() {
               <Grid item xs={6}>
                 <h1 className="o-title-1"> Aqui é fácil<br/> ensinar <br/> e aprender!</h1>
                 <p>Comece a usar agora gratuitamente</p>
-                <Button className="o-btn gray" variant="contained"><Link to='/cadastro'>Cadastrar</Link></Button>
+                <Button className="o-btn gray" to="/cadastro" variant="contained"  component={Link}>Cadastrar </Button>
               </Grid>
               <Grid item xs={6}>
                 <img className="o-img" src={imgGroup1} alt='Grupo de estudo' />
@@ -79,7 +79,7 @@ function Home() {
           </Grid>
          </div>
           <div className="o-center o-text-center o-pb-5">
-          <Button className="o-btn blue"  type='submit' variant="contained"><Link to='/cadastro'>Cadastrar</Link></Button>
+          <Button className="o-btn blue" to="/cadastro" variant="contained"  component={Link}>Cadastrar </Button>
           </div>
       </main>
     </div>

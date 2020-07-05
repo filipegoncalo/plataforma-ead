@@ -1,3 +1,10 @@
+.u-transition-ease-slow {
+  transition: 0.5s ease;
+  -moz-transition: 0.5s ease;
+  -webkit-transition: 0.5s ease;
+  -o-transition: 0.5s ease;
+  -ms-transition: 0.5s ease;
+}
 @font-face {
   font-family: "Roboto-Regular";
   src: url('fonts/Roboto-Regular.ttf');
@@ -31,6 +38,9 @@
   font-family: "Montserrat-Bold";
   src: url('fonts/Montserrat-Bold.ttf');
 }
+.o-relative {
+  position: relative;
+}
 p {
   font-size: 24px;
   font-family: "Montserrat-Light";
@@ -57,8 +67,14 @@ p {
 .o-pt-0 {
   padding-top: 0;
 }
+.o-pt-2 {
+  padding-top: 2% !important;
+}
+.o-pb-2 {
+  padding-bottom: 2% !important;
+}
 .o-pb-5 {
-  padding-bottom: 5%;
+  padding-bottom: 5% !important;
 }
 .o-text-center {
   text-align: center;
@@ -217,4 +233,88 @@ p {
   text-align: justify;
   padding-top: 15%;
   font-size: 20px;
+}
+.o-main {
+  margin-left: 2%;
+  width: 78%;
+  display: flex;
+  position: relative;
+  flex-direction: column;
+}
+.o-main .o-breadcrumb {
+  display: flex;
+  justify-content: space-between;
+}
+.o-content-gray {
+  background-color: #F9F9F9;
+  border-radius: 15px;
+  padding: 22px;
+  margin-right: 6.17%;
+}
+.o-content-gray .o-inside {
+  padding: 15px;
+  max-height: 450px;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: #282544 #F9F9F9;
+}
+.o-content-gray .o-inside .o-btn {
+  margin: 25px auto;
+  text-transform: initial !important;
+  position: absolute;
+  right: 8%;
+  bottom: 10%;
+}
+.o-content-gray .o-inside::-webkit-scrollbar,
+.o-content-gray .o-inside::-moz-scrollbar {
+  width: 11px;
+}
+.o-content-gray .o-inside::-webkit-scrollbar-track,
+.o-content-gray .o-inside::-moz-track {
+  background: #F9F9F9;
+}
+.o-content-gray .o-inside::-webkit-scrollbar-thumb,
+.o-content-gray .o-inside::-moz-thumb {
+  background-color: #282544;
+  border-radius: 6px;
+  border: 3px solid #F9F9F9;
+}
+.o-content-gray .o-inside .o-title {
+  display: flex;
+  align-items: center;
+  font-size: 18px;
+  font-family: 'RobotoCondensed-Bold';
+  color: #282544;
+}
+.o-content-gray .o-inside .o-title svg {
+  margin-right: 20px;
+}
+.o-content-gray .o-inside .o-itens {
+  flex-basis: 100%;
+  display: flex;
+}
+.o-content-gray .o-inside .o-itens .o-item {
+  font-family: 'RobotoCondensed-Bold';
+  color: #0059C8;
+  font-size: 18px;
+}
+.o-content-gray .o-inside .o-itens .o-item:first-child {
+  padding-left: 4%;
+}
+.o-content-gray .o-inside .o-itens:hover {
+  transition: 0.5s ease;
+  -moz-transition: 0.5s ease;
+  -webkit-transition: 0.5s ease;
+  -o-transition: 0.5s ease;
+  -ms-transition: 0.5s ease;
+  text-decoration: none;
+}
+.o-content-gray .o-inside .o-itens:hover .o-item {
+  transition: 0.5s ease;
+  -moz-transition: 0.5s ease;
+  -webkit-transition: 0.5s ease;
+  -o-transition: 0.5s ease;
+  -ms-transition: 0.5s ease;
+  background-color: #3185FC;
+  color: #fff;
 }

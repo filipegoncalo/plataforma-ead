@@ -9,6 +9,8 @@ import DashboardDisciplinas from '../src/pages/DisciplinasProfessor/disciplinas'
 import DashboardExercicios from '../src/pages/ExerciciosProfessor/exercicios';
 import Aula from './pages/Aula';
 import ProvasProfessor from './pages/ProvasProfessor';
+import ExerciciosCriar from './pages/ExerciciosCriar';
+import QuizCriar from './pages/QuizCriar';
 
 
 function Routes() {
@@ -22,6 +24,8 @@ function Routes() {
                 <Route path='/disciplinas' component={DashboardDisciplinas}/>
                 <Route path='/exercicios' component={DashboardExercicios}/>
                 <Route path="/provas" component={ProvasProfessor} />
+                <Route path="/exercicios/criar" component={ExerciciosCriar} />
+                <Route path="/quiz/criar" component={QuizCriar} />
                 <Route component={Aula} path='/aula' />
                 
                 </Switch>

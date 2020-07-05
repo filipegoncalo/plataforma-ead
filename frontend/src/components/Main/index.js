@@ -7,47 +7,36 @@ import Logo from '../../assets/logoPreto.png';
 import Vip from '../../assets/vip.png';
 import SchoolIcon from '@material-ui/icons/School';
 import AddCircleIcon from '@material-ui/icons/AddCircle';
-
+import imgStudy from '../../assets/box-study.png';
 
 function Main({items, atividade}) {
     return(
-        <div className="row col">
-            <div className="col tituloMateria">
-                {items.map(({ name, link, tipo, ...rest }) => (
-                <div>
-                    <h1>{name}</h1>               
-                    <h2>{tipo}</h2>
+        <div className="o-main">
+            <div className="o-breadcrumb">
+                <div className="tituloMateria">
+                    {items.map(({ name, link, tipo, ...rest }) => (
+                    <div>
+                        <h1>{name}</h1>                
+                        <h2>{tipo}</h2>
+                    </div>
+                    ))}
+    
                 </div>
-                ))}
- 
+                <div className="logoPreto">
+                    <img align="right" className="logoPreto" src={Logo}/>
+                </div>
             </div>
+            <div className="o-pt-2">
+                <div className="o-box-conteudo">
+                    {atividade.map(({ name, link, ...rest }) => (
+                    <Link to={link} style={{backgroundImage:`url(${imgStudy})`}} className="card text-center">
+                        <h3 >{name}</h3>
+                    </Link>
+                    ))}
 
-            <div className="col logoPreto">
-                <img align="right" className="logoPreto" src={Logo}/>
-            </div>
-
-            <div className="row ">
-                <div className="">
-                {atividade.map(({ name, link, ...rest }) => (
-                <Link to={link}>
-                    <div type="button" className="card text-center" style={{ width: '20em' }}>
-                        <br></br><br></br>
-                        <div className="card-body">
-                                <h3>{name}</h3>
-                        </div>
-                    </div>
-                </Link>
-                ))}
-
-                <Link to="/">
-                    <div type="button" className="card card_adicionar text-center" style={{ width: '20em' }}>
-                        <br></br><br></br>
-                        <div className="card-body">
-                            <AddCircleIcon style={{ color: 'white', fontSize: 25}}/><h3 className="adicionar_texto"> &nbsp;Adicionar</h3>
-                        </div>
-                    </div>
-                </Link>
-
+                    <Link className="card add text-center" to="/">
+                        <AddCircleIcon /><h3 className="adicionar_texto"> &nbsp;Adicionar</h3>
+                    </Link>
                 </div>
                 <div className="div-wrapper">
                     <img className="imagem_vip" src={Vip}/>

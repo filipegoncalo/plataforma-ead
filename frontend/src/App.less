@@ -1,4 +1,6 @@
 //cores
+@import 'var.less';
+
 @primary:#3185FC;
 @primary-light:#77B4FF;
 @primary-dark:#0059C8;
@@ -57,7 +59,9 @@
   src: url('./fonts/Montserrat-Bold.ttf');
 }
 //pra todas as telas
-
+.o-relative{
+  position: relative;
+}
 p{
   font-size: 24px;//24px
   font-family: "Montserrat-Light";
@@ -84,8 +88,14 @@ p{
 .o-pt-0{
   padding-top: 0;
 }
+.o-pt-2{
+  padding-top: 2% !important;
+}
+.o-pb-2{
+  padding-bottom: 2% !important;
+}
 .o-pb-5{
-  padding-bottom: 5%;
+  padding-bottom: 5% !important;
 }
 
 .o-text-center{
@@ -257,11 +267,90 @@ p{
 .c-boxes-home{
   .MuiGrid-item{
     padding:0 30px;
-
   }
   p{
     text-align: justify;
     padding-top: 15%;
     font-size: 20px;//18
+  }
+}
+//main
+.o-main{
+  margin-left: 2%;
+  //margin-right: 2%;
+  width: 78%;
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  .o-breadcrumb{
+      display: flex;
+      justify-content: space-between;
+  }
+}
+.o-content-gray{
+  background-color: @gray;
+  border-radius: 15px;
+  padding: 22px;
+  margin-right: 6.17%;
+  .o-inside{
+    padding: 15px;
+    max-height: 450px;
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: @purple @gray;
+    .o-btn{
+      margin: 25px auto;
+      text-transform: initial !important;
+      position: absolute;
+      right: 8%;
+      bottom: 10%;
+    }
+
+    &::-webkit-scrollbar, &::-moz-scrollbar {
+      width: 11px;
+    }
+  
+    &::-webkit-scrollbar-track, &::-moz-track {
+      background: @gray;
+    }
+    &::-webkit-scrollbar-thumb, &::-moz-thumb {
+      background-color: @purple ;
+      border-radius: 6px;
+      border: 3px solid @gray;
+    }
+    .o-title{
+      display: flex;
+      align-items: center;
+      font-size: 18px;
+      font-family: 'RobotoCondensed-Bold';
+      color: @purple;
+      svg{
+        margin-right: 20px;
+      }
+    }
+    .o-itens{
+      flex-basis: 100%;
+      display: flex;
+
+      .o-item{
+        font-family: 'RobotoCondensed-Bold';
+        color: @primary-dark;
+        font-size: 18px;
+        &:first-child{
+          padding-left: 4%;
+        }
+      }
+
+      &:hover{
+        .u-transition-ease-slow();
+        text-decoration: none;  
+        .o-item{
+          .u-transition-ease-slow();
+          background-color: @primary;
+          color: #fff;
+        }
+      }
+    }
+
   }
 }
