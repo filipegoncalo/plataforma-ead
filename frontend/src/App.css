@@ -261,9 +261,6 @@ p {
 .o-content-gray .o-inside .o-btn {
   margin: 25px auto;
   text-transform: initial !important;
-  position: absolute;
-  right: 8%;
-  bottom: 10%;
 }
 .o-content-gray .o-inside::-webkit-scrollbar,
 .o-content-gray .o-inside::-moz-scrollbar {
@@ -317,4 +314,9 @@ p {
   -ms-transition: 0.5s ease;
   background-color: #3185FC;
   color: #fff;
+}
+.o-edit {
+  position: absolute !important;
+  right: 8%;
+  bottom: 10%;
 }

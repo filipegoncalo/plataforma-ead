@@ -49,13 +49,13 @@ function CriarAtividade({info}) {
                                         </Grid>    
                                     </Link>
                                 ))}
-                                <Button variant="contained" className="o-btn blue"  startIcon={<Add color="red" />}>Aplicar a uma turma</Button>
+                                <Button variant="contained" className="o-btn blue"  startIcon={<Add />}>Aplicar a uma turma</Button>
                             </Grid>
                         ))}
                 </div>
 
             </div>
-            <Button variant="contained" className="o-btn blue"  startIcon={<Create />}>Editar</Button>
+            <Button variant="contained" className="o-btn blue o-edit"  startIcon={<Create/>}>Editar</Button>
 
          </div>
     )
