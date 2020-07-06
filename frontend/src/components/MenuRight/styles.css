@@ -40,3 +40,18 @@
   border-radius: 6px;
   border: 3px solid #fff;
 }
+.o-menu-right {
+  position: relative;
+  width: 20%;
+  background-color: #282544;
+  border-radius: 15px 0 0 15px;
+}
+.logoBranco {
+  width: 40%;
+  margin-top: 15px;
+}
+.o-logo-area {
+  display: flex;
+  justify-content: flex-end;
+  margin-right: 15px;
+}

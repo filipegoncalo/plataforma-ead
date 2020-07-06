@@ -10,7 +10,9 @@ import DashboardExercicios from '../src/pages/ExerciciosProfessor/exercicios';
 import Aula from './pages/Aula';
 import ProvasProfessor from './pages/ProvasProfessor';
 import ExerciciosCriar from './pages/ExerciciosCriar';
-import QuizCriar from './pages/QuizCriar';
+import ListarAtividadeScreen from './pages/ListarAtividadeScreen';
+import CriarAtividade from './pages/CriarAtividade';
+import Perfil from './pages/Perfil';
 
 
 function Routes() {
@@ -25,10 +27,11 @@ function Routes() {
                 <Route path='/exercicios' component={DashboardExercicios}/>
                 <Route path="/provas" component={ProvasProfessor} />
                 <Route path="/exercicios/criar" component={ExerciciosCriar} />
-                <Route path="/quiz/criar" component={QuizCriar} />
+                <Route path="/quiz/listar" component={ListarAtividadeScreen} />
                 <Route component={Aula} path='/aula' />
-                
-                </Switch>
+                <Route component={CriarAtividade} path='/quiz/criar' />
+                <Route component={Perfil} path='/perfil' />
+            </Switch>
         </BrowserRouter>
     )
 }

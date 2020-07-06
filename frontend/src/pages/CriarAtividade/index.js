@@ -22,28 +22,10 @@ const info= {
     materia:"Matemática",
     tipo:"Quiz",
     conteudo:"Função - Lista 1",
-    lista:[
-        {
-            tarefa:"Atribuições",icone:<MenuBook></MenuBook>,col2:"Data e horários",
-            informacoes:[
-                {instituicao:"E.E Lions Clube",text:"04/07/2020 - 19:25"},
-                {instituicao:"E.E Lions Clube",text:"04/07/2020 - 19:25"},
-                {instituicao:"E.E Lions Clube",text:"04/07/2020 - 19:25"},
-            ]
-        },
-        {
-            tarefa:"Atribuições",icone:<MenuBook></MenuBook>,col2:"Data e horários",
-            informacoes:[
-                {instituicao:"E.E Lions Clube",text:"04/07/2020 - 19:25"},
-                {instituicao:"E.E Lions Clube",text:"04/07/2020 - 19:25"},
-                {instituicao:"E.E Lions Clube",text:"04/07/2020 - 19:25"},
-            ]
-        },
-    ],
-
+    action:"url"
 }
 
-function QuizCriar() {
+function ListarAtividadeScreen() {
         return (
             <div>
                 <div className="row">
@@ -52,6 +34,6 @@ function QuizCriar() {
                 </div>
             </div>
         )
-};
+}; 
 
-export default QuizCriar;
+export default ListarAtividadeScreen;

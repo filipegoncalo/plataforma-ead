@@ -35,6 +35,29 @@
 .o-menu .nav-link svg {
   margin-right: 15px;
 }
+.o-menu-right {
+  position: relative;
+  width: 20%;
+  height: 100vh!important;
+  border-top-right-radius: 15px;
+  border-bottom-right-radius: 15px;
+  padding-bottom: 35%;
+}
+.o-menu-right .logo {
+  padding: 15px 50px 15px 10px!important;
+}
+.o-menu-right .nav-link {
+  color: #fFFF;
+}
+.o-menu-right .nav-link:hover,
+.o-menu-right .nav-link:active {
+  background-color: #F95A10;
+  color: #fFFF;
+  font-family: 'Roboto Condensed', sans-serif !important;
+}
+.o-menu-right .nav-link svg {
+  margin-right: 15px;
+}
 .bg-color {
   background-color: #282544;
   color: #FFFFFF;
