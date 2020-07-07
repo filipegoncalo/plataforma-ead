@@ -13,15 +13,41 @@
     "auth.signin.email.string.email": "Email invalido",
     "auth.signin.email.string.empty": "Email é obrigatório",
 
-    "auth.signup.email_exists": "Email já cadastrado.",
     "auth.signup.success": "Cadastro efetuado com sucesso.",
+    "auth.signup.first_name.any.required": "Nome é obrigatório",
+    "auth.signup.last_name.any.required": "Sobrenome é obrigatorio",
     "auth.signup.password.any.required": "Senha é obrigatório.",
     "auth.signup.password.string.pattern.base": "Senha deve conter entre 8 a 30 caracteres e incluir letras e numeros",
     "auth.signup.password.string.empty": "Campo de senha vazio.",
     "auth.signup.password_confirmation.any.required": "Confirmação de senha é obrigatório.",
     "auth.signup.password_confirmation.string.empty": "Campo de confirmação de senha vazio.",
     "auth.signup.password_confirmation.any.only": "Senha e confirmação devem combninar",
+    "auth.signup.email_exists": "Já existe um usuario cadastro com esse e-mail.",
     "auth.signup.email.string.email": "Email invalido",
-    "auth.signup.email.string.empty": "Email é obrigatório"
+    "auth.signup.email.string.empty": "Email é obrigatório",
+    "auth.signup.email.any.required": "Email é obrigatório",
+
+    "auth.forgot.email_not_exists": "Email não cadastrado.",
+    "auth.forgot.forget_exists": "Existe um codigo de recuperação valido",
+    "auth.forgot.email_server": "Ocorreu um erro e o email não foi enviado",
+    "auth.forgot.success": "Email enviado com sucesso.",
+
+    "auth.reset.code_not_exists": "Codigo para recuperação não existe",
+    "auth.reset.forget_exists": "Existe um codigo de recuperação valido",
+    "auth.reset.invalid": "Credenciais invalidas",
+    "auth.reset.success": "Senha alterada com sucesso",
+
+    "user.first_name.string.empty": "Nome não foi preenchido",
+    "user.first_name.string.min": "Nome deve ter no minimo 3 caracteres",
+    "user.last_name.string.empty": "Sobrenome deve ter no minimo 3 caracteres",
+    "user.formation.string.empty": "Formação não foi preenchido",
+    "user.institution.string.empty": "Institução não foi preenchido",
+    "user.genre.string.empty": "Genero não foi preenchido",
+    "user.datebirth.string.empty": "Data de nascimento não foi preenchida",
+    "user.photo.string.empty": "Senha alterada com sucesso",
+    "user.curriculum.string.empty": "Curriculo não foi preenchido",
+    "user.document.string.pattern.base": "Foi preenchido incorretamente",
+    "user.document.string.base": "Foi preenchido incorretamente"
+    
 
 }
