@@ -1,4 +1,5 @@
 const Joi = require('@hapi/joi');
+
 const { getValidatorError } = require('../helpers/validator');
 
 const rules = {
@@ -40,14 +41,8 @@ const authSignUp = (request, response, next) => {
         password_confirmation: rules.password_confirmation,
     });
 
-    const { error } = schema.validate(
-        {
-            first_name,
-            last_name,
-            email,
-            password,
-            password_confirmation
-        }, options);
+
+    const { error } = schema.validate({ first_name, last_name, email, password, password_confirmation }, options);
 
     if (error) {
         const messages = getValidatorError(error, 'auth.signup');
