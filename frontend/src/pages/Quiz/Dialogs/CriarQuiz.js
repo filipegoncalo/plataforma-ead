@@ -9,10 +9,10 @@ import {
     DialogTitle
 } from '@material-ui/core';
 
-import FormCriarAtividade from '../../../components/FormCriarAtividade';
+import FormInserirQuiz from '../../../components/Forms/FormInserirQuiz';
 
 
-export default class CriarAtividade extends Component {
+export default class CriarQuiz extends Component {
     state = {
         open: false
     }
@@ -36,23 +36,31 @@ export default class CriarAtividade extends Component {
                     Criar
                 </Button>
                 <Dialog open={open} onClose={this.handleToggle} aria-labelledby="form-dialog-title">
-                    <DialogTitle id="form-dialog-title">Selecione uma atividade</DialogTitle>
+                    <div className="o-center o-espaco-padrao o-text-center">
+                        <DialogTitle id="form-dialog-title">Quiz</DialogTitle>
+                    </div>
                     <DialogContent>
-                        <FormCriarAtividade />
+                        <FormInserirQuiz />
                         <br />
                     </DialogContent>
                     <DialogActions>
+                    <div className="c-botao o-center">
                         <Button
                         variant="contained"
-                        color="primary">
-                            Criar
+                        color="primary"
+                        className="o-btn green"
+                        >
+                            Finalizar
                         </Button>
                         <Button
                         variant="contained"
                         onClick={this.handleToggle}
-                        color="primary">
+                        color="primary"
+                        className="o-btn blue"
+                        >
                             Cancelar
                         </Button>
+                    </div>
                     </DialogActions>
                 </Dialog>
             </div>

@@ -15,7 +15,7 @@ import {
 } from '@material-ui/core';
 import CustomDialog from '../../../components/Dialog';
 
-import FormSelectQuiz from '../../../components/FormSelectQuiz';
+import FormSelectQuiz from '../../../components/Forms/FormSelectQuiz';
 
 
 export default class CriarQuiz extends Component {
