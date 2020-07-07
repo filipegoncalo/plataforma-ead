@@ -11,7 +11,7 @@ router.post('/sign-up', authSignUp, AuthController.signUp);
 
 router.post('/reset', AuthController.reset);
 
-router.get('/reset/:forget', AuthController.reset);
+router.get('/reset/:code', AuthController.reset);
 
 router.post('/forgot', AuthController.forgot);
 

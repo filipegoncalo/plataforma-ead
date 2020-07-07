@@ -5,12 +5,12 @@ const router = express.Router();
 const DisciplineController = require('../controllers/DisciplineController');
 
 
-router.get('/disciplinas', DisciplineController.index);
+router.get('/disciplinas', DisciplineController.show);
 
-router.post('/disciplinas', DisciplineController.create);
+router.post('/disciplina', DisciplineController.create);
 
-router.put('/disciplinas/:id', DisciplineController.update);
+router.put('/disciplina/:id', DisciplineController.update);
 
-router.delete('/disciplinas/:id', DisciplineController.delete);
+router.delete('/disciplina/:id', DisciplineController.delete);
 
 module.exports = router;

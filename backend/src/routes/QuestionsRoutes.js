@@ -5,7 +5,7 @@ const router = express.Router();
 const QuestionController = require('../controllers/QuestionController');
 
 
-router.get("/questions",QuestionController.index);
+router.get("/questions",QuestionController.show);
 router.get("/questions/teste",QuestionController.selectByTest);
 router.post("/questions",QuestionController.addQuestion);
 router.put("/questions",QuestionController.changeQuestion);
