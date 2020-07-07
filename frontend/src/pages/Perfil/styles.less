@@ -1,0 +1,41 @@
+@import '../../var.less';
+.u-bol{
+    font-family: 'RobotoCondensed-Bold'; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 18px;
+    position: relative;
+    background-color: @primary-dark;
+    width: 160px;
+    height: 160px; 
+    z-index: 1; 
+    border-radius: 50%;
+    margin-left: 120px;
+    padding-left: 35px;
+    color: #fff;
+    &:before{
+        content: attr(data-text);
+        background-color: @primary;
+        font-family: 'RobotoCondensed-Bold';
+        font-size: 18px;
+        position: absolute;
+        color: #fff;
+        width: 90px;
+        height: 90px;
+        z-index: 2;
+        border-radius: 50%;
+        left: -60px;
+        top: 0;
+        text-align: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+}
+.u-trof{
+    .MuiGrid-root>svg{
+        color: @yellow;
+        font-size: 80px;
+    }
+}

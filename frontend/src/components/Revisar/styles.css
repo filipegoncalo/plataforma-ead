@@ -1,0 +1,154 @@
+.u-transition-ease-slow {
+  transition: 0.5s ease;
+  -moz-transition: 0.5s ease;
+  -webkit-transition: 0.5s ease;
+  -o-transition: 0.5s ease;
+  -ms-transition: 0.5s ease;
+}
+.o-scroll {
+  max-height: 600px;
+  overflow-y: auto;
+  scrollbar-width: thin;
+}
+.o-scroll::-webkit-scrollbar,
+.o-scroll::-moz-scrollbar {
+  width: 11px;
+}
+.o-scroll.o-purple {
+  scrollbar-color: #282544 #F9F9F9;
+}
+.o-scroll.o-purple::-webkit-scrollbar-track,
+.o-scroll.o-purple::-moz-track {
+  background: #F9F9F9;
+}
+.o-scroll.o-purple::-webkit-scrollbar-thumb,
+.o-scroll.o-purple::-moz-thumb {
+  background-color: #282544;
+  border-radius: 6px;
+  border: 3px solid #F9F9F9;
+}
+.o-scroll.o-blue {
+  scrollbar-color: #3185FC #ffffff;
+}
+.o-scroll.o-blue::-webkit-scrollbar-track,
+.o-scroll.o-blue::-moz-track {
+  background: #3185FC;
+}
+.o-scroll.o-blue::-webkit-scrollbar-thumb,
+.o-scroll.o-blue::-moz-thumb {
+  background-color: #3185FC;
+  border-radius: 6px;
+  border: 3px solid #fff;
+}
+.o-flex {
+  display: flex;
+  align-items: center;
+  padding-left: 15px;
+}
+.c-revisar {
+  border-radius: 15px;
+  background-color: #F9F9F9;
+  margin: 2%;
+  margin-right: 4%;
+}
+.c-revisar .u-input {
+  font-size: 16px;
+  margin: 0;
+  line-height: 1.5em;
+  padding-left: 15px;
+}
+.c-revisar .u-number-revisar {
+  color: #3185FC;
+  font-size: 23px;
+  font-family: 'RobotoCondensed-Bold';
+  display: flex;
+  line-height: 1.5em;
+}
+.c-revisar-purple {
+  border-radius: 15px 15px 0 0;
+  padding: 2%;
+  padding-bottom: 1%;
+  background-color: #282544;
+}
+.c-revisar-purple .o-title-3 {
+  font-family: 'OpenSans-SemiBold';
+  font-size: 24px;
+  color: #fff;
+  text-align: center;
+}
+.c-revisar-purple .o-text-revisar {
+  font-size: 18px;
+  font-family: 'OpenSans-SemiBold';
+  color: #fff;
+  padding-bottom: 0;
+  margin-bottom: 0.8em;
+}
+.c-area-purple {
+  border-radius: 15px 15px 0 0;
+  padding: 2%;
+  margin: 0 4%;
+  background-color: #282544;
+}
+.u-custom-revisar {
+  display: none;
+  font-family: 'Roboto-Regular' !important;
+  width: 90%;
+  font-size: 16px !important;
+  line-height: 1.5em !important;
+  margin-bottom: 25px;
+}
+.u-custom-revisar .MuiFilledInput-input {
+  padding: 15px 0 10px 15px !important;
+  font-size: 16px;
+}
+.u-custom-revisar .MuiFilledInput-multiline {
+  padding: 0 12px 15px 5px;
+  font-size: 16px;
+}
+.u-custom-revisar .MuiFilledInput-root.Mui-focused > fieldset {
+  border-color: #282544;
+}
+.orange input {
+  color: #F95A10;
+}
+.green input {
+  color: #F95A10;
+}
+.u-float-icon {
+  position: absolute;
+  right: 7%;
+  top: 10px;
+}
+.u-float-icon.orange {
+  color: #F95A10;
+}
+.u-float-icon.green {
+  color: #32C35B;
+}
+.c-notas {
+  width: 90%;
+  margin-left: 5%;
+  border-color: red;
+}
+.c-notas .left {
+  width: 40%;
+  margin-right: 5%;
+}
+.c-notas .right {
+  width: 55%;
+}
+.c-notas .o-nota .MuiOutlinedInput-input {
+  padding: 25px 0 10px 15px !important;
+  font-size: 16px !important;
+}
+.c-notas .o-nota .MuiOutlinedInput-multiline {
+  padding: 0 12px 15px 5px !important;
+  font-size: 16px !important;
+  border-color: red;
+}
+.c-notas .o-nota .MuiOutlinedInput-root.Mui-focused > fieldset {
+  border-color: #282544;
+}
+.c-notas .o-nota label {
+  font-size: 16px;
+}

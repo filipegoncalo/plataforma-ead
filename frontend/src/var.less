@@ -1,0 +1,68 @@
+.u-transition-ease-slow{
+    transition: .5s ease;
+    -moz-transition: .5s ease;
+    -webkit-transition: .5s ease;
+    -o-transition: .5s ease;
+    -ms-transition: .5s ease;
+}
+
+@primary:#3185FC;
+@primary-light:#77B4FF;
+@primary-dark:#0059C8;
+
+@gray:#F9F9F9;
+@gray-light:#FFFFFF;
+@gray-dark:#DADADA;
+
+@purple:#282544;
+@purple-light:#524D6F;
+@purple-dark:#00001E;
+
+@orange:#F95A10;
+@orange-light:#FF8C44;
+@orange-dark:#BE2400;
+
+
+@yellow:#FCE942;
+
+
+@green:#32C35B;
+@green-light:#6FF78A;
+@green-dark:#00912E;
+
+@dark:#26252D;
+@dark-light:#5C5C5C;
+
+@background-gray:#ffffff;
+
+.o-scroll{
+  max-height: 600px; 
+  overflow-y: auto;
+  scrollbar-width: thin;
+  &::-webkit-scrollbar, &::-moz-scrollbar {
+    width: 11px;
+  }
+
+  &.o-purple{
+    scrollbar-color: @purple @gray;
+    &::-webkit-scrollbar-track, &::-moz-track {
+      background: @gray;
+    }
+    &::-webkit-scrollbar-thumb, &::-moz-thumb {
+      background-color: @purple ;
+      border-radius: 6px;
+      border: 3px solid @gray;
+    }
+  }
+  &.o-blue{
+    scrollbar-color: @primary #ffffff;
+    &::-webkit-scrollbar-track, &::-moz-track {
+      background: @primary;
+    }
+    &::-webkit-scrollbar-thumb, &::-moz-thumb {
+      background-color: @primary ;
+      border-radius: 6px;
+      border: 3px solid #fff;
+    }
+  }
+}

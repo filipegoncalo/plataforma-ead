@@ -1,0 +1,57 @@
+@import './../../var.less';
+.o-menu-right{
+    position: relative;
+    width: 20%;
+    background-color:@purple;
+    border-radius: 15px 0 0 15px;
+    //padding:20px;
+}
+.logoBranco {
+    width: 40%;
+    margin-top: 25px;
+    margin-right: 25px;
+  } 
+  .o-logo-area{
+    display: flex;
+    justify-content: flex-end;
+  
+  }
+  .o-menu-title{
+    position: relative;
+    background-color: @primary-dark;
+    width: 100%;
+    color: #fff;
+    font-family: 'RobotoCondensed-Bold';
+    font-size: 18px;
+    line-height: 2em;
+    text-align: center;
+    margin: 35px 0;
+    &.search{
+      content: attr(data-icon);
+      right: 5px;
+    }
+  }
+  .o-espaco-alunos{
+    padding: 25px;
+    .o-box-alunos{
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      .c-alunos{
+        color: #fff;
+        display: flex;
+        justify-content: space-between;
+        padding: 10px 0;
+        &:hover{
+          color: @gray-dark;
+          text-decoration: none;
+        }
+        svg.green{
+          color: @green;
+        }
+        svg.orange{
+          color: @orange;
+        }
+      }
+    }
+  }

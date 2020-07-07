@@ -2,22 +2,55 @@
 
 
 .o-menu{
+    position: relative;
     width: 20%;
     height: 100vh!important;
     border-top-right-radius: 15px;
     border-bottom-right-radius: 15px;
+    padding-bottom: 35%;
     .logo {
         padding: 15px 50px 15px 10px!important;
     }
 
-    .nav-link,
-    .nav-link:hover,
-    .nav-link:active {
-        color: white;
-        font-family: 'Roboto Condensed', sans-serif !important;
+    .nav-link{
+        color:  #fFFF;
+
+        &:hover,
+        &:active {  
+            background-color:  #F95A10;
+            color:  #fFFF;
+            font-family: 'Roboto Condensed', sans-serif !important;
+        }
+        svg{
+            margin-right: 15px;
+        }
+    }
+}
+.o-menu-right{
+    position: relative;
+    width: 20%;
+    height: 100vh!important;
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
+    padding-bottom: 35%;
+    .logo {
+        padding: 15px 50px 15px 10px!important;
     }
 
-  }
+    .nav-link{
+        color:  #fFFF;
+
+        &:hover,
+        &:active {   
+            background-color:  #F95A10;
+            color:  #fFFF;
+            font-family: 'Roboto Condensed', sans-serif !important;
+        }
+        svg{
+            margin-right: 15px; 
+        }
+    }
+}
 
 
 
@@ -39,12 +72,12 @@
 }
 
 .botao-sair {
-    width: 100% !important;
+    width: 100%;
     bottom: 0;
     font-family: 'Roboto Condensed', sans-serif !important;
     list-style: none;
     padding-bottom: 40px;
-    position: fixed;
+    position: absolute;
 }
 
 .borderimg {
@@ -56,7 +89,7 @@
     box-sizing: border-box;
     border-top-right-radius: 20px;
     border-bottom-left-radius: 20px;
-}
+} 
 
 .AvatarTexto a {
     font-family: 'Open Sans', sans-serif;

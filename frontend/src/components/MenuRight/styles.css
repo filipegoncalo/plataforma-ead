@@ -1,0 +1,96 @@
+.u-transition-ease-slow {
+  transition: 0.5s ease;
+  -moz-transition: 0.5s ease;
+  -webkit-transition: 0.5s ease;
+  -o-transition: 0.5s ease;
+  -ms-transition: 0.5s ease;
+}
+.o-scroll {
+  max-height: 600px;
+  overflow-y: auto;
+  scrollbar-width: thin;
+}
+.o-scroll::-webkit-scrollbar,
+.o-scroll::-moz-scrollbar {
+  width: 11px;
+}
+.o-scroll.o-purple {
+  scrollbar-color: #282544 #F9F9F9;
+}
+.o-scroll.o-purple::-webkit-scrollbar-track,
+.o-scroll.o-purple::-moz-track {
+  background: #F9F9F9;
+}
+.o-scroll.o-purple::-webkit-scrollbar-thumb,
+.o-scroll.o-purple::-moz-thumb {
+  background-color: #282544;
+  border-radius: 6px;
+  border: 3px solid #F9F9F9;
+}
+.o-scroll.o-blue {
+  scrollbar-color: #3185FC #ffffff;
+}
+.o-scroll.o-blue::-webkit-scrollbar-track,
+.o-scroll.o-blue::-moz-track {
+  background: #3185FC;
+}
+.o-scroll.o-blue::-webkit-scrollbar-thumb,
+.o-scroll.o-blue::-moz-thumb {
+  background-color: #3185FC;
+  border-radius: 6px;
+  border: 3px solid #fff;
+}
+.o-menu-right {
+  position: relative;
+  width: 20%;
+  background-color: #282544;
+  border-radius: 15px 0 0 15px;
+}
+.logoBranco {
+  width: 40%;
+  margin-top: 25px;
+  margin-right: 25px;
+}
+.o-logo-area {
+  display: flex;
+  justify-content: flex-end;
+}
+.o-menu-title {
+  position: relative;
+  background-color: #0059C8;
+  width: 100%;
+  color: #fff;
+  font-family: 'RobotoCondensed-Bold';
+  font-size: 18px;
+  line-height: 2em;
+  text-align: center;
+  margin: 35px 0;
+}
+.o-menu-title.search {
+  content: attr(data-icon);
+  right: 5px;
+}
+.o-espaco-alunos {
+  padding: 25px;
+}
+.o-espaco-alunos .o-box-alunos {
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+}
+.o-espaco-alunos .o-box-alunos .c-alunos {
+  color: #fff;
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 0;
+}
+.o-espaco-alunos .o-box-alunos .c-alunos:hover {
+  color: #DADADA;
+  text-decoration: none;
+}
+.o-espaco-alunos .o-box-alunos .c-alunos svg.green {
+  color: #32C35B;
+}
+.o-espaco-alunos .o-box-alunos .c-alunos svg.orange {
+  color: #F95A10;
+}

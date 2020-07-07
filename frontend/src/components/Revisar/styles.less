@@ -1,0 +1,126 @@
+ @import '../../var.less';
+ .o-flex{
+    display: flex;
+    align-items: center;
+    padding-left: 15px;
+ }
+ .c-revisar{
+    border-radius: 15px;
+    background-color: @gray;
+    margin: 2%;
+    margin-right: 4%;
+    .u-input{
+        font-size: 16px;
+        margin: 0;
+        line-height: 1.5em;
+        padding-left: 15px;
+    }
+    .u-number-revisar{
+        color:@primary;
+        font-size: 23px;
+        font-family: 'RobotoCondensed-Bold';
+        display: flex;
+        line-height: 1.5em;
+    }    
+ }
+ .c-revisar-purple{
+    border-radius: 15px 15px 0 0;
+    padding: 2%;
+    padding-bottom: 1%;
+    // margin: 0 4%;
+    background-color: @purple;
+    .o-title-3{
+        font-family: 'OpenSans-SemiBold';
+        font-size: 24px;
+        color: #fff;
+        text-align: center;
+    }
+    .o-text-revisar{
+        font-size: 18px;
+        font-family: 'OpenSans-SemiBold';
+        color: #fff;
+        padding-bottom: 0;
+        margin-bottom: 0.8em;
+    }
+ }
+ .c-area-purple{
+    border-radius: 15px 15px 0 0;
+    padding: 2%;
+    margin: 0 4%;
+    background-color: @purple;
+ }
+ .u-custom-revisar{
+    display: none;
+    font-family: 'Roboto-Regular' !important;
+    width: 90%;
+    font-size: 16px !important;
+    line-height: 1.5em !important; 
+    margin-bottom: 25px;
+
+    
+    .MuiFilledInput-input{
+        padding: 15px 0 10px 15px !important;
+        font-size: 16px;
+    }
+    .MuiFilledInput-multiline{
+        padding:0 12px 15px 5px;
+        font-size: 16px; 
+    }
+    .MuiFilledInput-root.Mui-focused>fieldset{
+        //borda 
+        border-color:@purple;
+      }
+
+}
+.orange{
+    input{
+        color: @orange;
+    }
+}
+.green {
+    input{
+        color: @orange;
+    }
+}
+.u-float-icon{
+    position: absolute;
+    right: 7%;
+    top: 10px;
+    &.orange{
+        color: @orange;
+    }
+    &.green{
+        color:@green;
+    }
+    
+}
+.c-notas{
+    width: 90%;
+    margin-left: 5%;
+    border-color: red;
+    .left{
+        width: 40%;
+        margin-right: 5%;
+    }
+    .right{
+        width: 55%;
+    }
+    .o-nota{
+        .MuiOutlinedInput-input{
+            padding: 25px 0 10px 15px !important;
+            font-size: 16px !important;
+        }
+        .MuiOutlinedInput-multiline{
+            padding:0 12px 15px 5px !important;
+            font-size: 16px !important;
+            border-color: red;
+        }
+          .MuiOutlinedInput-root.Mui-focused>fieldset{
+            //borda 
+            border-color:@purple;
+          }
+          label{
+              font-size: 16px;
+          }
+    }
+}

@@ -13,19 +13,50 @@
   src: local('Open Sans SemiBold'), local('OpenSans-SemiBold'), url(https://fonts.gstatic.com/s/opensans/v17/mem5YaGs126MiZpBA-UNirk-VQ.ttf) format('truetype');
 }
 .o-menu {
+  position: relative;
   width: 20%;
   height: 100vh!important;
   border-top-right-radius: 15px;
   border-bottom-right-radius: 15px;
+  padding-bottom: 35%;
 }
 .o-menu .logo {
   padding: 15px 50px 15px 10px!important;
 }
-.o-menu .nav-link,
+.o-menu .nav-link {
+  color: #fFFF;
+}
 .o-menu .nav-link:hover,
 .o-menu .nav-link:active {
-  color: white;
+  background-color: #F95A10;
+  color: #fFFF;
   font-family: 'Roboto Condensed', sans-serif !important;
+}
+.o-menu .nav-link svg {
+  margin-right: 15px;
+}
+.o-menu-right {
+  position: relative;
+  width: 20%;
+  height: 100vh!important;
+  border-top-right-radius: 15px;
+  border-bottom-right-radius: 15px;
+  padding-bottom: 35%;
+}
+.o-menu-right .logo {
+  padding: 15px 50px 15px 10px!important;
+}
+.o-menu-right .nav-link {
+  color: #fFFF;
+}
+.o-menu-right .nav-link:hover,
+.o-menu-right .nav-link:active {
+  background-color: #F95A10;
+  color: #fFFF;
+  font-family: 'Roboto Condensed', sans-serif !important;
+}
+.o-menu-right .nav-link svg {
+  margin-right: 15px;
 }
 .bg-color {
   background-color: #282544;
@@ -41,12 +72,12 @@
   z-index: 20;
 }
 .botao-sair {
+  width: 100%;
   bottom: 0;
-  width: 20% !important;
   font-family: 'Roboto Condensed', sans-serif !important;
   list-style: none;
   padding-bottom: 40px;
-  position: fixed;
+  position: absolute;
 }
 .borderimg {
   padding: 0;
@@ -61,8 +92,4 @@
 .AvatarTexto a {
   font-family: 'Open Sans', sans-serif;
   font-size: 18px;
-}
-
-.nav-link:hover {
-  background-color: #F95A10;
 }

@@ -1,0 +1,46 @@
+@import '../../var.less';
+.c-box-links{
+    .u-title-link{
+        color: @primary;
+        font-family: 'OpenSans-Bold';
+        font-size: 24px !important;
+    }
+    .o-btn{
+        width: 40%;
+        margin: 20px auto 20px auto;
+    }
+    .u-input-link{
+        input{
+            color: @primary;
+            font-size: 14px !important;
+            padding: 15px !important;
+        }
+    }
+    .u-text-link{
+        font-size: 18px;
+        text-align: center;
+        font-family: 'OpenSans-Regular';
+        padding: 15px 30px;
+    }
+    width: 80%;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    padding: 0 5%;
+    .o-box-link{
+        width: 40%;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        background-color: @gray;
+        padding: 20px;
+        border-radius: 15px;
+        &:hover{
+            padding: 15px;
+            border:5px solid @primary;
+            text-decoration: none;
+            //.u-transition-ease-slow();
+        }
+    }
+}

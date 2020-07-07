@@ -1,5 +1,6 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import imgperfil from '../../assets/image7.png';
 import '../../assets/setup.css';
 import '../MenuLateral/MenuLateral.css';
@@ -38,21 +39,20 @@ function MenuLateral({ items }){
                 <br></br>
                 <div className="menuItem">
                     <ul className="nav flex-column">               
-                        {items.map(({ label, name, icone, link, ...rest }) => (             
-                                <li className="nav-item">   
-                                    <a className="nav-link" href= {link}>
-                                        {icone} {label}
-                                    </a>
-                                </li>
+                        {items.map(({ label, name, icone, link, ...rest }) => (     
+    
+                            <li key={Math.random()+""} className="nav-item">   
+                            <Link to={link} className="nav-link" style={{ textDecoration: 'none'}}>        
+                                    {icone} {label}
+                            </Link> 
+                            </li>
+
                         ))}
                     </ul>
-                </div>
-
-                <div className="">
                         <li className="nav flex-column botao-sair">
-                            <a className="nav-link " href="#">
-                            <ExitToAppIcon style={{ color: 'white'}}/>   Sair
-                            </a>
+                            <Link to={"/"} className="nav-link ">
+                               <ExitToAppIcon style={{ color: 'white'}}/>   Sair
+                            </Link>
                         </li>
                 </div>
             </div>

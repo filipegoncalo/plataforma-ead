@@ -1,0 +1,80 @@
+.u-transition-ease-slow {
+  transition: 0.5s ease;
+  -moz-transition: 0.5s ease;
+  -webkit-transition: 0.5s ease;
+  -o-transition: 0.5s ease;
+  -ms-transition: 0.5s ease;
+}
+.o-scroll {
+  max-height: 600px;
+  overflow-y: auto;
+  scrollbar-width: thin;
+}
+.o-scroll::-webkit-scrollbar,
+.o-scroll::-moz-scrollbar {
+  width: 11px;
+}
+.o-scroll.o-purple {
+  scrollbar-color: #282544 #F9F9F9;
+}
+.o-scroll.o-purple::-webkit-scrollbar-track,
+.o-scroll.o-purple::-moz-track {
+  background: #F9F9F9;
+}
+.o-scroll.o-purple::-webkit-scrollbar-thumb,
+.o-scroll.o-purple::-moz-thumb {
+  background-color: #282544;
+  border-radius: 6px;
+  border: 3px solid #F9F9F9;
+}
+.o-scroll.o-blue {
+  scrollbar-color: #3185FC #ffffff;
+}
+.o-scroll.o-blue::-webkit-scrollbar-track,
+.o-scroll.o-blue::-moz-track {
+  background: #3185FC;
+}
+.o-scroll.o-blue::-webkit-scrollbar-thumb,
+.o-scroll.o-blue::-moz-thumb {
+  background-color: #3185FC;
+  border-radius: 6px;
+  border: 3px solid #fff;
+}
+.u-bol {
+  font-family: 'RobotoCondensed-Bold';
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 18px;
+  position: relative;
+  background-color: #0059C8;
+  width: 160px;
+  height: 160px;
+  z-index: 1;
+  border-radius: 50%;
+  margin-left: 120px;
+  padding-left: 35px;
+  color: #fff;
+}
+.u-bol:before {
+  content: attr(data-text);
+  background-color: #3185FC;
+  font-family: 'RobotoCondensed-Bold';
+  font-size: 18px;
+  position: absolute;
+  color: #fff;
+  width: 90px;
+  height: 90px;
+  z-index: 2;
+  border-radius: 50%;
+  left: -60px;
+  top: 0;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.u-trof .MuiGrid-root > svg {
+  color: #FCE942;
+  font-size: 80px;
+}
