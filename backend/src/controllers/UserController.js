@@ -1,89 +1,55 @@
 const bcrypt = require('bcrypt');
-
+const { getMessage } = require('../helpers/messages');
 const User = require('../models/User');
 
 module.exports = {
-  async index(request, response, next) {
+  async show(request, response) {
 
-    try {
       const results = await User.query();
       return response.json(results);
 
-    } catch (error) {
-      next(error);
-    }
-
   },
 
-  async update(request, response, next) {
-    const {
-      first_name,
-      last_name,
-      formation,
-      institution,
-      genre,
-      datebirth,
-      document,
-      photo,
-      curriculum } = request.body;
-
+  async update(request, response) {
+    const { userId } = request;
     const { id } = request.params;
+    const { body } = request;
 
-    //convert string to date
-    const parts = datebirth.split("/");
-    const dt = new Date(parts[2], parts[1] - 1, parts[0]);
+    const fields = ['first_name', 'last_name', 'formation', 'institution',
+      'genre', 'datebirth', 'document', 'photo', 'curriculum'];
 
-    try {
-      let user = await User.query().findById(id);
+    //if(userId !== id) return response.jsonUnauthorized(null);
 
-      if (!user) {
-        return response.status(404).json({ error: "User doesn't exist" });
-      }
+    const user = await User.query().findById(id);
+
+    if (!user) return response.jsonNotFound(null, 'Usuario não existe');
+
+    fields.map((fieldName) => {
+      const newValue = body[fieldName];
+      if (newValue !== undefined) user[fieldName] = newValue;
+    });
     
-      if (user.id == id) {
-        user = await User.query().patch({
-          first_name,
-          last_name,
-          formation,
-          institution,
-          genre,
-          datebirth: dt,
-          document,
-          photo,
-          curriculum,
-          updated_at: new Date()
-        }).where({id});
+    const updatedUser = await User.query().update( user ).where({ id });
+    return response.jsonSuccess(updatedUser);
 
-        return response.status(201).json({ message: 'Successfully updated' });
-      }
-
-      return response.status(401).json({ error: 'Operation not permited.' });
-
-    } catch (error) {
-      next(error);
-    }
   },
 
-  async delete(request, response, next) {
+  async delete(request, response) {
+    const { userId } = request;
     const { id } = request.params;
 
-    try {
-      let user = await User.query().findById(id);
+      const user = await User.query().findById(userId);
 
-      if (!user) {
-        return response.status(404).json({ error: "User doesn't exist" });
-      }
-      if (user.id == id) {
+      if (!user) return response.jsonNotFound(null, 'Usuario não existe');
 
-        user = await User.query().deleteById(id);
+      if (user.level >= 1) {
 
-        return response.status(201).json({ message: 'Successfully deleted' });
+        const deletedUser = await User.query().deleteById(id);
+
+        return response.jsonSuccess(deletedUser);
       }
 
-      return response.status(401).json({ error: 'Operation not permited.' });
+      return response.jsonUnauthorized(null);
 
-    } catch (error) {
-      next(error)
-    }
   }
 }

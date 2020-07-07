@@ -5,7 +5,7 @@ const { transaction } = require('objection');
 
 module.exports = {
 
-  async index(request, response, next) {
+  async show(request, response) {
     try {
         const {id} = request.headers.authorization;
         const results = await Questions.query()
@@ -21,7 +21,7 @@ module.exports = {
     }
 
   },
-  async selectByTest(request, response, next) {
+  async selectByTest(request, response) {
     try {
       const {id_type} = request.headers.authorization;
       const results = await Questions.query()
@@ -37,7 +37,7 @@ module.exports = {
     }
 
   },
-  async addQuestion(request, response, next) {
+  async addQuestion(request, response) {
     const { ds_description, answer,id_test } = request.body;
     //const {} = request.headers.authorization;
 
@@ -60,7 +60,7 @@ module.exports = {
     }
 
   },
-  async addQuestionSimple(request, response, next) {
+  async addQuestionSimple(request, response) {
     const { ds_description, answer,id_test } = request.body;
     //const {} = request.headers.authorization;
 
@@ -79,7 +79,7 @@ module.exports = {
     
     
   },
-  async removeQuestion(request, response, next) {
+  async removeQuestion(request, response) {
     const id_question = request.headers.authorization;
 
     try {
@@ -94,7 +94,7 @@ module.exports = {
     }
 
   },
-  async removeQuestionByTest(request, response, next) {
+  async removeQuestionByTest(request, response) {
     const id_test = request.headers.authorization;
 
     try {
@@ -109,7 +109,7 @@ module.exports = {
     }
 
   },
-  async changeQuestion(request, response, next) {
+  async changeQuestion(request, response) {
     const id_question = request.headers.authorization;
     const { ds_description, answer,id_test } = request.body;
 
