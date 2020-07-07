@@ -3,16 +3,11 @@ const bcrypt = require('bcrypt');
 const Answer = require('../models/Answer');
 
 module.exports = {
-  async index(request, response, next) {
+  async index(request, response) {
 
-    try {
       const results = await Answer.query();
       
       return response.json(results);
-
-    } catch (error) {
-      next(error);
-    }
 
   },
 }

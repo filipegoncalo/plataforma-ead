@@ -4,9 +4,9 @@ exports.up = function (knex) {
     table.increments('id').primary();
     table.integer('teacher').unsigned();
     table.integer('discipline_id').unsigned();
-    table.string('link').notNullable();
+    table.string('link').nullable();
     table.string('name').notNullable();
-    table.datetime('schedule').notNullable();
+    table.string('institution').nullable();
 
     table.foreign('teacher')
       .references('id')

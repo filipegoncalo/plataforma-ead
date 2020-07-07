@@ -7,8 +7,8 @@ exports.up = function (knex) {
     table.string('email').unique().notNullable();
     table.string('password').notNullable();
     table.integer('level').notNullable().defaultTo(1);
-    table.string('formation').notNullable();
-    table.string('institution').notNullable();
+    table.string('formation').nullable();
+    table.string('institution').nullable();
     table.string('forget').nullable();
     table.string('genre', 10).nullable();
     table.date('datebirth').nullable();

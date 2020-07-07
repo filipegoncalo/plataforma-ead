@@ -3,10 +3,10 @@ const knex = require('../database');
 
 Model.knex(knex)
 
-class Test extends Model {
+class Scheduler extends Model {
   static get tableName() {
-    return 'tests';
+    return 'schedules';
   }
 }
 
-module.exports = Test;
+module.exports = Scheduler;

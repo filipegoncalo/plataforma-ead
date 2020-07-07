@@ -13,6 +13,7 @@ class User extends Model {
     const Discipline = require('./Discipline');
     const Content = require('./Content');
     const Classe = require('./Classe');
+    const studentClasses = require('./studentClasses');
 
     return {
       disciplines: {
@@ -32,11 +33,16 @@ class User extends Model {
         }
       },
       classes: {
-        relation: Model.HasManyRelation,
+        relation: Model.ManyToManyRelation,
         modelClass: Classe,
         join: {
           from: 'users.id',
-          to: 'classes.teacher'
+          through: {
+            modelClass: studentClasses,
+            from: 'student_classes.student_id',
+            to: 'student_classes.classe_id'
+          },
+          to: 'classes.id'
         }
       },
 

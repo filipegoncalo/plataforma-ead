@@ -1,9 +1,6 @@
-const bcrypt = require('bcrypt');
-
 const Test = require('../models/Test');
 
 module.exports = {
-  //disciplina/turma/test
   async index(request, response, next) {
     try {
        // .join('test', '.id', '=', 'point_items.point_id')
@@ -24,22 +21,29 @@ module.exports = {
   },
 
   async addTest(request, response, next) {
-    const { name,note,id_classes } = request.body;
-    const id_type = request.headers.authorization;
+    const { name, type, note } = request.body;
+    const teacher = request.headers.authorization;
+
+    const discipline_id = 1;
+
+    console.log(teacher, discipline_id, name, type, note)
 
     try {
       const results = await Test.query()
         .insert({
+          teacher,
+          discipline_id,
           name,
-          id_type,
-          note,
-          id_classes
+          type,
+          note
         });
 
-      if(results!=0){
+        console.log(results)
+
+      if(results === true){
         return response.status(200).json(results);
       }
-      return response.status(404).send("Erro ao inserir");
+      return response.status(402).json("Erro ao inserir");
 
     } catch (error) {
       next(error);
@@ -103,7 +107,7 @@ module.exports = {
   //   }
 
   // },
-  async classesByTest(request, response, next) {
+  async classesByTest(request, response) {
     try {
       //id_disciplines/:id_turma/:id_test
       const formation = request.headers.authorization;
@@ -129,7 +133,7 @@ module.exports = {
     }
 
   },
-  async classesAlunoByTest(request, response, next) {
+  async classesAlunoByTest(request, response) {
     try {
       //id_disciplines/:id_turma/:id_test
       const formation = request.headers.authorization;
@@ -157,7 +161,7 @@ module.exports = {
     }
 
   },
-  async classesDisciplineByTest(request, response, next) {
+  async classesDisciplineByTest(request, response) {
     try {
       //id_disciplines/:id_turma/:id_test
       const formation = request.headers.authorization;
@@ -184,7 +188,7 @@ module.exports = {
     }
 
   },
-  async userByTest(request, response, next) {
+  async userByTest(request, response) {
     try {
       //id_disciplines/:id_turma/:id_test
       const formation = request.headers.authorization;
@@ -213,7 +217,7 @@ module.exports = {
   },
 
   //de determinado aluno
-  async ByTestType(request, response, next) {
+  async ByTestType(request, response) {
     try {
       //id_disciplines/:id_turma/:id_test
       const {id_type}=request.params;
@@ -244,7 +248,7 @@ module.exports = {
 
   },
   //de determinado aluno
-  async ByTestTypeUser(request, response, next) {
+  async ByTestTypeUser(request, response) {
     try {
       //id_disciplines/:id_turma/:id_test
       const {id_user,id_type}=request.params;
@@ -270,6 +274,7 @@ module.exports = {
     }
 
   },
+
   // async checkChoiceTest(request, response, next) {
   //   try {
   //     //id_disciplines/:id_turma/:id_test

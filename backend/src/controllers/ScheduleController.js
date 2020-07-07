@@ -3,7 +3,7 @@ const knex = require('../database');
 const Schedule = require('../models/Schedule');
 
 module.exports = {
-  async index(request, response, next) {
+  async show(request, response) {
 
     try {
 
@@ -13,7 +13,7 @@ module.exports = {
 
   },
 
-  async create(request, response, next) {
+  async create(request, response) {
     try {
 
     } catch (error) {
@@ -21,7 +21,7 @@ module.exports = {
     }
   },
 
-  async update(request, response, next) {
+  async update(request, response) {
     try {
 
     } catch (error) {
@@ -29,7 +29,7 @@ module.exports = {
     }
   },
 
-  async delete(request, response, next) {
+  async delete(request, response) {
     try {
 
     } catch (error) {

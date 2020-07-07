@@ -7,6 +7,7 @@ import Main from './components/Main';
 import Dashboard from '../src/pages/DashboardProfessor/dashboardProfessor';
 import DashboardDisciplinas from '../src/pages/DisciplinasProfessor/disciplinas';
 import DashboardExercicios from '../src/pages/ExerciciosProfessor/exercicios';
+
 import Aula from './pages/Aula';
 import ProvasProfessor from './pages/ProvasProfessor';
 import ExerciciosCriar from './pages/ExerciciosCriar';

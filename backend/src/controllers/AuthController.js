@@ -1,120 +1,101 @@
+require('dotenv').config();
 const bcrypt = require('bcrypt');
 const { uuid } = require('uuidv4');
-
 const sendgrid = require('@sendgrid/mail');
-sendgrid.setApiKey('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');//deve ir para o arquivo .env
-
-const BASEURL = "http://localhost:3333/reset";//deve ir para o arquivo .env
-
+sendgrid.setApiKey(process.env.SENDGRID_API_KEY);
+const { getMessage } = require('../helpers/messages');
+const { generateJwt, generateRefreshJwt } = require('../helpers/jwt');
 const User = require('../models/User');
-const { update } = require('../database');
-//const email = require('../utils/email');//criar emails
+const salt = 10;
 
 module.exports = {
-  async login(request, response, next) {
+  async signIn(request, response) {
     const { email, password } = request.body;
 
-    try {
+    const user = await User.query().findOne({ email });
 
-      const user = await User.query().findOne({ email });
+    const match = user ? bcrypt.compareSync(password, user.password) : null;
+    if (!match) return response.jsonBadRequest(null, getMessage('auth.signin.invalid'));
 
-      if (!user) {
-        return response.status(404).json({ error: "User is not registered" });
-      }
+    const token = generateJwt({ id: user.id });
+    const refreshToken = generateRefreshJwt({ id: user.id });
 
-      if (user.email == email && (await bcrypt.compare(password, user.password))) {
+    return response.jsonSuccess(user, getMessage('auth.signin.success'), { token, refreshToken });
+  },
 
-        return response.status(200).json({ login: true, message: "Success" });
+  async signUp(request, response) {
+    const { first_name, last_name, email, password } = request.body;
 
-      } else {
+    const user = await User.query().findOne({ email });
 
-        return response.status(401).json({ login: false, message: "Not Allowed" });
 
-      }
+    if (user) return response.jsonBadRequest(null, getMessage('auth.signup.email_exists'));
 
-    } catch (error) {
-      next(error);
-    }
+    const hash = bcrypt.hashSync(password, salt);
+    const newUser = await User.query().insert({ first_name, last_name, email, password: hash });
+
+    const token = generateJwt({ id: newUser.id });
+    const refreshToken = generateRefreshJwt({ id: newUser.id });
+
+    return response.jsonSuccess(newUser, getMessage('auth.signup.success'), { token, refreshToken });
 
   },
 
-  async forget(request, response, next) {
+  async forgot(request, response) {
     const { email } = request.body;
-    const code = uuid();
-    const url = `${BASEURL}/${code}`;
 
-    try {
+    let user = await User.query().findOne({ email });
 
-      let user = await User.query().findOne({ email });
+    const code = generateJwt({ id: user.id });
+    const url = `${process.env.BASE_URL}/reset/${code}`;
 
-      if (!user) {
-        return response.status(404).json({ error: "User is not registered" });
-      }
-
-
-      if (user.forget == null) {
-
-        user = await User.query().update({ forget: code }).where('id', user.id);
-
-        const data = {
-          to: email,
-          from: 'filipe.gsantos13@gmail.com',
-          subject: 'Solicitação de Alteração de Senha',
-          text: 'Solicitação de Alteração de Senha',
-          html: `<h2>Caso você tenha solicitado a troca de senha clique no link a baixo</h2><br>
-              <a href="${url}" target="_blank" >Clique aqui para mudar sua senha</a><br>
-              <small style="font-weight:bold">Atenção a link expira meia-noite</small>`,
-        }
-
-        await sendgrid.send(data, (error, result) => {
-          if (error) {
-            return response.status(400).json({ error: error });
-          }
-          else {
-            return response.status(200).json({ error: "email has been sent, kindly activate your account" });
-          }
-        });
-
-      }
-      return response.status(404).json({ error: "not permited" });
-
-    } catch (error) {
-      next(error);
+    const data = {
+      to: email,
+      from: process.env.SENDGRID_FROM,
+      subject: process.env.SENDGRID_SUBJECT,
+      text: process.env.SENDGRID_TEXT,
+      html: process.env.SENDGRID_HTML
     }
+
+    if (!user) return response.jsonBadRequest(null, getMessage('auth.forgot.email_not_exists'));
+
+    if (user.forget === null) {
+
+      user = await User.query().update({ forget: code }).where('id', user.id);
+
+      const { error } = await sendgrid.send(data);
+      if (error) {
+        user = await User.query().update({ forget: null }).where('id', user.id);
+        return response.jsonServerError(null, getMessage('auth.forgot.email_server'), { error });
+      }
+
+      return response.jsonSuccess(user, getMessage('auth.forgot.success'));
+    }
+    return response.jsonUnauthorized(null, getMessage('auth.forgot.forget_exists'));
+
   },
 
-  async reset(request, response, next) {
-    const { forget } = request.params;
-    const { password, repeatpassaword } = request.body;
+  async reset(request, response) {
+    const { code } = request.params;
+    const { password, password_confirmation } = request.body;
 
-    if (!forget) {
-      return response.status(400).json({ error: "Code to reset password does not exist" });
+    if (!code) return response.jsonUnauthorized(null, getMessage('auth.reset.code_not_exists'));
+
+    let user = await User.query().findOne({ forget: code });
+
+    if (user && (password_confirmation === password)) {
+
+      const newPassword = await bcrypt.hash(password, salt);
+
+      user = await User.query().update({
+        password: newPassword,
+        forget: null,
+        updated_at: new Date()
+      }).where('id', user.id);
+
+      return response.jsonSuccess(user, getMessage('auth.forgot.success'));
     }
-    try {
-      let user = await User.query().findOne({ forget });
 
-      console.log('criou')
-      if ((user.forget == forget) && (password == repeatpassaword)) {
-        console.log(user.forget == forget)
-
-        const salt = await bcrypt.genSalt();
-        const hashedPassword = await bcrypt.hash(password, salt);
-
-        console.log(hashedPassword)
-
-        user = await User.query().update({
-          password: hashedPassword,
-          forget: null,
-          updated_at: new Date()
-        }).where('id', user.id);
-
-        return response.status(200).json({ error: "Password changed successfully" });
-      }
-
-      return response.status(400).json({ error: "Incorrect password" });
-
-    } catch (error) {
-      next(error);
-    }
+    return response.jsonBadRequest(null, getMessage('auth.reset.invalid'));
   },
 }

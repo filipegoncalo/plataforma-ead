@@ -9,8 +9,8 @@ exports.seed = function (knex) {
             teacher: 1,
             discipline_id:1,
             link:"url do jitsi",
-            name:"4° ano",
-            schedule:"2020-06-10 09:00:00"
+            name:"matematica",
+            institution:"etec"
           },
 
         ]);
