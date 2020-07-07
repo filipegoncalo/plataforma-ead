@@ -14,6 +14,7 @@ import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
 import { Link } from 'react-router-dom';
 import MenuRight from '../../components/MenuRight';
+import {CheckCircle,Error} from '@material-ui/icons';
 
 const items = [
     { name: 'home', label: 'Home', icone: <HomeIcon style={{ color: 'white'}}/>, link: '/dashboard' },
@@ -44,6 +45,18 @@ const info= {
     ],
 
 }
+const alunos=[
+    {
+        id:"1",
+        nome:"Amanda Pereira Oliveira",
+        icone:<CheckCircle className="green"/>
+    },
+    {
+        id:"2",
+        nome:"Roberto da Silva Costa",
+        icone:<Error className="orange"/>
+    }
+]
 const {trofeus,lista}=info;
 
 function Perfil() {
@@ -106,7 +119,7 @@ function Perfil() {
                         </div>
                     </div>
                     {/* <ListarAtividade info={info}/> */}
-                    <MenuRight></MenuRight>
+                    <MenuRight alunos={alunos}></MenuRight>
                 </div>
             </div>
         )

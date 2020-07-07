@@ -6,7 +6,7 @@
   -ms-transition: 0.5s ease;
 }
 .o-scroll {
-  max-height: 450px;
+  max-height: 600px;
   overflow-y: auto;
   scrollbar-width: thin;
 }
@@ -50,6 +50,40 @@
 }
 .o-box-conteudo {
   display: flex;
+  flex-wrap: wrap;
+  max-height: 600px;
+  overflow-y: auto;
+  scrollbar-width: thin;
+}
+.o-box-conteudo::-webkit-scrollbar,
+.o-box-conteudo::-moz-scrollbar {
+  width: 11px;
+}
+.o-box-conteudo.o-purple {
+  scrollbar-color: #282544 #F9F9F9;
+}
+.o-box-conteudo.o-purple::-webkit-scrollbar-track,
+.o-box-conteudo.o-purple::-moz-track {
+  background: #F9F9F9;
+}
+.o-box-conteudo.o-purple::-webkit-scrollbar-thumb,
+.o-box-conteudo.o-purple::-moz-thumb {
+  background-color: #282544;
+  border-radius: 6px;
+  border: 3px solid #F9F9F9;
+}
+.o-box-conteudo.o-blue {
+  scrollbar-color: #3185FC #ffffff;
+}
+.o-box-conteudo.o-blue::-webkit-scrollbar-track,
+.o-box-conteudo.o-blue::-moz-track {
+  background: #3185FC;
+}
+.o-box-conteudo.o-blue::-webkit-scrollbar-thumb,
+.o-box-conteudo.o-blue::-moz-thumb {
+  background-color: #3185FC;
+  border-radius: 6px;
+  border: 3px solid #fff;
 }
 .o-box-conteudo .card {
   display: flex;
@@ -57,7 +91,7 @@
   justify-content: center;
   align-items: center;
   width: 25.21%;
-  margin-bottom: 30px;
+  margin-bottom: 50px;
   border-radius: 10px;
   margin-left: 6.17%;
   background-color: #0059C8;

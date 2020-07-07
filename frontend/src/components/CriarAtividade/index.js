@@ -55,11 +55,11 @@ function ListarAtividade({info}) {
                     </div>
                         
                 </div>
-             <Button variant="contained" type="submit" className="o-btn blue o-ml-6"  startIcon={<Add/>}>Adicionar pergunta</Button>
-             <div className="o-position-button">
-                 <Button variant="contained" type="button" className="o-btn blue o-mr-5"  startIcon={<CancelSharp/>}>Cancelar</Button>
-                 <Button variant="contained" type="button" className="o-btn green"  startIcon={<SaveSharp/>}>Salvar</Button>
-             </div>
+                <Button variant="contained" type="submit" className="o-btn blue o-ml-6"  startIcon={<Add/>}>Adicionar pergunta</Button>
+                <div className="o-position-button">
+                    <Button variant="contained" type="button" className="o-btn blue o-mr-5"  startIcon={<CancelSharp/>}>Cancelar</Button>
+                    <Button variant="contained" type="button" className="o-btn green"  startIcon={<SaveSharp/>}>Salvar</Button>
+                </div>
             </form>
 
          </div>

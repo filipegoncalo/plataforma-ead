@@ -27,7 +27,7 @@ function Main({items, atividade}) {
                 </div>
             </div>
             <div className="o-pt-2">
-                <div className="o-box-conteudo">
+                <div className="o-box-conteudo o-purple">
                     {atividade.map(({ name, link, ...rest }) => (
                     <Link to={link} style={{backgroundImage:`url(${imgStudy})`}} className="card text-center">
                         <h3 >{name}</h3>

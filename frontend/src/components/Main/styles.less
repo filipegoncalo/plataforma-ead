@@ -2,7 +2,7 @@
 
 .row {
     margin-left: 0px;
-    margin-right: 0px;
+    margin-right: 0px; 
 }
 .tituloMateria {
     margin-left: 20px;
@@ -10,13 +10,15 @@
 } 
 .o-box-conteudo{
     display: flex;
+    flex-wrap: wrap;
+    .o-scroll();
     .card {
         display: flex;
         flex-direction: row;
         justify-content: center;
         align-items: center;
         width: 25.21%;
-        margin-bottom: 30px;
+        margin-bottom: 50px;
         border-radius: 10px;
         margin-left: 6.17% ;
         background-color: #0059C8;

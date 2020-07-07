@@ -13,6 +13,8 @@ import ExerciciosCriar from './pages/ExerciciosCriar';
 import ListarAtividadeScreen from './pages/ListarAtividadeScreen';
 import CriarAtividade from './pages/CriarAtividade';
 import Perfil from './pages/Perfil';
+import LinkTurma from './pages/LinkTurma';
+import Avaliacao from './pages/Avaliacao';
 
 
 function Routes() {
@@ -31,6 +33,8 @@ function Routes() {
                 <Route component={Aula} path='/aula' />
                 <Route component={CriarAtividade} path='/quiz/criar' />
                 <Route component={Perfil} path='/perfil' />
+                <Route component={LinkTurma} path='/turma' />
+                <Route component={Avaliacao} path='/avaliacao' />
             </Switch>
         </BrowserRouter>
     )
