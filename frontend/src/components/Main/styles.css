@@ -6,7 +6,7 @@
   -ms-transition: 0.5s ease;
 }
 .o-scroll {
-  max-height: 600px;
+  max-height: 500px;
   overflow-y: auto;
   scrollbar-width: thin;
 }
@@ -51,7 +51,7 @@
 .o-box-conteudo {
   display: flex;
   flex-wrap: wrap;
-  max-height: 600px;
+  max-height: 500px;
   overflow-y: auto;
   scrollbar-width: thin;
 }

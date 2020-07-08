@@ -1,5 +1,5 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
-import React, { Component } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import imgperfil from '../../assets/image7.png';
 import '../../assets/setup.css';
@@ -7,6 +7,7 @@ import '../MenuLateral/MenuLateral.css';
 import InsertInvitationIcon from '@material-ui/icons/InsertInvitationOutlined';
 import AccessTimeIcon from '@material-ui/icons/AccessTime';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
+import {useHistory} from 'react-router';
 
 var data = new Date();
 var mes  = data.getMonth()
@@ -22,6 +23,14 @@ var str_hora = hora + ':' + min;
 // Menu Lateral - 7 Campos
 
 function MenuLateral({ items }){
+    const history = useHistory();
+
+    function handleSair(event){
+        event.preventDefault();
+        localStorage.clear();
+        history.push("/");
+    }
+
     return(
             <div className="o-menu bg-color menuComponente ">
                 <nav className="AvatarTexto">
@@ -50,7 +59,7 @@ function MenuLateral({ items }){
                         ))}
                     </ul>
                         <li className="nav flex-column botao-sair">
-                            <Link to={"/"} className="nav-link ">
+                            <Link onClick={handleSair} className="nav-link ">
                                <ExitToAppIcon style={{ color: 'white'}}/>   Sair
                             </Link>
                         </li>

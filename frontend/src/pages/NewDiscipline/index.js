@@ -1,6 +1,7 @@
 import React, { Component, useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import api from '../../services/api';
+import AddCircleIcon from '@material-ui/icons/AddCircle';
 
 //redirecionamento
 import { useHistory, Redirect } from "react-router-dom";
@@ -17,32 +18,28 @@ import {
 import { makeStyles } from '@material-ui/core/styles';
 
 
-function Login() {
+function NewDiscipline() {
   const history = useHistory();
-//  const [redirect, setRedirect] = useState("");
+  const [redirect, setRedirect] = useState("");
   const [open, setOpen] = useState(false);
+
   const [formData, setFormData] = useState({
-    email: "william@gmail.com",
-    password: "12345678"
+    name: "",
+    institution: ""
   })
 
 
-  function handleToggle() {
+  function handleToggle(event) {
+    event.preventDefault();
     setOpen(!open);
   }
 
   function submit(event) {
     //event.preventDefault();
-    const { email, password } = formData;
+    const { name, institution } = formData;
     //console.log(formData);
-    api.post('auth/sign-in', { "email": email, "password": password }).then((response) => {
-      const { data } = response;
-      const { token } = data.metadata;
-      const {first_name, last_name } = data.data;//email,level,formation,institution,genre,datebirth,photo,score,curriculum
-
-      localStorage.setItem('first_name', first_name);
-      localStorage.setItem('last_name', last_name);
-      localStorage.setItem('token', token);
+    api.post('dashboard/disciplina/', { "name": name, "institution": institution }).then((response) => {
+      alert("Cadastrado com Sucesso")
 
       history.push("dashboard");
 
@@ -73,26 +70,19 @@ function Login() {
   }
   else {
     return (
-      <div>
-        <div className="c-botao">
-          <Button
-            className="o-btn blue"
-            variant="contained"
-            color="primary"
-            onClick={handleToggle}
-          >
-            Entrar
-           </Button>
-        </div>
-        <Dialog open={open} onClose={handleToggle}  aria-labelledby="form-dialog-title">
+    <>
+         <Link className="card add text-center"  onClick={handleToggle}>
+            <AddCircleIcon /><h3 className="adicionar_texto"> &nbsp;Adicionar</h3>
+        </Link>
+        <Dialog open={open} onClose={handleToggle} compo aria-labelledby="form-dialog-disciplina">
           <div className="o-center o-espaco-padrao o-text-center">
-            <DialogTitle id="form-dialog-title">Entrar</DialogTitle>
+            <DialogTitle id="form-dialog-disciplina">Entrar</DialogTitle>
             <DialogContent>
               <div className={useStyles.root}>
                 <div>
                   <TextField
-                    id="email"
-                    label="E-mail"
+                    id="nomeDisciplina"
+                    label="Nome da Disciplina"
                     variant="outlined"
                     name="email"
                     onChange={MudaInput}
@@ -100,11 +90,10 @@ function Login() {
                   <br />
                   <br />
                   <TextField
-                    id="senha"
-                    label="Senha"
-                    type="password"
+                    id="instituicao"
+                    label="Instituição"
                     variant="outlined"
-                    name="password"
+                    name="Instituição"
                     onChange={MudaInput}
                   />
                 </div>
@@ -118,18 +107,24 @@ function Login() {
                   color="primary"
                   onClick={submit}
                 >
-                  Entrar
+                  Salvar
+                 </Button>
+
+                 <Button
+                  className="o-btn green"
+                  variant="contained"
+                  color="primary"
+                  
+                >
+                  Cancelar
                  </Button>
               </div>
             </DialogActions>
-            <div>
-              <p>Ainda não se cadastrou? <Link to='/cadastro'>Cadastro</Link></p>
-            </div>
           </div>
         </Dialog>
-      </div>
+    </>
 
     )
   }
 }
-export default Login;
+export default NewDiscipline;
