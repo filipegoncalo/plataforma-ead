@@ -4,12 +4,12 @@ const router = express.Router();
 
 const UserController = require('../controllers/UserController');
 
-const { userUpdate, userDelete } = require('../validators/profile')
+const { userUpdate, userDelete } = require('../validators/profile');
 
-router.get('/', UserController.show);
+router.get('/profile', UserController.show);
 
-router.put('/:id', userUpdate, UserController.update);
+router.put('/profile/:id', userUpdate, UserController.update);
 
-router.delete('/:id', userDelete, UserController.delete);
+router.delete('/profile/:id', userDelete, UserController.delete);
 
 module.exports = router;

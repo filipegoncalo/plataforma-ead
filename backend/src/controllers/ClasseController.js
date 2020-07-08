@@ -4,10 +4,8 @@ const Classe = require('../models/Classe');
 
 module.exports = {
   async byDiscipline(request, response) {
-    const discipline_id = request.headers.authorization;
+    const { userId } = request; 
 
-
-    try {
       const discipline = await Discipline.query().findById(discipline_id);
 
       if (!discipline) {
@@ -19,10 +17,7 @@ module.exports = {
       }
 
       return response.status(401).json({ error: 'Operation not permited.' });
-
-    } catch (error) {
-      next(error);
-    }
+    
 
   },
 

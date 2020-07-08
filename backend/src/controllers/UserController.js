@@ -16,9 +16,9 @@ module.exports = {
     const { body } = request;
 
     const fields = ['first_name', 'last_name', 'formation', 'institution',
-      'genre', 'datebirth', 'document', 'photo', 'curriculum'];
+      'genre', 'datebirth', 'document', 'photo', 'curriculum']; 
 
-    //if(userId !== id) return response.jsonUnauthorized(null);
+    if(userId != id) return response.jsonUnauthorized(null);
 
     const user = await User.query().findById(id);
 

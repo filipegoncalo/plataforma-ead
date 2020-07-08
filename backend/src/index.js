@@ -1,7 +1,17 @@
 const express = require('express');
+var bodyParser = require('body-parser');
 const cors = require('cors');
+
+require('dotenv').config();
+
+const app = express();
+
 const response = require('./middlewares/response');
 const checkJwt = require('./middlewares/jwt');
+
+app.use(cors());
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
 
 const Auth = require('./routes/AuthRoutes');
 const Profile = require('./routes/ProfileRoutes');
@@ -10,21 +20,16 @@ const Classes = require('./routes/ClassesRoutes');
 const Tests = require('./routes/TestsRoutes');
 const Questions = require('./routes/QuestionsRoutes');
 
-const app = express();
 
 app.use(response);
 app.use(checkJwt);
 
-app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
-app.use(cors());
-
 app.use('/auth', Auth);
-app.use('/profile', Profile);
+app.use('/dashboard', Profile);
 app.use('/dashboard', Disciplines);
-app.use('/dashboard', Classes);
-app.use('/dashboard', Tests);
-app.use('/dashboard', Questions);
+app.use('/dashboard/disciplina', Classes);
+app.use('/dashboard/disciplina', Tests);
+app.use('/dashboard/disciplina/testes', Questions);
 
-const port = 3333; //|| process.env.PORT;
+const port = 3333 //process.env.PORT ||;
 app.listen(port, () => console.log(`API rodando na porta: ${port}...`));
