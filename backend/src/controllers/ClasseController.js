@@ -4,58 +4,61 @@ const Classe = require('../models/Classe');
 
 module.exports = {
   async byDiscipline(request, response) {
-    const { userId } = request; 
+    const { userId } = request;
+    const { discipline_id } = request.headers;
 
-      const discipline = await Discipline.query().findById(discipline_id);
+    const discipline = await Discipline.query().findById(discipline_id);
 
-      if (!discipline) {
-        return response.status(404).json({ error: "Discipline doesn't exist" });
-      }
-      if(discipline.id == discipline_id){
-        const classes = await Classe.query().select('name').where('discipline_id', discipline_id);
-        return response.status(201).json(classes);
-      }
+    if (!discipline) return response.jsonNotFound(null, 'Disciplina não existe');
 
-      return response.status(401).json({ error: 'Operation not permited.' });
+    const classes = await Classe.query().select('*').where('teacher', userId).where('discipline_id', discipline_id);
+
+    return response.jsonSuccess(classes);
+
+  },
+
+  async byTeachear(request, response) {
+    const { userId: teacher } = request;
+
+    const user = await User.query().findById(teacher);
+
+    if (!user) return response.jsonNotFound(null, 'Disciplina não existe');
+
+    const classes = await Classe.query().select('*').where('teacher', teacher);
     
+    return response.jsonSuccess(classes);
+
 
   },
 
   async create(request, response) {
-    const { link, name, institution } = request.body;
-    const discipline_id = request.headers.authorization;
+    const { userId } = request;
+    const { discipline_id, link, name, institution } = request.body;
 
-    try {
       const discipline = await Discipline.query().findById(discipline_id);
-      
-      if(!discipline){
-        return response.status(404).json({ error: "Discipline does not exist" });
-      }
 
-      if (discipline.id == discipline_id ) {
+      if (!discipline) return response.jsonNotFound(null, "Discipline does not exist");
+      
         const classe = await Classe.query().insert({
-          teacher: discipline.teacher,
+          teacher: userId,
           discipline_id: discipline.id,
           link,
           name,
           institution
         });
-        return response.status(201).json({ message: "Class created successfully" });
-      }
-      return response.status(401).json({ error: 'Operation not permited.' });
-    } catch (error) {
-      next(error);
-    }
+        return response.jsonSuccess(classe);
+
+
   },
 
   async update(request, response) {
     const { link, name, institution } = request.body;
     const { id } = request.params;
     const discipline_id = request.headers.authorization;
-    
+
     try {
       const discipline = await Discipline.query().findById(discipline_id);
-      let classe = await Classe.query().findById( id );
+      let classe = await Classe.query().findById(id);
 
       if (!discipline) {
         return response.status(404).json({ error: "Discipline doesn't exist" });
@@ -65,13 +68,13 @@ module.exports = {
         return response.status(404).json({ error: "Classe does not exist" });
       }
 
-      if(classe.discipline_id == discipline_id ){
+      if (classe.discipline_id == discipline_id) {
         classe = await Classe.query().patch({
           link,
           name,
           institution,
           updated_at: new Date()
-        }).where( {id} );
+        }).where({ id });
 
         return response.status(201).json({ message: "Discipline updated successfully" });
       }
@@ -86,10 +89,10 @@ module.exports = {
   async delete(request, response) {
     const { id } = request.params;
     const discipline_id = request.headers.authorization;
-    
+
     try {
       const discipline = await Discipline.query().findById(discipline_id);
-      let classe = await Classe.query().findById( id );
+      let classe = await Classe.query().findById(id);
 
       if (!discipline) {
         return response.status(404).json({ error: "discipline doesn't exist" });
@@ -99,8 +102,8 @@ module.exports = {
         return response.status(404).json({ error: "classe does not exist" });
       }
 
-      if(classe.discipline_id == discipline_id ){
-        classe = await Classe.query().deleteById( id );
+      if (classe.discipline_id == discipline_id) {
+        classe = await Classe.query().deleteById(id);
 
         return response.status(201).json({ message: "Discipline successfully deleted" });
       }
