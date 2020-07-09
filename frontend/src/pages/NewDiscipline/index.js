@@ -35,26 +35,23 @@ function NewDiscipline() {
   }
 
   function submit(event) {
-    //event.preventDefault();
-    const { name, institution } = formData;
-    //console.log(formData);
-    api.post('dashboard/disciplina/', { "name": name, "institution": institution }).then((response) => {
-      alert("Cadastrado com Sucesso")
+    event.preventDefault();
 
+    const { name, institution } = formData;
+
+    api.post('dashboard/disciplina/', { name, institution}).then((response) => {
+      alert("Cadastrado com Sucesso")
       history.push("dashboard");
 
     }).catch((error) => {
       console.log(error);
     });
-    //api.get()
   }
 
   function MudaInput(event) {
-    //console.log(event.target.name, event.target.value);
     const { name, value } = event.target;
     setFormData({ ...formData, [name]: value })
-  }
-
+  };
 
   const useStyles = makeStyles((theme) => ({
     root: {
@@ -64,67 +61,60 @@ function NewDiscipline() {
       },
     },
   }));
-
-  if (localStorage.getItem("token") && localStorage.getItem("token").length > 0) {
-    return (<Redirect to="/dashboard" />);
-  }
-  else {
-    return (
+  return (
     <>
-         <Link className="card add text-center"  onClick={handleToggle}>
-            <AddCircleIcon /><h3 className="adicionar_texto"> &nbsp;Adicionar</h3>
-        </Link>
-        <Dialog open={open} onClose={handleToggle} compo aria-labelledby="form-dialog-disciplina">
-          <div className="o-center o-espaco-padrao o-text-center">
-            <DialogTitle id="form-dialog-disciplina">Entrar</DialogTitle>
-            <DialogContent>
-              <div className={useStyles.root}>
-                <div>
-                  <TextField
-                    id="nomeDisciplina"
-                    label="Nome da Disciplina"
-                    variant="outlined"
-                    name="email"
-                    onChange={MudaInput}
-                  />
-                  <br />
-                  <br />
-                  <TextField
-                    id="instituicao"
-                    label="Instituição"
-                    variant="outlined"
-                    name="Instituição"
-                    onChange={MudaInput}
-                  />
-                </div>
+      <Link className="card add text-center" onClick={handleToggle}>
+        <AddCircleIcon /><h3 className="adicionar_texto"> &nbsp;Adicionar</h3>
+      </Link>
+      <Dialog open={open} onClose={handleToggle} compo aria-labelledby="form-dialog-disciplina">
+        <div className="o-center o-espaco-padrao o-text-center">
+          <DialogTitle id="form-dialog-disciplina">Entrar</DialogTitle>
+          <DialogContent>
+            <div className={useStyles.root}>
+              <div>
+                <TextField
+                  id="nomeDisciplina"
+                  label="Nome da Disciplina"
+                  variant="outlined"
+                  name="email"
+                  onChange={MudaInput}
+                />
+                <br />
+                <br />
+                <TextField
+                  id="instituicao"
+                  label="Instituição"
+                  variant="outlined"
+                  name="Instituição"
+                  onChange={MudaInput}
+                />
               </div>
-            </DialogContent>
-            <DialogActions>
-              <div className="c-botao o-center">
-                <Button
-                  className="o-btn green"
-                  variant="contained"
-                  color="primary"
-                  onClick={submit}
-                >
-                  Salvar
+            </div>
+          </DialogContent>
+          <DialogActions>
+            <div className="c-botao o-center">
+              <Button
+                className="o-btn green"
+                variant="contained"
+                color="primary"
+                onClick={submit}
+              >
+                Salvar
                  </Button>
 
-                 <Button
-                  className="o-btn green"
-                  variant="contained"
-                  color="primary"
-                  
-                >
-                  Cancelar
+              <Button
+                className="o-btn green"
+                variant="contained"
+                color="primary"
+              >
+                Cancelar
                  </Button>
-              </div>
-            </DialogActions>
-          </div>
-        </Dialog>
+            </div>
+          </DialogActions>
+        </div>
+      </Dialog>
     </>
 
-    )
-  }
+  )
 }
 export default NewDiscipline;
