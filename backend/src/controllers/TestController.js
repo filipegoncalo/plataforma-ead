@@ -1,332 +1,94 @@
+const Discipline = require('../models/Discipline');
 const Test = require('../models/Test');
 
 module.exports = {
-  async index(request, response, next) {
-    try {
-       // .join('test', '.id', '=', 'point_items.point_id')
-      const results = await Test.query()
-        .select("test.*","u.first_name","last_name","teacher","link","c.name as turma")
-        //.join("classes",".id_classes","=","classes.id")
-        .innerJoin('classes as c', 'test.id_classes', 'c.id')
-        .innerJoin('users as u', 'c.teacher', 'u.id').where("formation","Professor");
-        //where("teste.id","1");
-        //.join("classes",".id_classes","=","classes.id")
-        //.join("classes",".id_classes","=","classes.id")
-      return response.json(results);
+  async byDiscipline(request, response) {
+    const { userId } = request;
+    const { discipline_id } = request.headers;
 
-    } catch (error) {
-      next(error);
-    }
+    const discipline = await Discipline.query().findById(discipline_id);
+
+    if (!discipline) return response.jsonNotFound(null, 'Disciplina não existe');
+
+    if (discipline.teacher != userId) return response.jsonUnauthorized();
+
+    const classes = await Classe.query().select('*').where('teacher', userId).where('discipline_id', discipline_id);
+
+    return response.jsonSuccess(classes);
 
   },
 
-  async addTest(request, response, next) {
-    const { name, type, note } = request.body;
-    const teacher = request.headers.authorization;
+  async byTeachear(request, response) {
+    const { userId: teacher } = request;
 
-    const discipline_id = 1;
+    const user = await User.query().findById(teacher);
 
-    console.log(teacher, discipline_id, name, type, note)
+    if (!user) return response.jsonNotFound(null);
 
-    try {
-      const results = await Test.query()
-        .insert({
-          teacher,
-          discipline_id,
-          name,
-          type,
-          note
-        });
+    const classes = await Classe.query().select('*').where('teacher', teacher);
 
-        console.log(results)
+    return response.jsonSuccess(classes);
+  },
 
-      if(results === true){
-        return response.status(200).json(results);
-      }
-      return response.status(402).json("Erro ao inserir");
+  async create(request, response) {
+    const { userId } = request;
+    const { discipline_id } = request.headers;
+    const {  name, type, note } = request.body;
 
-    } catch (error) {
-      next(error);
+    const discipline = await Discipline.query().findById(discipline_id);
+
+    if (!discipline) return response.jsonNotFound(null, "Discipline não existe");
+
+    const newClasse = await Test.query().insert({
+      teacher: userId,
+      discipline_id: discipline.id,
+      name,
+      type,
+      note
+    });
+    return response.jsonSuccess(newClasse);
+  },
+
+  async update(request, response) {
+    const { id } = request.params;
+    const { userId } = request;
+    const { body } = request;
+
+    const fields = ['link', 'name', 'institution'];
+
+    const classe = await Classe.query().findById(id);
+
+    if (!classe) return response.jsonNotFound(null, "Turma não existe");
+
+    fields.map((fieldName) => {
+      const newValue = body[fieldName];
+      if (newValue !== undefined) classe[fieldName] = newValue;
+    });
+
+    if (classe.teacher === userId) {
+
+      const updateClasse = await Classe.query().patch(classe).where('id', id).where('teacher', userId);
+
+      return response.jsonSuccess(updateClasse);
     }
+    return response.jsonUnauthorized();
 
   },
 
-  async userByDisciplineClass(request, response, next) {
-    try {
-      //id_disciplines/:id_turma/:id_test
-      const formation = request.headers.authorization;
-      const {id_disciplines,id_classes,id_test}=request.params;
+  async delete(request, response) {
+    const { id } = request.params;
+    const { userId } = request;
 
-      const results = await Test.query()
-        .select("test.id as id_test","test.name as nameProva","test.id_type","test.note")
-        .select("u.first_name","u.last_name")
-        .select("c.id as id_classe","c.teacher","c.link","c.name as turma")
-        .select("d.id as id_disciplines","d.name as name_discipline","d.description as discipline_description")
-        .innerJoin('classes as c', 'test.id_classes', 'c.id')
-        .innerJoin('users as u', 'c.teacher', 'u.id')
-        .innerJoin("disciplines as d","c.discipline_id","d.id")
-        .where("d.id",id_disciplines)
-        .where("c.id",id_classes)
-        .where("test.id",id_test)
-        .where("formation",formation);
+    const classe = await Classe.query().findById(id);
 
-        if(results!=""){
-          return response.status(200).json(results);
-        }
-        return response.status(404).send("Informação não encontrada");
+    if (!classe) return response.jsonNotFound(null, "Turma não existe");
 
-    } catch (error) {
-      next(error);
+    if (classe.teacher === userId) {
+      const delClasse = await Classe.query().delete().where('id', id).where('teacher', userId);;
+
+      return response.jsonSuccess(delClasse);
     }
 
-  },
-  // async teacherByDisciplineClass(request, response, next) {
-  //   try {
-  //     //id_disciplines/:id_turma/:id_test
-  //     const {id_disciplines,id_classes,id_test}=request.params;
-
-  //     const results = await Test.query()
-  //       .select("test.id as id_test","test.name as nameProva","test.id_type","test.note")//"u.first_name","u.last_name","c.teacher","link","c.name as turma"
-  //       .select("u.first_name","u.last_name")
-  //       .select("c.id as id_classe","c.teacher","c.link","c.name as turma")
-  //       .select("d.id as id_disciplines","d.name as name_discipline","d.description as discipline_description")
-  //       .innerJoin('classes as c', 'test.id_classes', 'c.id')
-  //       .innerJoin('users as u', 'c.teacher', 'u.id')
-  //       .innerJoin("disciplines as d","c.discipline_id","d.id")
-  //       .where("d.id",id_disciplines)
-  //       .where("c.id",id_classes)
-  //       .where("test.id",id_test)
-  //       .where("formation","Professor");
-  //       if(results!=""){
-  //         return response.status(200).json(results);
-  //       }
-  //       return response.status(404).send("Informação não encontrada");
-
-  //   } catch (error) {
-  //     next(error);
-  //   }
-
-  // },
-  async classesByTest(request, response) {
-    try {
-      //id_disciplines/:id_turma/:id_test
-      const formation = request.headers.authorization;
-      const {id_classes}=request.params;
-
-      const results = await Test.query()
-        .select("test.id as id_test","test.name as nameProva","test.id_type","test.note")//"u.first_name","u.last_name","c.teacher","link","c.name as turma"
-        .select("u.first_name","u.last_name")
-        .select("c.id as id_classe","c.teacher","c.link","c.name as turma")
-        .select("d.id as id_disciplines","d.name as name_discipline","d.description as discipline_description")
-        .innerJoin('classes as c', 'test.id_classes', 'c.id')
-        .innerJoin('users as u', 'c.teacher', 'u.id')
-        .innerJoin("disciplines as d","c.discipline_id","d.id")
-        .where("c.id",id_classes)
-        .where("formation",formation);
-      if(results!=""){
-        return response.status(200).json(results);
-      }
-        return response.status(404).send("Informação não encontrada");
-
-    } catch (error) {
-      next(error);
-    }
-
-  },
-  async classesAlunoByTest(request, response) {
-    try {
-      //id_disciplines/:id_turma/:id_test
-      const formation = request.headers.authorization;
-      const {id_user,id_classes }=request.params;
-
-      const results = await Test.query()
-        .select("test.id as id_test","test.name as nameProva","test.id_type","test.note")//"u.first_name","u.last_name","c.teacher","link","c.name as turma"
-        .select("u.first_name","u.last_name")
-        .select("c.id as id_classe","c.teacher","c.link","c.name as turma")
-        .select("d.id as id_disciplines","d.name as name_discipline","d.description as discipline_description")
-        .innerJoin('classes as c', 'test.id_classes', 'c.id')
-        .innerJoin('users as u', 'c.teacher', 'u.id')
-        .innerJoin("disciplines as d","c.discipline_id","d.id")
-        .where("c.id",id_classes)
-        .where("u.id", id_user)
-        .where("formation",formation);
-       // return response.status(200).json(id_classes);
-      if(results!=""){
-        return response.status(200).json(results);
-      }
-        return response.status(404).send("Informação não encontrada");
-
-    } catch (error) {
-      next(error);
-    }
-
-  },
-  async classesDisciplineByTest(request, response) {
-    try {
-      //id_disciplines/:id_turma/:id_test
-      const formation = request.headers.authorization;
-      const {id_user, id_discipline }=request.params;
-
-      const results = await Test.query()
-        .select("test.id as id_test","test.name as nameProva","test.id_type","test.note")//"u.first_name","u.last_name","c.teacher","link","c.name as turma"
-        .select("u.first_name","u.last_name")
-        .select("c.id as id_classe","c.teacher","c.link","c.name as turma")
-        .select("d.id as id_disciplines","d.name as name_discipline","d.description as discipline_description")
-        .innerJoin('classes as c', 'test.id_classes', 'c.id')
-        .innerJoin('users as u', 'c.teacher', 'u.id')
-        .innerJoin("disciplines as d","c.discipline_id","d.id")
-        .where("u.id", id_user)
-        .where("d.id",id_discipline)
-        .where("formation",formation);
-      if(results!=""){
-        return response.status(200).json(results);
-      }
-        return response.status(404).send("Informação não encontrada");
-
-    } catch (error) {
-      next(error);
-    }
-
-  },
-  async userByTest(request, response) {
-    try {
-      //id_disciplines/:id_turma/:id_test
-      const formation = request.headers.authorization;
-      const { id_user}=request.params;
-
-      const results = await Test.query()
-        .select("test.id as id_test","test.name as nameProva","test.id_type","test.note")//"u.first_name","u.last_name","c.teacher","link","c.name as turma"
-        .select("u.first_name","u.last_name")
-        .select("c.id as id_classe","c.teacher","c.link","c.name as turma")
-        .select("d.id as id_disciplines","d.name as name_discipline","d.description as discipline_description")
-        .innerJoin('classes as c', 'test.id_classes', 'c.id')
-        .innerJoin('users as u', 'c.teacher', 'u.id')
-        .innerJoin("disciplines as d","c.discipline_id","d.id")
-        .where("u.id", id_user)
-        .where("formation",formation);
-       // return response.json("a")
-      if(results!=""){
-        return response.status(200).json(results);
-      }
-        return response.status(404).send("Informação não encontrada");
-
-    } catch (error) {
-      next(error);
-    }
-
-  },
-
-  //de determinado aluno
-  async ByTestType(request, response) {
-    try {
-      //id_disciplines/:id_turma/:id_test
-      const {id_type}=request.params;
-
-      const results = await Test.query()
-        .select("test.id as id_test","test.name as nameProva","test.id_type","test.note")//"u.first_name","u.last_name","c.teacher","link","c.name as turma"
-        .select("u.first_name","u.last_name")
-        .select("c.id as id_classe","c.teacher","c.link","c.name as turma")
-        .select("d.id as id_disciplines","d.name as name_discipline","d.description as discipline_description")
-        .innerJoin('classes as c', 'test.id_classes', 'c.id')
-        .innerJoin('users as u', 'c.teacher', 'u.id')
-        .innerJoin("disciplines as d","c.discipline_id","d.id")
-        .innerJoin("questions as q","test.id","q.id_test")
-        .innerJoin("alternatives as a","q.id_questions","a.id_questions")
-        //.where("test.id",id_test)
-        .where("q.id_type",id_type)
-        //.where("u.id", id_user)
-       // .where("formation","Aluno");
-        
-      if(results!=""){
-        return response.status(200).json(results);
-      }
-        return response.status(404).send("Informação não encontrada");
-
-    } catch (error) {
-      next(error);
-    }
-
-  },
-  //de determinado aluno
-  async ByTestTypeUser(request, response) {
-    try {
-      //id_disciplines/:id_turma/:id_test
-      const {id_user,id_type}=request.params;
-      const results = await Test.query()
-        .select("test.id as id_test","test.name as nameProva","test.id_type","test.note")
-        .select("u.first_name","u.last_name")
-        .select("c.id as id_classe","c.teacher","c.link","c.name as turma")
-        .select("d.id as id_disciplines","d.name as name_discipline","d.description as discipline_description")
-        .innerJoin('classes as c', 'test.id_classes', 'c.id')
-        .innerJoin('users as u', 'c.teacher', 'u.id')
-        .innerJoin("disciplines as d","c.discipline_id","d.id")
-        .innerJoin("questions as q","test.id","q.id_test")
-        .innerJoin("answers as a","q.id_questions","a.id_questions")
-        .where("q.id_type",id_type)
-        .where("u.id", id_user)
-      if(results!=""){
-        return response.status(200).json(results);
-      }
-        return response.status(404).send("Informação não encontrada");
-
-    } catch (error) {
-      next(error);
-    }
-
-  },
-
-  // async checkChoiceTest(request, response, next) {
-  //   try {
-  //     //id_disciplines/:id_turma/:id_test
-  //     const {id_discipline, id_user,id_test,id_test_type}=request.params;
-
-  //     const results = await Test.query()
-  //       .select("test.id as id_test","test.name as nameProva","test.id_type","test.note")//"u.first_name","u.last_name","c.teacher","link","c.name as turma"
-  //       .select("u.first_name","u.last_name")
-  //       .select("c.id as id_classe","c.teacher","c.link","c.name as turma")
-  //       .select("d.id as id_disciplines","d.name as name_discipline","d.description as discipline_description")
-  //       .innerJoin('classes as c', 'test.id_classes', 'c.id')
-  //       .innerJoin('users as u', 'c.teacher', 'u.id')
-  //       .innerJoin("disciplines as d","c.discipline_id","d.id")
-  //       .where("u.id", id_user)
-  //       .where("formation","Aluno");
-  //     if(results!=""){
-  //       return response.status(200).json(results);
-  //     }
-  //       return response.status(404).send("Informação não encontrada");
-
-  //   } catch (error) {
-  //     next(error);
-  //   }
-
-  // },
-  // async checkSimpleTest(request, response, next) {
-  //   try {
-  //     //id_disciplines/:id_turma/:id_test
-  //     const {id_discipline, id_user,id_test,id_test_type}=request.params;
-
-  //     const results = await Test.query()
-  //       .select("test.id as id_test","test.name as nameProva","test.id_type","test.note")//"u.first_name","u.last_name","c.teacher","link","c.name as turma"
-  //       .select("u.first_name","u.last_name")
-  //       .select("c.id as id_classe","c.teacher","c.link","c.name as turma")
-  //       .select("d.id as id_disciplines","d.name as name_discipline","d.description as discipline_description")
-  //       .innerJoin('classes as c', 'test.id_classes', 'c.id')
-  //       .innerJoin('users as u', 'c.teacher', 'u.id')
-  //       .innerJoin("disciplines as d","c.discipline_id","d.id")
-  //       .where("u.id", id_user)
-  //       .where("formation","Aluno");
-  //     if(results!=""){
-  //       return response.status(200).json(results);
-  //     }
-  //       return response.status(404).send("Informação não encontrada");
-
-  //   } catch (error) {
-  //     next(error);
-  //   }
-
-  // },
-  
-
-
-
+    return response.jsonUnauthorized();
+  }
 }

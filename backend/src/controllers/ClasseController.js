@@ -11,6 +11,8 @@ module.exports = {
 
     if (!discipline) return response.jsonNotFound(null, 'Disciplina não existe');
 
+    if (discipline.teacher != userId) return response.jsonUnauthorized();
+
     const classes = await Classe.query().select('*').where('teacher', userId).where('discipline_id', discipline_id);
 
     return response.jsonSuccess(classes);
@@ -22,96 +24,71 @@ module.exports = {
 
     const user = await User.query().findById(teacher);
 
-    if (!user) return response.jsonNotFound(null, 'Disciplina não existe');
+    if (!user) return response.jsonNotFound(null);
 
     const classes = await Classe.query().select('*').where('teacher', teacher);
-    
+
     return response.jsonSuccess(classes);
-
-
   },
 
   async create(request, response) {
     const { userId } = request;
-    const { discipline_id, link, name, institution } = request.body;
+    const { discipline_id } = request.headers;
+    const { link, name, institution } = request.body;
 
-      const discipline = await Discipline.query().findById(discipline_id);
+    const discipline = await Discipline.query().findById(discipline_id);
 
-      if (!discipline) return response.jsonNotFound(null, "Discipline does not exist");
-      
-        const classe = await Classe.query().insert({
-          teacher: userId,
-          discipline_id: discipline.id,
-          link,
-          name,
-          institution
-        });
-        return response.jsonSuccess(classe);
+    if (!discipline) return response.jsonNotFound(null, "Discipline não existe");
 
-
+    const newClasse = await Classe.query().insert({
+      teacher: userId,
+      discipline_id: discipline.id,
+      link,
+      name,
+      institution
+    });
+    return response.jsonSuccess(newClasse);
   },
 
   async update(request, response) {
-    const { link, name, institution } = request.body;
     const { id } = request.params;
-    const discipline_id = request.headers.authorization;
+    const { userId } = request;
+    const { body } = request;
 
-    try {
-      const discipline = await Discipline.query().findById(discipline_id);
-      let classe = await Classe.query().findById(id);
+    const fields = ['link', 'name', 'institution'];
 
-      if (!discipline) {
-        return response.status(404).json({ error: "Discipline doesn't exist" });
-      }
+    const classe = await Classe.query().findById(id);
 
-      if (!classe) {
-        return response.status(404).json({ error: "Classe does not exist" });
-      }
+    if (!classe) return response.jsonNotFound(null, "Turma não existe");
 
-      if (classe.discipline_id == discipline_id) {
-        classe = await Classe.query().patch({
-          link,
-          name,
-          institution,
-          updated_at: new Date()
-        }).where({ id });
+    fields.map((fieldName) => {
+      const newValue = body[fieldName];
+      if (newValue !== undefined) classe[fieldName] = newValue;
+    });
 
-        return response.status(201).json({ message: "Discipline updated successfully" });
-      }
+    if (classe.teacher === userId) {
 
-      return response.status(401).json({ error: 'Operation not permited.' });
+      const updateClasse = await Classe.query().patch(classe).where('id', id).where('teacher', userId);
 
-    } catch (error) {
-      next(error);
+      return response.jsonSuccess(updateClasse);
     }
+    return response.jsonUnauthorized();
   },
 
   async delete(request, response) {
     const { id } = request.params;
-    const discipline_id = request.headers.authorization;
+    const { userId } = request;
 
-    try {
-      const discipline = await Discipline.query().findById(discipline_id);
-      let classe = await Classe.query().findById(id);
+    const classe = await Classe.query().findById(id);
 
-      if (!discipline) {
-        return response.status(404).json({ error: "discipline doesn't exist" });
-      }
+    if (!classe) return response.jsonNotFound(null, "Turma não existe");
 
-      if (!classe) {
-        return response.status(404).json({ error: "classe does not exist" });
-      }
+    if (classe.teacher === userId) {
+      const delClasse = await Classe.query().delete().where('id', id).where('teacher', userId);;
 
-      if (classe.discipline_id == discipline_id) {
-        classe = await Classe.query().deleteById(id);
-
-        return response.status(201).json({ message: "Discipline successfully deleted" });
-      }
-
-      return response.status(401).json({ error: 'Operation not permited.' });
-
-    } catch (error) {
-      next(error);
+      return response.jsonSuccess(delClasse);
     }
+
+    return response.jsonUnauthorized();
   }
 }

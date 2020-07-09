@@ -18,7 +18,7 @@ const Profile = require('./routes/ProfileRoutes');
 const Disciplines = require('./routes/DisciplinesRoutes');
 const Classes = require('./routes/ClassesRoutes');
 const Tests = require('./routes/TestsRoutes');
-const Questions = require('./routes/QuestionsRoutes');
+//const Questions = require('./routes/QuestionsRoutes');
 
 
 app.use(response);
@@ -28,8 +28,8 @@ app.use('/auth', Auth);
 app.use('/dashboard', Profile);
 app.use('/dashboard', Disciplines);
 app.use('/dashboard/disciplina', Classes);
-app.use('/dashboard/disciplina', Tests);
-app.use('/dashboard/disciplina/testes', Questions);
+app.use('/dashboard/disciplina/test', Tests);
+//app.use('/dashboard/disciplina/testes', Questions);
 
 const port = 3333 //process.env.PORT ||;
 app.listen(port, () => console.log(`API rodando na porta: ${port}...`));

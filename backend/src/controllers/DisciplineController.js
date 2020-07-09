@@ -32,9 +32,11 @@ module.exports = {
   },
 
   async update(resquest, response) {
-    const { body } = resquest;
     const { id } = resquest.params;
     const { userId } = resquest;
+    const { body } = resquest;
+
+    if (!id) return response.jsonNotFound(null, 'Disciplina não encontrada');
 
     const fields = ['name', 'institution', 'description'];
 
@@ -49,11 +51,13 @@ module.exports = {
       if (newValue !== undefined) discipline[fieldName] = newValue;
     });
 
-    if (discipline.teacher === userId) return response.jsonUnauthorized();
+    if (discipline.teacher === userId) {
+      const updateDiscipline = await Discipline.query().patch(discipline).where('id', id).where('teacher', userId);
 
-    const updateDiscipline = await Discipline.query().patch(discipline).where({ id });
+      return response.jsonSuccess(updateDiscipline);
 
-    return response.jsonSuccess(updateDiscipline);
+    }
+    return response.jsonUnauthorized();
 
   },
 
@@ -65,10 +69,12 @@ module.exports = {
 
     if (!discipline) return response.jsonNotFound(null, 'Disciplina não existe');
 
-    if (discipline.teacher !== userId) return response.jsonUnauthorized();
+    if (discipline.teacher === userId) {
+      const delDiscipline = await Classe.query().delete().where('id', id).where('teacher', userId);
 
-    await Discipline.query().deleteById(id);
+      return response.jsonSuccess(delDiscipline);
+    }
 
-    return response.jsonSuccess();
+    return response.jsonUnauthorized();
   }
 }

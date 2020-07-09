@@ -18,7 +18,7 @@ module.exports = {
     const fields = ['first_name', 'last_name', 'formation', 'institution',
       'genre', 'datebirth', 'document', 'photo', 'curriculum']; 
 
-    if(userId != id) return response.jsonUnauthorized(null);
+      if (!id) return response.jsonNotFound(null, 'Usuario não encontrado');
 
     const user = await User.query().findById(id);
 
@@ -29,8 +29,13 @@ module.exports = {
       if (newValue !== undefined) user[fieldName] = newValue;
     });
     
-    const updatedUser = await User.query().update( user ).where({ id });
-    return response.jsonSuccess(updatedUser);
+    if(user.id === userId){
+
+      const updatedUser = await User.query().update( user ).where({ id });
+      return response.jsonSuccess(updatedUser);
+    }
+
+    return response.jsonUnauthorized();
 
   },
 
