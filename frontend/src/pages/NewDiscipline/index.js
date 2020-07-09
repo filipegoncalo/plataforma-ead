@@ -18,7 +18,7 @@ import {
 import { makeStyles } from '@material-ui/core/styles';
 
 
-function NewDiscipline() {
+function NewDiscipline({flagFunction}) {
   const history = useHistory();
   const [redirect, setRedirect] = useState("");
   const [open, setOpen] = useState(false);
@@ -34,14 +34,23 @@ function NewDiscipline() {
     setOpen(!open);
   }
 
+  const config = {
+    headers: { 
+        'Authorization': `Bearer ${localStorage.getItem('token')}`,
+        'Access-Control-Allow-Origin': '*',
+        crossDomain: true
+     }
+  }
+
   function submit(event) {
     //event.preventDefault();
     const { name, institution } = formData;
     //console.log(formData);
-    api.post('dashboard/disciplina/', { "name": name, "institution": institution }).then((response) => {
-      alert("Cadastrado com Sucesso")
-
-      history.push("dashboard");
+    api.post('dashboard/disciplina', { "name": name, "institution": institution },config).then((response) => {
+      //alert("Cadastrado com Sucesso")
+      //window.location.reload(false);
+      flagFunction();
+      setOpen(!open);
 
     }).catch((error) => {
       console.log(error);
@@ -50,7 +59,7 @@ function NewDiscipline() {
   }
 
   function MudaInput(event) {
-    //console.log(event.target.name, event.target.value);
+    console.log(event.target.name, event.target.value);
     const { name, value } = event.target;
     setFormData({ ...formData, [name]: value })
   }
@@ -65,37 +74,33 @@ function NewDiscipline() {
     },
   }));
 
-  if (localStorage.getItem("token") && localStorage.getItem("token").length > 0) {
-    return (<Redirect to="/dashboard" />);
-  }
-  else {
     return (
     <>
          <Link className="card add text-center"  onClick={handleToggle}>
-            <AddCircleIcon /><h3 className="adicionar_texto"> &nbsp;Adicionar</h3>
+            <AddCircleIcon /><h3 className="adicionar_texto"> &nbsp; Adicionar</h3>
         </Link>
-        <Dialog open={open} onClose={handleToggle} compo aria-labelledby="form-dialog-disciplina">
+        <Dialog open={open} onClose={handleToggle}  aria-labelledby="form-dialog-disciplina">
           <div className="o-center o-espaco-padrao o-text-center">
             <DialogTitle id="form-dialog-disciplina">Entrar</DialogTitle>
             <DialogContent>
               <div className={useStyles.root}>
                 <div>
-                  <TextField
-                    id="nomeDisciplina"
-                    label="Nome da Disciplina"
-                    variant="outlined"
-                    name="email"
-                    onChange={MudaInput}
-                  />
-                  <br />
-                  <br />
-                  <TextField
-                    id="instituicao"
-                    label="Instituição"
-                    variant="outlined"
-                    name="Instituição"
-                    onChange={MudaInput}
-                  />
+                    <TextField
+                      id="instituicao"
+                      label="Instituição"
+                      variant="outlined"
+                      name="institution"
+                      onChange={MudaInput}
+                      />
+                    <br />
+                    <br />
+                    <TextField
+                        id="nomeDisciplina"
+                        label="Nome da Disciplina"
+                        variant="outlined"
+                        name="name"
+                        onChange={MudaInput}
+                    />
                 </div>
               </div>
             </DialogContent>
@@ -114,7 +119,7 @@ function NewDiscipline() {
                   className="o-btn green"
                   variant="contained"
                   color="primary"
-                  
+                  onClick={handleToggle}
                 >
                   Cancelar
                  </Button>
@@ -126,5 +131,4 @@ function NewDiscipline() {
 
     )
   }
-}
 export default NewDiscipline;

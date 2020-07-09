@@ -10,7 +10,7 @@ import AddCircleIcon from '@material-ui/icons/AddCircle';
 import imgStudy from '../../assets/box-study.png';
 import NewDiscipline from '../../pages/NewDiscipline';
 
-function Main({disciplina}) {
+function Main({disciplina,flagFunction}) {
     const nome ="Olá, "+localStorage.getItem("first_name")+" "+localStorage.getItem("last_name");
     return(
         <div className="o-main">
@@ -27,11 +27,11 @@ function Main({disciplina}) {
             <div className="o-pt-2">
                 <div className="o-box-conteudo o-purple">
                     {disciplina.map((item) => (
-                    <Link  style={{backgroundImage:`url(${imgStudy})`}} className="card text-center">
+                    <Link key={Math.random()+""}  style={{backgroundImage:`url(${imgStudy})`}} className="card text-center">
                         <h3 >{item.name}</h3>
                     </Link>
                     ))}
-                    <NewDiscipline/>
+                    <NewDiscipline flagFunction={flagFunction}/>
                 </div>
                 <div className="div-wrapper">
                     <img className="imagem_vip" src={Vip}/>
