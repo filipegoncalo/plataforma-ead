@@ -8,6 +8,8 @@ import InsertInvitationIcon from '@material-ui/icons/InsertInvitationOutlined';
 import EmojiEventsIcon from '@material-ui/icons/EmojiEvents';
 import PlaylistAddCheckIcon from '@material-ui/icons/PlaylistAddCheck';
 
+
+const tipo="provas";
 const items = [
     { name: 'home', label: 'Home', icone: <HomeIcon style={{ color: 'white'}}/>, link: '/dashboard' },
     { name: 'iniciarAula', label: 'Iniciar aula', icone: <ScreenShareIcon style={{ color: 'white'}}/>, link: '/aula' },
@@ -32,7 +34,7 @@ function Provas() {
             <div>
                 <div className="row">
                     <MenuLateral items={items}/>
-                    <Main items={materia} atividade={exercicios}/>
+                    <Main items={materia} tipo={tipo} atividade={exercicios}/>
                 </div>
             </div>
         )

@@ -8,6 +8,8 @@ import InsertInvitationIcon from '@material-ui/icons/InsertInvitationOutlined';
 import EmojiEventsIcon from '@material-ui/icons/EmojiEvents';
 import PlaylistAddCheckIcon from '@material-ui/icons/PlaylistAddCheck';
 
+
+const tipo="Exercicios";
 const items = [
 
     { name: 'home', label: 'Home', icone: <HomeIcon style={{ color: 'white'}}/>, link: '/dashboard'  },
@@ -36,7 +38,7 @@ function Exercicios() {
             <div>
                 <div className="row">
                     <MenuLateral items={items}/>
-                    <DashBoard items={materia} atividade={exercicios}/>
+                    <DashBoard items={materia} tipo={tipo} atividade={exercicios}/>
                 </div>
             </div>
         )
