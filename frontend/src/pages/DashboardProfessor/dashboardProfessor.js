@@ -15,12 +15,12 @@ const items = [
     { name: 'perfil', label: 'Perfil', icone: <PlaylistAddCheckIcon  style={{ color: 'white'}}/>, link: '#' },
 ]
 
-
 const token =localStorage.getItem("token");
 
 
 function DashboardProfessor() {
-
+    
+    const [flag, setFlag] = useState(false);
     const [disciplina,setDisciplina]=useState([]);
     
 
@@ -31,11 +31,11 @@ function DashboardProfessor() {
             crossDomain: true
          }
       }
-    
+        function handleFlag(){
+            setFlag(!flag);
+        }
+
     useEffect(()=>{
-
-
-        console.log(config)
         api.get("dashboard/disciplinas",config).then((response)=>{
             const {status,data}=response;
             setDisciplina(response.data.data);
@@ -44,20 +44,8 @@ function DashboardProfessor() {
             console.log(e)
             return "Nenhuma disciplina Cadastrada";
         });
-        // api.post("dashboard/disciplina/",{
-        //     "name": "Historia da arte",
-        //     "institution": "USP",
-        //     "description": "arquitetura ... "
-        // },config).then((response)=>{
-        //     console.log(response);
-        
-        // }).catch((e)=>{
-        //     console.log(e)
-        //     return "Nenhuma disciplina Cadastrada";
-        // });
 
-
-    },[]);
+    },[flag]);
 
 
     if(localStorage.getItem("token") && localStorage.getItem("token").length>0 ){
@@ -65,7 +53,7 @@ function DashboardProfessor() {
             <div>
                 <div className="row">
                     <MenuLateral items={items}/>
-                    <DashBoard  disciplina={disciplina}/>
+                    <DashBoard  disciplina={disciplina} flagFunction={handleFlag}/>
                 </div>
             </div>
         )

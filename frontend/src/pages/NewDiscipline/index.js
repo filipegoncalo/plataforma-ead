@@ -18,14 +18,15 @@ import {
 import { makeStyles } from '@material-ui/core/styles';
 
 
-function NewDiscipline() {
+function NewDiscipline({ flagFunction }) {
   const history = useHistory();
   const [redirect, setRedirect] = useState("");
   const [open, setOpen] = useState(false);
 
   const [formData, setFormData] = useState({
     name: "",
-    institution: ""
+    institution: "",
+    description: ""
   })
 
 
@@ -34,14 +35,26 @@ function NewDiscipline() {
     setOpen(!open);
   }
 
+  const config = {
+    headers: {
+      'Authorization': `Bearer ${localStorage.getItem('token')}`,
+      'Access-Control-Allow-Origin': '*',
+      crossDomain: true
+    }
+  }
+
   function submit(event) {
-    event.preventDefault();
-
-    const { name, institution } = formData;
-
-    api.post('dashboard/disciplina/', { name, institution}).then((response) => {
-      alert("Cadastrado com Sucesso")
-      history.push("dashboard");
+    //event.preventDefault();
+    const { name, institution, description } = formData;
+    //console.log(formData);
+    api.post('dashboard/disciplina', { 
+      "name": name, 
+      "institution": institution, 
+      "description": description 
+    }, config).then((response) => {
+      
+      flagFunction();
+      setOpen(!open);
 
     }).catch((error) => {
       console.log(error);
@@ -51,7 +64,8 @@ function NewDiscipline() {
   function MudaInput(event) {
     const { name, value } = event.target;
     setFormData({ ...formData, [name]: value })
-  };
+  }
+
 
   const useStyles = makeStyles((theme) => ({
     root: {
@@ -61,56 +75,68 @@ function NewDiscipline() {
       },
     },
   }));
+
   return (
     <>
       <Link className="card add text-center" onClick={handleToggle}>
-        <AddCircleIcon /><h3 className="adicionar_texto"> &nbsp;Adicionar</h3>
+        <AddCircleIcon /><h3 className="adicionar_texto"> &nbsp; Adicionar</h3>
       </Link>
-      <Dialog open={open} onClose={handleToggle} compo aria-labelledby="form-dialog-disciplina">
+
+      <Dialog open={open} onClose={handleToggle} aria-labelledby="form-dialog-disciplina">
         <div className="o-center o-espaco-padrao o-text-center">
+
           <DialogTitle id="form-dialog-disciplina">Entrar</DialogTitle>
+
           <DialogContent>
             <div className={useStyles.root}>
               <div>
                 <TextField
-                  id="nomeDisciplina"
-                  label="Nome da Disciplina"
+                  id="instituicao"
+                  label="Instituição"
                   variant="outlined"
-                  name="email"
+                  name="institution"
                   onChange={MudaInput}
                 />
                 <br />
                 <br />
                 <TextField
-                  id="instituicao"
-                  label="Instituição"
+                  id="nomeDisciplina"
+                  label="Nome da Disciplina"
                   variant="outlined"
-                  name="Instituição"
+                  name="name"
+                  onChange={MudaInput}
+                />
+                <br />
+                <br />
+                <TextField
+                  id="descrição"
+                  label="Descrição"
+                  variant="outlined"
+                  name="description"
                   onChange={MudaInput}
                 />
               </div>
             </div>
           </DialogContent>
+
           <DialogActions>
             <div className="c-botao o-center">
               <Button
                 className="o-btn green"
                 variant="contained"
                 color="primary"
-                onClick={submit}
-              >
-                Salvar
+                onClick={submit}>Salvar
                  </Button>
 
               <Button
                 className="o-btn green"
                 variant="contained"
                 color="primary"
-              >
-                Cancelar
-                 </Button>
+                onClick={handleToggle}>Cancelar
+              </Button>
             </div>
           </DialogActions>
+
         </div>
       </Dialog>
     </>
