@@ -19,7 +19,7 @@ const items = [
     { name: 'exercicios', label: 'Exercícios', icone: <PlaylistAddCheckIcon  style={{ color: 'white'}}/>, link: '/exercicios' },
     { name: 'provas', label: 'Provas', icone: <PlaylistAddCheckIcon  style={{ color: 'white'}}/>, link: '/provas' },
 ]
-
+const nextScreen="/disciplinas";
 const materia = [
     { name: 'Matemática', link: '#', tipo: 'Provas' },
 ]
@@ -34,7 +34,7 @@ function Provas() {
             <div>
                 <div className="row">
                     <MenuLateral items={items}/>
-                    <Main items={materia} tipo={tipo} atividade={exercicios}/>
+                    <Main items={materia} tipo={tipo} atividade={exercicios} nextScreen={nextScreen}/>
                 </div>
             </div>
         )

@@ -2,7 +2,7 @@ import React, { Component, useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import api from '../../services/api';
 import AddCircleIcon from '@material-ui/icons/AddCircle';
-import {dashboardMain} from '../../dao';
+import {dashboardMain,dashboardTurma} from '../../dao';
 import {Dialogs} from '../../dialogs';
 
 //redirecionamento
@@ -22,15 +22,13 @@ import { makeStyles } from '@material-ui/core/styles';
 
 function NewDiscipline({flagFunction,tipo}) {
 
-    
-
-    
     const history = useHistory();
     const [redirect, setRedirect] = useState("");
     const [open, setOpen] = useState();
     useEffect(()=>{
 
     },[open]);
+    tipo=tipo.toLowerCase();
 
     let type={};
   
@@ -44,6 +42,7 @@ function NewDiscipline({flagFunction,tipo}) {
   function handleOpen(){
     setOpen(!open);
   }
+
   function handleToggle(event) {
     event.preventDefault();
     handleOpen();
@@ -53,6 +52,18 @@ function NewDiscipline({flagFunction,tipo}) {
 
   function submit(event) {
     switch(tipo){
+      case 'turmas':
+            dashboardTurma(formData,flagFunction,handleOpen);
+        break;
+        case 'quiz':
+            history.push("/quiz");
+          break;
+          case 'provas':
+            history.push("/provas");
+          break;
+          case 'exercicios':
+            history.push("/exercicios");
+          break;
         default:
             dashboardMain(formData,flagFunction,handleOpen);
         break;
@@ -70,12 +81,12 @@ function NewDiscipline({flagFunction,tipo}) {
 
 
 
-    return (
+  return (
     <>
          <Link className="card add text-center"  onClick={handleToggle}>
             <AddCircleIcon /><h3 className="adicionar_texto"> &nbsp; Adicionar</h3>
         </Link>
-        <Dialogs open={open} handleToggle={handleToggle} MudaInput={MudaInput} submit={submit}/>
+        <Dialogs open={open} handleToggle={handleToggle} MudaInput={MudaInput} submit={submit} tipo={tipo}/>
         {/* <Dialog open={open} onClose={handleToggle}  aria-labelledby="form-dialog-disciplina">
         <div className="o-center o-espaco-padrao o-text-center">
           <DialogTitle id="form-dialog-disciplina">Entrar</DialogTitle>
@@ -127,6 +138,6 @@ function NewDiscipline({flagFunction,tipo}) {
 
     </>
 
-    )
-  }
+  )
+}
 export default NewDiscipline;

@@ -47,7 +47,7 @@ function JitsiMeetComponent() {
           //recursos toolbar
           TOOLBAR_BUTTONS: [
             'microphone', 'camera', 'fullscreen', 'desktop',
-            'chat', 'raisehand', 'tileview'
+            'chat', 'raisehand', 'tileview', 'invite'
           ],
 
         },
@@ -56,7 +56,7 @@ function JitsiMeetComponent() {
 
       const api = new window.JitsiMeetExternalAPI(domain, options);
       api.addEventListener('videoConferenceJoined', () => {
-        console.log('Local User Joined');
+        //console.log('Local User Joined');
         setLoading(false);
         api.executeCommand('AULA', 'Filipe');
       });

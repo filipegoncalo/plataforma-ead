@@ -4,7 +4,9 @@ const router = express.Router();
 
 const ClasseController = require('../controllers/ClasseController');
 
-router.get('/turmas', ClasseController.byDiscipline);
+router.get('/turma', ClasseController.byDiscipline);
+
+router.get('/turmas', ClasseController.byTeachear);
 
 router.post('/turma', ClasseController.create);
 

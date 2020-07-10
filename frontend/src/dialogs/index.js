@@ -12,18 +12,23 @@ const useStyles = makeStyles((theme) => ({
   }));
 export function Dialogs({open,handleToggle,MudaInput,submit,tipo}){
     switch(tipo){
-        default:
-            return(
-                <Padrao open={open} handleToggle={handleToggle} MudaInput={MudaInput} submit={submit}/>
-            );
-        break;
+      case 'turmas':
+        return(
+          <Turmas open={open} handleToggle={handleToggle} MudaInput={MudaInput} submit={submit}/>
+      );
+      break;
+      default:
+        return(
+        <Padrao open={open} handleToggle={handleToggle} MudaInput={MudaInput} submit={submit}/>
+      );
+      break;
     }
 }
 const Padrao=({open,handleToggle,MudaInput,submit})=>{
     return(
         <Dialog open={open} onClose={handleToggle}  aria-labelledby="form-dialog">
         <div className="o-center o-espaco-padrao o-text-center">
-          <DialogTitle id="form-dialog">Entrar</DialogTitle>
+          <DialogTitle id="form-dialog">Nova Disciplina</DialogTitle>
           <DialogContent>
             <div className={useStyles.root}>
               <div>
@@ -70,4 +75,56 @@ const Padrao=({open,handleToggle,MudaInput,submit})=>{
         </div>
       </Dialog>
     )
+}
+const Turmas=({open,handleToggle,MudaInput,submit})=>{
+  return(
+      <Dialog open={open} onClose={handleToggle}  aria-labelledby="form-dialog">
+      <div className="o-center o-espaco-padrao o-text-center">
+        <DialogTitle id="form-dialog">Nova Turma</DialogTitle>
+        <DialogContent>
+          <div className={useStyles.root}>
+            <div>
+                <TextField
+                  id="instituicao"
+                  label="Instituição"
+                  variant="outlined"
+                  name="institution"
+                  onChange={MudaInput}
+                  />
+                <br />
+                <br />
+                <TextField
+                    id="nomeDisciplina"
+                    label="Nome da Disciplina"
+                    variant="outlined"
+                    name="name"
+                    onChange={MudaInput}
+                />
+            </div>
+          </div>
+        </DialogContent>
+        <DialogActions>
+          <div className="c-botao o-center">
+            <Button
+              className="o-btn green"
+              variant="contained"
+              color="primary"
+              onClick={submit}
+            >
+              Salvar
+             </Button>
+
+             <Button
+              className="o-btn green"
+              variant="contained"
+              color="primary"
+              onClick={handleToggle}
+            >
+              Cancelar
+             </Button>
+          </div>
+        </DialogActions>
+      </div>
+    </Dialog>
+  )
 }
