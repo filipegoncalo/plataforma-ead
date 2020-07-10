@@ -12,11 +12,12 @@ const items = [
     { name: 'home', label: 'Home', icone: <HomeIcon style={{ color: 'white'}}/>, link: '/dashboard'  },
     { name: 'iniciarAula', label: 'Iniciar aula', icone: <ScreenShareIcon style={{ color: 'white'}}/>, link: '/aula' },
     { name: 'cronograma', label: 'Cronograma', icone: <InsertInvitationIcon style={{ color: 'white'}}/>, link: '#' },
-    { name: 'perfil', label: 'Perfil', icone: <PlaylistAddCheckIcon  style={{ color: 'white'}}/>, link: '#' },
+    { name: 'perfil', label: 'Perfil', icone: <PlaylistAddCheckIcon  style={{ color: 'white'}}/>, link: '/perfil' },
 ]
 
+const tipo="";
 const token =localStorage.getItem("token");
-
+const nextScreen="/disciplinas";
 
 function DashboardProfessor() {
     
@@ -35,17 +36,17 @@ function DashboardProfessor() {
             setFlag(!flag);
         }
 
-    useEffect(()=>{
-        api.get("dashboard/disciplinas",config).then((response)=>{
-            const {status,data}=response;
-            setDisciplina(response.data.data);
-        
-        }).catch((e)=>{
-            console.log(e)
-            return "Nenhuma disciplina Cadastrada";
-        });
+        useEffect(()=>{
+            api.get("dashboard/disciplinas",config).then((response)=>{
+                const {status,data}=response;
+                setDisciplina(response.data.data);
+            
+            }).catch((e)=>{
+                console.log(e)
+                return "Nenhuma disciplina Cadastrada";
+            });
 
-    },[flag]);
+        },[flag]);
 
 
     if(localStorage.getItem("token") && localStorage.getItem("token").length>0 ){
@@ -53,7 +54,7 @@ function DashboardProfessor() {
             <div>
                 <div className="row">
                     <MenuLateral items={items}/>
-                    <DashBoard  disciplina={disciplina} flagFunction={handleFlag}/>
+                    <DashBoard  dados={disciplina} tipo={tipo} flagFunction={handleFlag} nextScreen={nextScreen}/>
                 </div>
             </div>
         )

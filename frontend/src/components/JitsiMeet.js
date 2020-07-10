@@ -4,7 +4,7 @@ function JitsiMeetComponent() {
   const [loading, setLoading] = useState(true);
 
   const jitsiContainerStyle = {
-    display: (loading ? 'none' : 'flex'),
+    //display: (loading ? 'none' : 'flex'),
     width: '100%',
     height: '100%',
   }
