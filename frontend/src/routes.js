@@ -44,7 +44,7 @@ function Routes() {
                 <Route component={Aula} path='/aula' />
                 <Route component={Perfil} path='/perfil' />
                 <Route component={LinkTurma} path='/turma' />
-                <Route component={Avaliacao} path='/avaliacao' />
+                <Route component={Avaliacao} path='/correcao' />
             </Switch>
         </BrowserRouter>
     )

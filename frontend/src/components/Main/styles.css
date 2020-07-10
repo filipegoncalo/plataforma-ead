@@ -97,6 +97,8 @@
   background-color: #0059C8;
   color: #fff;
   min-height: 180px;
+  background-size: contain;
+  background-repeat: no-repeat;
 }
 .o-box-conteudo .card h3 {
   font-size: 18px;
