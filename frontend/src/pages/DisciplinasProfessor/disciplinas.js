@@ -18,6 +18,7 @@ const items = [
     { name: 'quizz', label: 'Quizz', icone: <EmojiEventsIcon style={{ color: 'white'}}/>, link: '/quiz' },
     { name: 'exercicios', label: 'Exercícios', icone: <PlaylistAddCheckIcon  style={{ color: 'white'}}/>, link: '/exercicios' },
     { name: 'provas', label: 'Provas', icone: <PlaylistAddCheckIcon  style={{ color: 'white'}}/>, link: '/provas' },
+    { name: 'correções', label: 'Correções', icone: <PlaylistAddCheckIcon  style={{ color: 'white'}}/>, link: '/correcao' },
 ]
 const tipo="Turmas";
 
