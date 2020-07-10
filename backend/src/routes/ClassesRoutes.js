@@ -6,7 +6,7 @@ const ClasseController = require('../controllers/ClasseController');
 
 router.get('/turma', ClasseController.byDiscipline);
 
-router.get('/turmas', ClasseController.byTeachear);
+router.get('/turmas', ClasseController.byTeacher);
 
 router.post('/turma', ClasseController.create);
 

@@ -28,7 +28,7 @@ const Padrao=({open,handleToggle,MudaInput,submit})=>{
     return(
         <Dialog open={open} onClose={handleToggle}  aria-labelledby="form-dialog">
         <div className="o-center o-espaco-padrao o-text-center">
-          <DialogTitle id="form-dialog">Nova Disciplina</DialogTitle>
+          <DialogTitle id="form-dialog" className="o-custom-cor-texto">Nova Disciplina</DialogTitle>
           <DialogContent>
             <div className={useStyles.root}>
               <div>
@@ -37,16 +37,19 @@ const Padrao=({open,handleToggle,MudaInput,submit})=>{
                     label="Instituição"
                     variant="outlined"
                     name="institution"
+                    className="o-tamanho-input-modal"
                     onChange={MudaInput}
                   />
                   <br />
                   <br />
                   <TextField
-                    id="nomeDisciplina"
-                    label="Nome da Disciplina"
-                    variant="outlined"
-                    name="name"
-                    onChange={MudaInput}
+
+                      id="nomeDisciplina"
+                      label="Nome da Disciplina"
+                      variant="outlined"
+                      name="name"
+                      className="o-tamanho-input-modal"
+                      onChange={MudaInput}
                   />
               </div>
             </div>
@@ -54,20 +57,25 @@ const Padrao=({open,handleToggle,MudaInput,submit})=>{
           <DialogActions>
             <div className="c-botao o-center">
               <Button
-                className="o-btn green"
+                className="o-btn green o-tamanho-botao-login"
                 variant="contained"
                 color="primary"
                 onClick={submit}
               >
+              <SaveIcon fontSize="small" /> 
+              &nbsp;
                 Salvar
                </Button>
 
-              <Button
-                className="o-btn green"
+               &nbsp;
+               <Button
+                className="o-btn blue o-tamanho-botao-login"
                 variant="contained"
                 color="primary"
                 onClick={handleToggle}
               >
+                <CancelIcon fontSize="small" /> 
+                &nbsp;
                 Cancelar
                </Button>
             </div>
@@ -79,8 +87,8 @@ const Padrao=({open,handleToggle,MudaInput,submit})=>{
 const Turmas=({open,handleToggle,MudaInput,submit})=>{
   return(
       <Dialog open={open} onClose={handleToggle}  aria-labelledby="form-dialog">
-      <div className="o-center o-espaco-padrao o-text-center">
-        <DialogTitle id="form-dialog">Nova Turma</DialogTitle>
+      <div className="o-center o-espaco-padrao o-text-center o-tamanho-modal-criacao">
+        <DialogTitle id="form-dialog" className="o-custom-cor-texto">Nova Turma</DialogTitle>
         <DialogContent>
           <div className={useStyles.root}>
             <div>
@@ -89,37 +97,47 @@ const Turmas=({open,handleToggle,MudaInput,submit})=>{
                   label="Instituição"
                   variant="outlined"
                   name="institution"
+                  className="o-tamanho-input-modal"
                   onChange={MudaInput}
                 />
                 <br />
                 <br />
                 <TextField
-                  id="nomeDisciplina"
-                  label="Nome da Disciplina"
-                  variant="outlined"
-                  name="name"
-                  onChange={MudaInput}
+
+                    id="nomeDisciplina"
+                    label="Nome da Disciplina"
+                    variant="outlined"
+                    name="name"
+                    className="o-tamanho-input-modal"
+                    onChange={MudaInput}
                 />
             </div>
           </div>
         </DialogContent>
+        <br></br>
         <DialogActions>
           <div className="c-botao o-center">
             <Button
-              className="o-btn green"
+              className="o-btn green o-tamanho-botao-login"
               variant="contained"
               color="primary"
               onClick={submit}
             >
+             <SaveIcon fontSize="small" /> 
+              &nbsp;
               Salvar
-            </Button>
 
-            <Button
-              className="o-btn green"
+             </Button>
+             &nbsp;
+             <Button
+              className="o-btn blue o-tamanho-botao-login"
+
               variant="contained"
               color="primary"
               onClick={handleToggle}
             >
+              <CancelIcon fontSize="small" /> 
+              &nbsp;
               Cancelar
              </Button>
           </div>

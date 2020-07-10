@@ -19,7 +19,7 @@ module.exports = {
 
   },
 
-  async byTeachear(request, response) {
+  async byTeacher(request, response) {
     const { userId: teacher } = request;
 
     const user = await User.query().findById(teacher);
@@ -65,6 +65,8 @@ module.exports = {
       const newValue = body[fieldName];
       if (newValue !== undefined) classe[fieldName] = newValue;
     });
+
+    classe.updated_at = new Date();
 
     if (classe.teacher === userId) {
 
