@@ -5,11 +5,11 @@ const cors = require('cors');
 require('dotenv').config();
 
 const app = express();
+app.use(cors());
 
 const response = require('./middlewares/response');
 const checkJwt = require('./middlewares/jwt');
 
-app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
@@ -28,7 +28,7 @@ app.use('/auth', Auth);
 app.use('/dashboard', Profile);
 app.use('/dashboard', Disciplines);
 app.use('/dashboard/disciplina', Classes);
-app.use('/dashboard/disciplina/test', Tests);
+app.use('/dashboard/disciplina', Tests);
 //app.use('/dashboard/disciplina/testes', Questions);
 
 const port = 3333 //process.env.PORT ||;

@@ -36,8 +36,6 @@ module.exports = {
     const { userId } = resquest;
     const { body } = resquest;
 
-    if (!id) return response.jsonNotFound(null, 'Disciplina não encontrada');
-
     const fields = ['name', 'institution', 'description'];
 
     if (!body) return response.jsonBadRequest(null, 'Não existe dados para atualizar');
@@ -50,6 +48,8 @@ module.exports = {
       const newValue = body[fieldName];
       if (newValue !== undefined) discipline[fieldName] = newValue;
     });
+
+    discipline.updated_at = new Date();
 
     if (discipline.teacher === userId) {
       const updateDiscipline = await Discipline.query().patch(discipline).where('id', id).where('teacher', userId);
@@ -70,7 +70,7 @@ module.exports = {
     if (!discipline) return response.jsonNotFound(null, 'Disciplina não existe');
 
     if (discipline.teacher === userId) {
-      const delDiscipline = await Classe.query().delete().where('id', id).where('teacher', userId);
+      const delDiscipline = await Discipline.query().delete().where('id', id).where('teacher', userId);
 
       return response.jsonSuccess(delDiscipline);
     }

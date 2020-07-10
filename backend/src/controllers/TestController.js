@@ -10,30 +10,28 @@ module.exports = {
 
     if (!discipline) return response.jsonNotFound(null, 'Disciplina não existe');
 
-    if (discipline.teacher != userId) return response.jsonUnauthorized();
+    if (discipline.teacher === userId) {
 
-    const classes = await Classe.query().select('*').where('teacher', userId).where('discipline_id', discipline_id);
+      const testes = await Test.query().select('*').where('teacher', userId).where('discipline_id', discipline_id);
 
-    return response.jsonSuccess(classes);
+      return response.jsonSuccess(testes);
+    }
 
+    return response.jsonUnauthorized();
   },
 
-  async byTeachear(request, response) {
+  async byTeacher(request, response) {
     const { userId: teacher } = request;
 
-    const user = await User.query().findById(teacher);
+    const testes = await Test.query().select('*').where('teacher', teacher);
 
-    if (!user) return response.jsonNotFound(null);
-
-    const classes = await Classe.query().select('*').where('teacher', teacher);
-
-    return response.jsonSuccess(classes);
+    return response.jsonSuccess(testes);
   },
 
   async create(request, response) {
     const { userId } = request;
     const { discipline_id } = request.headers;
-    const {  name, type, note } = request.body;
+    const { name, type, note } = request.body;
 
     const discipline = await Discipline.query().findById(discipline_id);
 
@@ -54,22 +52,28 @@ module.exports = {
     const { userId } = request;
     const { body } = request;
 
-    const fields = ['link', 'name', 'institution'];
+    const fields = ['name', 'type', 'note'];
 
-    const classe = await Classe.query().findById(id);
+    const test = await Test.query().findById(id);
 
-    if (!classe) return response.jsonNotFound(null, "Turma não existe");
+    if (!test) return response.jsonNotFound(null, "Turma não existe");
+
+    console.log(test)
+
 
     fields.map((fieldName) => {
       const newValue = body[fieldName];
-      if (newValue !== undefined) classe[fieldName] = newValue;
+      if (newValue !== undefined) test[fieldName] = newValue;
+
     });
 
-    if (classe.teacher === userId) {
+    test.updated_at = new Date();
 
-      const updateClasse = await Classe.query().patch(classe).where('id', id).where('teacher', userId);
+    if (test.teacher === userId) {
 
-      return response.jsonSuccess(updateClasse);
+      const upTest = await Test.query().patch(test).where('id', id).where('teacher', userId);
+
+      return response.jsonSuccess(upTest);
     }
     return response.jsonUnauthorized();
 
@@ -79,14 +83,16 @@ module.exports = {
     const { id } = request.params;
     const { userId } = request;
 
-    const classe = await Classe.query().findById(id);
+    const test = await Test.query().findById(id);
 
-    if (!classe) return response.jsonNotFound(null, "Turma não existe");
+    console.log(id, userId, test)
 
-    if (classe.teacher === userId) {
-      const delClasse = await Classe.query().delete().where('id', id).where('teacher', userId);;
+    if (!test) return response.jsonNotFound(null, "Turma não existe");
 
-      return response.jsonSuccess(delClasse);
+    if (test.teacher === userId) {
+      const delTest = await Test.query().delete().where('id', id).where('teacher', userId);;
+
+      return response.jsonSuccess(delTest);
     }
 
     return response.jsonUnauthorized();
