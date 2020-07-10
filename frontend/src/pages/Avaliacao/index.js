@@ -1,5 +1,4 @@
 import React from 'react';
-import  './styles.css';
 import MenuLateral from '../../components/MenuLateral/MenuLateral';
 import ListarAtividade from '../../compo../../components/ListarAtividade';
 import ScreenShareIcon from '@material-ui/icons/ScreenShare';

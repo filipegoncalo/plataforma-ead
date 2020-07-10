@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../../assets/setup.css';
-import './styles.css';
 import Logo from '../../assets/logoPreto.png';
 import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';

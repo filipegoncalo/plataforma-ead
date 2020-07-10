@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../../assets/setup.css';
-import './styles.css';
 import Logo from '../../assets/logoPreto.png';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
