@@ -1,4 +1,4 @@
-import React, { Component, useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import api from '../../services/api';
 import AddCircleIcon from '@material-ui/icons/AddCircle';
@@ -6,31 +6,18 @@ import {dashboardMain,dashboardTurma} from '../../dao';
 import {Dialogs} from '../../dialogs';
 
 //redirecionamento
-import { useHistory, Redirect } from "react-router-dom";
-
-import {
-  Button,
-  Dialog,
-  DialogActions,
-  DialogContent,
-  DialogContentText,
-  DialogTitle,
-  TextField
-} from '@material-ui/core';
-import { makeStyles } from '@material-ui/core/styles';
-import { CalendarToday } from '@material-ui/icons';
+import { useHistory } from "react-router-dom";
 
 
 function NewDiscipline({flagFunction,tipo}) {
 
     const history = useHistory();
-    const [redirect, setRedirect] = useState("");
+    const [] = useState("");
     const [open, setOpen] = useState();
     useEffect(()=>{
 
     },[open]);
     tipo=tipo.toLowerCase();
-    //alert(tipo);
 
     let type={};
   
@@ -66,8 +53,7 @@ function NewDiscipline({flagFunction,tipo}) {
 
 
 
-  function submit(event) {
-    //alert(tipo);
+  function submit() {
     switch(tipo){
       case 'turmas':
             dashboardTurma(formData,flagFunction,handleOpen);
@@ -81,7 +67,6 @@ function NewDiscipline({flagFunction,tipo}) {
 
 
   function MudaInput(event) {
-    //console.log(event.target.name, event.target.value);
     const { name, value } = event.target;
     setFormData({ ...formData, [name]: value })
   }
@@ -95,55 +80,7 @@ function NewDiscipline({flagFunction,tipo}) {
             <AddCircleIcon /><h3 className="adicionar_texto"> &nbsp; Adicionar</h3>
         </Link>
         <Dialogs open={open} handleToggle={handleToggle} MudaInput={MudaInput} submit={submit} tipo={tipo}/>
-        {/* <Dialog open={open} onClose={handleToggle}  aria-labelledby="form-dialog-disciplina">
-        <div className="o-center o-espaco-padrao o-text-center">
-          <DialogTitle id="form-dialog-disciplina">Entrar</DialogTitle>
-          <DialogContent>
-            <div className={useStyles.root}>
-              <div>
-                  <TextField
-                    id="instituicao"
-                    label="Instituição"
-                    variant="outlined"
-                    name="institution"
-                    onChange={MudaInput}
-                    />
-                  <br />
-                  <br />
-                  <TextField
-                      id="nomeDisciplina"
-                      label="Nome da Disciplina"
-                      variant="outlined"
-                      name="name"
-                      onChange={MudaInput}
-                  />
-              </div>
-            </div>
-          </DialogContent>
-          <DialogActions>
-            <div className="c-botao o-center">
-              <Button
-                className="o-btn green"
-                variant="contained"
-                color="primary"
-                onClick={submit}
-              >
-                Salvar
-               </Button>
-
-               <Button
-                className="o-btn green"
-                variant="contained"
-                color="primary"
-                onClick={handleToggle}
-              >
-                Cancelar
-               </Button>
-            </div>
-          </DialogActions>
-        </div>
-      </Dialog> */}
-
+        
     </>
 
   )

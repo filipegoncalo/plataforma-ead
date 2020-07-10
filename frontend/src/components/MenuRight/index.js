@@ -1,10 +1,8 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import imgperfil from '../../assets/image7.png';
 import '../../assets/setup.css';
 import './styles.css';
-import InsertInvitationIcon from '@material-ui/icons/InsertInvitationOutlined';
 
 import logo2 from '../../assets/logo-2.png';
 

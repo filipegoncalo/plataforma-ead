@@ -7,7 +7,6 @@ import InsertInvitationIcon from '@material-ui/icons/InsertInvitationOutlined';
 import PlaylistAddCheckIcon from '@material-ui/icons/PlaylistAddCheck';
 import { Redirect } from "react-router-dom";
 import api from '../../services/api';
-//const history = useHistory();
 const items = [
     { name: 'home', label: 'Home', icone: <HomeIcon style={{ color: 'white'}}/>, link: '/dashboard'  },
     { name: 'iniciarAula', label: 'Iniciar aula', icone: <ScreenShareIcon style={{ color: 'white'}}/>, link: '/aula' },

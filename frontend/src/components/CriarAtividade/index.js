@@ -4,9 +4,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import '../../assets/setup.css';
 import './styles.css';
 import Logo from '../../assets/logoPreto.png';
-import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
-//import Icon from '@material-ui/core/Icon';
 import TextField from '@material-ui/core/TextField';
 import {AddCircleSharp as Add,CancelSharp, Create,SaveSharp} from '@material-ui/icons/';
 
@@ -41,17 +39,17 @@ function ListarAtividade({info}) {
 
                     <div className="o-relative o-pb-2">
                         <span className="u-number">A.</span>
-                        <TextField  label="Inserir resposta correta" className="o-custom-atividade o-ml-5 u-incorrect" variant="outlined"  />
+                        <TextField  label="Inserir resposta correta" className="o-custom-atividade o-ml-5 u-correct" variant="outlined"  />
                     </div>
 
                     <div className="o-relative o-pb-2">
                         <span className="u-number">B.</span>
-                        <TextField  label="Inserir resposta incorreta" className="o-custom-atividade o-ml-5 u-correct" variant="outlined"  />
+                        <TextField  label="Inserir resposta incorreta" className="o-custom-atividade o-ml-5 u-incorrect" variant="outlined"  />
                     </div>
 
                     <div className="o-relative o-pb-2">
                         <span className="u-number">C.</span>
-                        <TextField  label="Inserir resposta incorreta" className="o-custom-atividade o-ml-5 u-correct" variant="outlined"  />
+                        <TextField  label="Inserir resposta incorreta" className="o-custom-atividade o-ml-5 u-incorrect" variant="outlined"  />
                     </div>
                         
                 </div>

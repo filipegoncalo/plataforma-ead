@@ -29,9 +29,9 @@ export default class CriarQuiz extends Component {
         return (
             <div>
                 <Button
-                variant="contained"
-                color="primary"
-                onClick={this.handleToggle}
+                  variant="contained"
+                  color="primary"
+                  onClick={this.handleToggle}
                 >
                     Criar
                 </Button>
@@ -46,17 +46,17 @@ export default class CriarQuiz extends Component {
                     <DialogActions>
                     <div className="c-botao o-center">
                         <Button
-                        variant="contained"
-                        color="primary"
-                        className="o-btn green"
+                          variant="contained"
+                          color="primary"
+                          className="o-btn green"
                         >
                             Finalizar
                         </Button>
                         <Button
-                        variant="contained"
-                        onClick={this.handleToggle}
-                        color="primary"
-                        className="o-btn blue"
+                          variant="contained"
+                          onClick={this.handleToggle}
+                          color="primary"
+                          className="o-btn blue"
                         >
                             Cancelar
                         </Button>

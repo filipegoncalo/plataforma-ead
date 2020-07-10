@@ -19,7 +19,6 @@ import { makeStyles } from '@material-ui/core/styles';
 
 function Login() {
   const history = useHistory();
-//  const [redirect, setRedirect] = useState("");
   const [open, setOpen] = useState(false);
   const [formData, setFormData] = useState({
     email: "",
@@ -32,10 +31,8 @@ function Login() {
   }
 
   function submit(event) {
-    //event.preventDefault();
     const { email, password } = formData;
     if(email && password){
-      //console.log(formData);
       api.post('auth/sign-in', { "email": email, "password": password }).then((response) => {
         const { data } = response;
         const { token } = data.metadata;
@@ -56,7 +53,6 @@ function Login() {
   }
 
   function MudaInput(event) {
-    //console.log(event.target.name, event.target.value);
     const { name, value } = event.target;
     setFormData({ ...formData, [name]: value })
   }
@@ -88,8 +84,8 @@ function Login() {
            </Button>
         </div>
         <Dialog open={open} onClose={handleToggle}  aria-labelledby="form-dialog-title">
-          <div className="o-center o-espaco-padrao o-text-center">
-            <DialogTitle id="form-dialog-title">Entrar</DialogTitle>
+          <div className="o-center o-espaco-padrao o-text-center o-tamanho-tela-login">
+            <DialogTitle id="form-dialog-title" className="o-custom-cor-texto">Login</DialogTitle>
             <DialogContent>
               <div className={useStyles.root}>
                 <div>
@@ -98,6 +94,7 @@ function Login() {
                     label="E-mail"
                     variant="outlined"
                     name="email"
+                    className="o-tamanho-input-modal"
                     onChange={MudaInput}
                   />
                   <br />
@@ -108,15 +105,17 @@ function Login() {
                     type="password"
                     variant="outlined"
                     name="password"
+                    className="o-tamanho-input-modal"
                     onChange={MudaInput}
                   />
                 </div>
               </div>
             </DialogContent>
+            <br></br>
             <DialogActions>
               <div className="c-botao o-center">
                 <Button
-                  className="o-btn green"
+                  className="o-btn green o-tamanho-botao-login"
                   variant="contained"
                   color="primary"
                   onClick={submit}
@@ -125,8 +124,9 @@ function Login() {
                  </Button>
               </div>
             </DialogActions>
+            <br></br>
             <div>
-              <p>Ainda não se cadastrou? <Link to='/cadastro'>Cadastro</Link></p>
+              <p className="o-text-4 o-size-pagina-login">Ainda não se cadastrou? <Link to='/cadastro'>Cadastro</Link></p>
             </div>
           </div>
         </Dialog>

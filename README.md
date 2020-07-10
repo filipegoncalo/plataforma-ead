@@ -23,7 +23,7 @@ No terminal, clone o projeto: `git clone https://github.com/filipegoncalo/plataf
 ## No backend:
 1. Entre na pasta: `cd plataforma-ead/backend`
 
-        2. Edite o arquivo .env :
+        Edite o arquivo .env :
             DB_USER=user
             DB_PASS=password
             DB_NAME=ead
