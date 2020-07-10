@@ -4,9 +4,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import '../../assets/setup.css';
 import './styles.css';
 import Logo from '../../assets/logoPreto.png';
-import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
-//import Icon from '@material-ui/core/Icon';
 import TextField from '@material-ui/core/TextField';
 import {AddCircleSharp as Add,CancelSharp, Create,SaveSharp} from '@material-ui/icons/';
 

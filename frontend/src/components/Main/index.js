@@ -5,18 +5,14 @@ import '../../assets/setup.css';
 import './styles.css';
 import Logo from '../../assets/logoPreto.png';
 import Vip from '../../assets/vip.png';
-import SchoolIcon from '@material-ui/icons/School';
-import AddCircleIcon from '@material-ui/icons/AddCircle';
 import imgStudy from '../../assets/box-study.png';
 import NewDiscipline from '../../pages/NewDiscipline';
 import {useHistory} from 'react-router';
 
 function Main({dados,flagFunction,tipo,nextScreen}) {
-    console.log(nextScreen);
     const history=useHistory();
 
     function navigation(event,item){
-        console.log(item)
         event.preventDefault();
         history.push("/disciplinas",item);
     }

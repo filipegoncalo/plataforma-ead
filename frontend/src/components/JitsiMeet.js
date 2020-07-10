@@ -56,7 +56,6 @@ function JitsiMeetComponent() {
 
       const api = new window.JitsiMeetExternalAPI(domain, options);
       api.addEventListener('videoConferenceJoined', () => {
-        //console.log('Local User Joined');
         setLoading(false);
         api.executeCommand('AULA', 'Filipe');
       });

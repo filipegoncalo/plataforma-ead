@@ -1,9 +1,6 @@
 import React from 'react';
 import {Button,Dialog,DialogActions,DialogContent,DialogContentText,DialogTitle,TextField} from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
-import CancelIcon from '@material-ui/icons/Cancel';
-import SaveIcon from '@material-ui/icons/Save';
-
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -42,10 +39,11 @@ const Padrao=({open,handleToggle,MudaInput,submit})=>{
                     name="institution"
                     className="o-tamanho-input-modal"
                     onChange={MudaInput}
-                    />
+                  />
                   <br />
                   <br />
                   <TextField
+
                       id="nomeDisciplina"
                       label="Nome da Disciplina"
                       variant="outlined"
@@ -68,6 +66,7 @@ const Padrao=({open,handleToggle,MudaInput,submit})=>{
               &nbsp;
                 Salvar
                </Button>
+
                &nbsp;
                <Button
                 className="o-btn blue o-tamanho-botao-login"
@@ -100,10 +99,11 @@ const Turmas=({open,handleToggle,MudaInput,submit})=>{
                   name="institution"
                   className="o-tamanho-input-modal"
                   onChange={MudaInput}
-                  />
+                />
                 <br />
                 <br />
                 <TextField
+
                     id="nomeDisciplina"
                     label="Nome da Disciplina"
                     variant="outlined"
@@ -126,10 +126,12 @@ const Turmas=({open,handleToggle,MudaInput,submit})=>{
              <SaveIcon fontSize="small" /> 
               &nbsp;
               Salvar
+
              </Button>
              &nbsp;
              <Button
               className="o-btn blue o-tamanho-botao-login"
+
               variant="contained"
               color="primary"
               onClick={handleToggle}

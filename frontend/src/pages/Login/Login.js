@@ -19,7 +19,6 @@ import { makeStyles } from '@material-ui/core/styles';
 
 function Login() {
   const history = useHistory();
-//  const [redirect, setRedirect] = useState("");
   const [open, setOpen] = useState(false);
   const [formData, setFormData] = useState({
     email: "",
@@ -32,10 +31,8 @@ function Login() {
   }
 
   function submit(event) {
-    //event.preventDefault();
     const { email, password } = formData;
     if(email && password){
-      //console.log(formData);
       api.post('auth/sign-in', { "email": email, "password": password }).then((response) => {
         const { data } = response;
         const { token } = data.metadata;
@@ -56,7 +53,6 @@ function Login() {
   }
 
   function MudaInput(event) {
-    //console.log(event.target.name, event.target.value);
     const { name, value } = event.target;
     setFormData({ ...formData, [name]: value })
   }

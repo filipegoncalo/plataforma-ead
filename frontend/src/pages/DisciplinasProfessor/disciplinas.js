@@ -24,8 +24,6 @@ const tipo="Turmas";
 function Disciplinas(navega) {
     const history = useHistory();
     const [materia, setMateria]=useState();
-    //const disc=navega;
-    //const {item}=navega.location.state;
     const nextScreen="/perfil";
     const [flag, setFlag] = useState(false);
 

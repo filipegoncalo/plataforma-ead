@@ -4,8 +4,6 @@ import Grid from '@material-ui/core/Grid';
 import './styles.css';
 import '../../assets/setup.css';
 
-import Quiz from '../Quiz/Dialogs/Atividade';
-
 import Header from '../../components/Header';
 
 import imgGroup1 from '../../assets/home-group-1.png';
