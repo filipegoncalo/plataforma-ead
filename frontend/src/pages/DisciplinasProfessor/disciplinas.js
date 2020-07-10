@@ -15,7 +15,7 @@ const items = [
     { name: 'iniciarAula', label: 'Iniciar aula', icone: <ScreenShareIcon style={{ color: 'white'}}/>, link: '/aula' },
     { name: 'turmas', label: 'Turmas', icone: <SchoolIcon style={{ color: 'white'}}/>, link: '/disciplinas' },
     { name: 'agendarAula', label: 'Agendar aulas', icone: <InsertInvitationIcon style={{ color: 'white'}}/>, link: '#' },
-    { name: 'quizz', label: 'Quizz', icone: <EmojiEventsIcon style={{ color: 'white'}}/>, link: '#' },
+    { name: 'quizz', label: 'Quizz', icone: <EmojiEventsIcon style={{ color: 'white'}}/>, link: '/quiz' },
     { name: 'exercicios', label: 'Exercícios', icone: <PlaylistAddCheckIcon  style={{ color: 'white'}}/>, link: '/exercicios' },
     { name: 'provas', label: 'Provas', icone: <PlaylistAddCheckIcon  style={{ color: 'white'}}/>, link: '/provas' },
 ]
@@ -26,12 +26,14 @@ function Disciplinas(navega) {
     const [materia, setMateria]=useState();
     //const disc=navega;
     //const {item}=navega.location.state;
+    const nextScreen="/perfil";
     const [flag, setFlag] = useState(false);
 
     if(navega.location.state)
     {
         const {item}=navega.location.state;
         localStorage.setItem('id_discipline',item.id)
+        localStorage.setItem('name_discipline',item.name)
     }
 
     const config = {
@@ -61,7 +63,7 @@ function Disciplinas(navega) {
         <div>
             <div className="row">
                 <MenuLateral items={items}/>
-                <DashBoard dados={materia}  tipo={tipo} flagFunction={handleFlag}/>
+                <DashBoard dados={materia}  tipo={tipo} flagFunction={handleFlag} nextScreen={nextScreen}/>
             </div>
         </div>
     )

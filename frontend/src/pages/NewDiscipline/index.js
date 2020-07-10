@@ -18,6 +18,7 @@ import {
   TextField
 } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
+import { CalendarToday } from '@material-ui/icons';
 
 
 function NewDiscipline({flagFunction,tipo}) {
@@ -29,6 +30,7 @@ function NewDiscipline({flagFunction,tipo}) {
 
     },[open]);
     tipo=tipo.toLowerCase();
+    //alert(tipo);
 
     let type={};
   
@@ -45,25 +47,31 @@ function NewDiscipline({flagFunction,tipo}) {
 
   function handleToggle(event) {
     event.preventDefault();
-    handleOpen();
+    switch(tipo){
+        case 'quiz':
+            history.push("/quiz-criar");
+          break;
+          case 'provas':
+            history.push("/prova-criar");
+          break;
+          case 'exercicios':
+            history.push("/exercicios-criar");
+          break;
+        default:
+            handleOpen();
+        break;
+
+    }
   }
 
 
 
   function submit(event) {
+    //alert(tipo);
     switch(tipo){
       case 'turmas':
             dashboardTurma(formData,flagFunction,handleOpen);
         break;
-        case 'quiz':
-            history.push("/quiz");
-          break;
-          case 'provas':
-            history.push("/provas");
-          break;
-          case 'exercicios':
-            history.push("/exercicios");
-          break;
         default:
             dashboardMain(formData,flagFunction,handleOpen);
         break;

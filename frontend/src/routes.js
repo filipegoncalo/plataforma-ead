@@ -10,9 +10,14 @@ import DashboardExercicios from '../src/pages/ExerciciosProfessor/exercicios';
 
 import Aula from './pages/Aula';
 import ProvasProfessor from './pages/ProvasProfessor';
-import ExerciciosCriar from './pages/ExerciciosCriar';
+import QuizProfessor from './pages/QuizProfessor';
+
+import CriarExercicio from './pages/CriarExercicio';
+import CriarProva from './pages/CriarProva';
+import CriarQuiz from './pages/CriarQuiz';
+//import CriarAtividade from './components/CriarAtividade';
 import ListarAtividadeScreen from './pages/ListarAtividadeScreen';
-import CriarAtividade from './pages/CriarAtividade';
+
 import Perfil from './pages/Perfil';
 import LinkTurma from './pages/LinkTurma';
 import Avaliacao from './pages/Avaliacao';
@@ -25,14 +30,18 @@ function Routes() {
                 <Route path='/' exact component={Home} exact/>
                 <Route path='/cadastro' component={Cadastro}/>
                 <Route path='/dashboard' component={Dashboard}/>
-                <Route path='/dashboard/aula' component={Aula}/>
                 <Route path='/disciplinas' component={DashboardDisciplinas}/>
                 <Route path='/exercicios' component={DashboardExercicios}/>
                 <Route path="/provas" component={ProvasProfessor} />
-                <Route path="/exercicios/criar" component={ExerciciosCriar} />
-                <Route path="/quiz/listar" component={ListarAtividadeScreen} />
+                <Route path="/quiz" component={QuizProfessor} />
+
+                <Route path="/exercicios-criar" component={CriarExercicio} />
+                <Route path='/quiz-criar' component={CriarQuiz} />
+                <Route path='/prova-criar' component={CriarProva} />
+
+                <Route path="/quiz-listar" component={ListarAtividadeScreen} />
+                
                 <Route component={Aula} path='/aula' />
-                <Route component={CriarAtividade} path='/quiz/criar' />
                 <Route component={Perfil} path='/perfil' />
                 <Route component={LinkTurma} path='/turma' />
                 <Route component={Avaliacao} path='/avaliacao' />

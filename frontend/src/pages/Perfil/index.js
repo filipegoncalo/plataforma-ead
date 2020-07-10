@@ -59,7 +59,12 @@ const alunos=[
 ]
 const {trofeus,lista}=info;
 
-function Perfil() {
+function Perfil(navega) {
+        if(navega.location.state)
+        {
+            const {item}=navega.location.state;
+            localStorage.setItem('name_turma',item.name)
+        }
         return (
             <div>
                 <div className="row">
@@ -67,8 +72,8 @@ function Perfil() {
                     <div className="o-main-2">
                         <div className="o-breadcrumb o-relative o-pb-2">
                             <div className="tituloMateria">
-                                <h1>{info.materia}</h1>                 
-                                <h2>{info.tipo}</h2> 
+                                <h1>{localStorage.getItem("name_discipline")}</h1>                 
+                                <h2>{localStorage.getItem("name_turma")}</h2> 
                             </div>
                         </div>
                         <div className="c-area-gray">
