@@ -5,10 +5,8 @@ import {
     Dialog,
     DialogActions,
     DialogContent,
-    DialogContentText,
     DialogTitle
 } from '@material-ui/core';
-import CustomDialog from '../../../components/Dialog';
 
 import CriarQuiz from './AbrirAtividade'
 
@@ -30,9 +28,9 @@ export default class Quiz extends Component {
         return (
             <div>
                 <Button
-                variant="contained"
-                color="primary"
-                onClick={this.handleToggle}
+                  variant="contained"
+                  color="primary"
+                  onClick={this.handleToggle}
                 >
                     Atividade
                 </Button>
@@ -42,16 +40,18 @@ export default class Quiz extends Component {
                         <CriarQuiz />
                         <br />
                         <Button
-                        variant="contained"
-                        color="primary">
+                          variant="contained"
+                          color="primary"
+                        >
                             Abrir
                         </Button>
                     </DialogContent>
                     <DialogActions>
                         <Button
-                        variant="contained"
-                        onClick={this.handleToggle}
-                        color="primary">
+                          variant="contained"
+                          onClick={this.handleToggle}
+                          color="primary"
+                        >
                             Cancelar
                         </Button>
                     </DialogActions>

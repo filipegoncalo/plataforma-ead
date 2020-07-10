@@ -1,9 +1,6 @@
 import React, { Component } from 'react';
 
 import {
-    Button,
-    FormControl,
-    FormHelperText,
     MenuItem,
     InputLabel,
     Select
@@ -35,11 +32,11 @@ export default class FormSelectQuiz extends Component{
                 <form>
                     <InputLabel id="demo-simple-select-outlined-label">Categoria</InputLabel>
                     <Select
-                    labelId="demo-simple-select-outlined-label"
-                    id="demo-simple-select-outlined"
-                    value={this.categoria}
-                    onChange={this.handleChangeCategoria}
-                    label="Categoria"
+                      labelId="demo-simple-select-outlined-label"
+                      id="demo-simple-select-outlined"
+                      value={this.categoria}
+                      onChange={this.handleChangeCategoria}
+                      label="Categoria"
                     >
                     <MenuItem value={10}>Exercício Múltipla Escolha</MenuItem>
                     <MenuItem value={20}>Exercício Dissertativo</MenuItem>

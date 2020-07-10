@@ -1,17 +1,15 @@
 import React from 'react';
 import  './styles.css';
 import MenuLateral from '../../components/MenuLateral/MenuLateral';
-import ListarAtividade from '../../compo../../components/ListarAtividade';
 import ScreenShareIcon from '@material-ui/icons/ScreenShare';
 import HomeIcon from '@material-ui/icons/Home';
 import SchoolIcon from '@material-ui/icons/School';
 import InsertInvitationIcon from '@material-ui/icons/InsertInvitationOutlined';
 import EmojiEventsIcon from '@material-ui/icons/EmojiEvents';
 import PlaylistAddCheckIcon from '@material-ui/icons/PlaylistAddCheck';
-import {PanToolRounded,School, Star,AttachFile,MenuBook, AddCircleSharp as Add} from '@material-ui/icons/';
+import {PanToolRounded,School, Star,AttachFile,MenuBook} from '@material-ui/icons/';
 import Person from '../../assets/person.jpg';
 import Grid from '@material-ui/core/Grid';
-import Button from '@material-ui/core/Button';
 import { Link } from 'react-router-dom';
 import MenuRight from '../../components/MenuRight';
 import {CheckCircle,Error} from '@material-ui/icons';

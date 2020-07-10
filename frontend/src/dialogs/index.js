@@ -1,6 +1,6 @@
 import React from 'react';
 import {Button,Dialog,DialogActions,DialogContent,DialogContentText,DialogTitle,TextField} from '@material-ui/core';
-  import { makeStyles } from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -38,15 +38,15 @@ const Padrao=({open,handleToggle,MudaInput,submit})=>{
                     variant="outlined"
                     name="institution"
                     onChange={MudaInput}
-                    />
+                  />
                   <br />
                   <br />
                   <TextField
-                      id="nomeDisciplina"
-                      label="Nome da Disciplina"
-                      variant="outlined"
-                      name="name"
-                      onChange={MudaInput}
+                    id="nomeDisciplina"
+                    label="Nome da Disciplina"
+                    variant="outlined"
+                    name="name"
+                    onChange={MudaInput}
                   />
               </div>
             </div>
@@ -62,7 +62,7 @@ const Padrao=({open,handleToggle,MudaInput,submit})=>{
                 Salvar
                </Button>
 
-               <Button
+              <Button
                 className="o-btn green"
                 variant="contained"
                 color="primary"
@@ -90,15 +90,15 @@ const Turmas=({open,handleToggle,MudaInput,submit})=>{
                   variant="outlined"
                   name="institution"
                   onChange={MudaInput}
-                  />
+                />
                 <br />
                 <br />
                 <TextField
-                    id="nomeDisciplina"
-                    label="Nome da Disciplina"
-                    variant="outlined"
-                    name="name"
-                    onChange={MudaInput}
+                  id="nomeDisciplina"
+                  label="Nome da Disciplina"
+                  variant="outlined"
+                  name="name"
+                  onChange={MudaInput}
                 />
             </div>
           </div>
@@ -112,9 +112,9 @@ const Turmas=({open,handleToggle,MudaInput,submit})=>{
               onClick={submit}
             >
               Salvar
-             </Button>
+            </Button>
 
-             <Button
+            <Button
               className="o-btn green"
               variant="contained"
               color="primary"

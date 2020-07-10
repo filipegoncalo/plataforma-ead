@@ -6,7 +6,6 @@ import './styles.css';
 import Logo from '../../assets/logoPreto.png';
 import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
-//import Icon from '@material-ui/core/Icon';
 import {AddCircleSharp as Add, Create} from '@material-ui/icons/';
 
 function ListarAtividade({info}) {

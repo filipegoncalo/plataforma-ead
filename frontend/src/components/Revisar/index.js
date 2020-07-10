@@ -1,15 +1,10 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
-import imgperfil from '../../assets/image7.png';
 import '../../assets/setup.css';
 import './styles.css';
-import InsertInvitationIcon from '@material-ui/icons/InsertInvitationOutlined';
-import {CheckCircle,Error} from '@material-ui/icons';
 
-import logo2 from '../../assets/logo-2.png';
-import {AddCircleSharp as Add,CancelSharp, Create,SaveSharp} from '@material-ui/icons/';
-import {Button,TextField,InputLabel,Grid} from '@material-ui/core/';
+import {AddCircleSharp as Add,Create} from '@material-ui/icons/';
+import {Button,TextField,InputLabel} from '@material-ui/core/';
 
 
 function Revisar({ info }){

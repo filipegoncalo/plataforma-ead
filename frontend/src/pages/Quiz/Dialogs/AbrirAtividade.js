@@ -2,18 +2,11 @@ import React, { Component } from 'react';
 
 import {
     Button,
-    FormControl,
-    FormHelperText,
-    MenuItem,
-    InputLabel,
-    Select,
     Dialog,
     DialogActions,
     DialogContent,
-    DialogContentText,
     DialogTitle
 } from '@material-ui/core';
-import CustomDialog from '../../../components/Dialog';
 
 import FormSelectQuiz from '../../../components/Forms/FormSelectQuiz';
 
@@ -35,9 +28,9 @@ export default class CriarQuiz extends Component {
         return (
             <div>
                 <Button
-                variant="contained"
-                color="primary"
-                onClick={this.handleToggle}
+                  variant="contained"
+                  color="primary"
+                  onClick={this.handleToggle}
                 >
                     Criar
                 </Button>
@@ -49,14 +42,16 @@ export default class CriarQuiz extends Component {
                     </DialogContent>
                     <DialogActions>
                         <Button
-                        variant="contained"
-                        color="primary">
+                          variant="contained"
+                          color="primary"
+                        >
                             Abrir
                         </Button>
                         <Button
-                        variant="contained"
-                        onClick={this.handleToggle}
-                        color="primary">
+                          variant="contained"
+                          onClick={this.handleToggle}
+                          color="primary"
+                        >
                             Cancelar
                         </Button>
                     </DialogActions>
