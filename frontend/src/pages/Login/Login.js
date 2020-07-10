@@ -22,8 +22,8 @@ function Login() {
 //  const [redirect, setRedirect] = useState("");
   const [open, setOpen] = useState(false);
   const [formData, setFormData] = useState({
-    email: "william@gmail.com",
-    password: "12345678"
+    email: "",
+    password: ""
   })
 
 
@@ -34,22 +34,25 @@ function Login() {
   function submit(event) {
     //event.preventDefault();
     const { email, password } = formData;
-    //console.log(formData);
-    api.post('auth/sign-in', { "email": email, "password": password }).then((response) => {
-      const { data } = response;
-      const { token } = data.metadata;
-      const {first_name, last_name } = data.data;//email,level,formation,institution,genre,datebirth,photo,score,curriculum
+    if(email && password){
+      //console.log(formData);
+      api.post('auth/sign-in', { "email": email, "password": password }).then((response) => {
+        const { data } = response;
+        const { token } = data.metadata;
+        const {first_name, last_name } = data.data;
 
-      localStorage.setItem('first_name', first_name);
-      localStorage.setItem('last_name', last_name);
-      localStorage.setItem('token', token);
+        localStorage.setItem('first_name', first_name);
+        localStorage.setItem('last_name', last_name);
+        localStorage.setItem('token', token);
+        history.push("dashboard");
 
-      history.push("dashboard");
-
-    }).catch((error) => {
-      console.log(error);
-    });
-    //api.get()
+      }).catch((error) => {
+        console.log(error);
+      });
+    }
+    else{
+      alert("Preencha todos os Campos");
+    }
   }
 
   function MudaInput(event) {

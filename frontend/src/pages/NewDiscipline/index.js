@@ -2,6 +2,8 @@ import React, { Component, useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import api from '../../services/api';
 import AddCircleIcon from '@material-ui/icons/AddCircle';
+import {dashboardMain,dashboardTurma} from '../../dao';
+import {Dialogs} from '../../dialogs';
 
 //redirecionamento
 import { useHistory, Redirect } from "react-router-dom";
@@ -16,129 +18,132 @@ import {
   TextField
 } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
+import { CalendarToday } from '@material-ui/icons';
 
 
-function NewDiscipline({ flagFunction }) {
-  const history = useHistory();
-  const [redirect, setRedirect] = useState("");
-  const [open, setOpen] = useState(false);
+function NewDiscipline({flagFunction,tipo}) {
 
-  const [formData, setFormData] = useState({
-    name: "",
-    institution: "",
-    description: ""
-  })
+    const history = useHistory();
+    const [redirect, setRedirect] = useState("");
+    const [open, setOpen] = useState();
+    useEffect(()=>{
 
+    },[open]);
+    tipo=tipo.toLowerCase();
+    //alert(tipo);
 
-  function handleToggle(event) {
-    event.preventDefault();
+    let type={};
+  
+  switch(tipo){
+    default:
+        type={name: "",institution: ""};
+  }
+
+  const [formData, setFormData] = useState(type)
+
+  function handleOpen(){
     setOpen(!open);
   }
 
-  const config = {
-    headers: {
-      'Authorization': `Bearer ${localStorage.getItem('token')}`,
-      'Access-Control-Allow-Origin': '*',
-      crossDomain: true
+  function handleToggle(event) {
+    event.preventDefault();
+    switch(tipo){
+        case 'quiz':
+            history.push("/quiz-criar");
+          break;
+          case 'provas':
+            history.push("/prova-criar");
+          break;
+          case 'exercicios':
+            history.push("/exercicios-criar");
+          break;
+        default:
+            handleOpen();
+        break;
+
     }
   }
 
-  function submit(event) {
-    //event.preventDefault();
-    const { name, institution, description } = formData;
-    //console.log(formData);
-    api.post('dashboard/disciplina', { 
-      "name": name, 
-      "institution": institution, 
-      "description": description 
-    }, config).then((response) => {
-      
-      flagFunction();
-      setOpen(!open);
 
-    }).catch((error) => {
-      console.log(error);
-    });
+
+  function submit(event) {
+    //alert(tipo);
+    switch(tipo){
+      case 'turmas':
+            dashboardTurma(formData,flagFunction,handleOpen);
+        break;
+        default:
+            dashboardMain(formData,flagFunction,handleOpen);
+        break;
+
+    }
   }
 
+
   function MudaInput(event) {
+    //console.log(event.target.name, event.target.value);
     const { name, value } = event.target;
     setFormData({ ...formData, [name]: value })
   }
 
 
-  const useStyles = makeStyles((theme) => ({
-    root: {
-      '& .MuiTextField-root': {
-        margin: theme.spacing(1),
-        width: '25ch',
-      },
-    },
-  }));
+
 
   return (
     <>
-      <Link className="card add text-center" onClick={handleToggle}>
-        <AddCircleIcon /><h3 className="adicionar_texto"> &nbsp; Adicionar</h3>
-      </Link>
-
-      <Dialog open={open} onClose={handleToggle} aria-labelledby="form-dialog-disciplina">
+         <Link className="card add text-center"  onClick={handleToggle}>
+            <AddCircleIcon /><h3 className="adicionar_texto"> &nbsp; Adicionar</h3>
+        </Link>
+        <Dialogs open={open} handleToggle={handleToggle} MudaInput={MudaInput} submit={submit} tipo={tipo}/>
+        {/* <Dialog open={open} onClose={handleToggle}  aria-labelledby="form-dialog-disciplina">
         <div className="o-center o-espaco-padrao o-text-center">
-
           <DialogTitle id="form-dialog-disciplina">Entrar</DialogTitle>
-
           <DialogContent>
             <div className={useStyles.root}>
               <div>
-                <TextField
-                  id="instituicao"
-                  label="Instituição"
-                  variant="outlined"
-                  name="institution"
-                  onChange={MudaInput}
-                />
-                <br />
-                <br />
-                <TextField
-                  id="nomeDisciplina"
-                  label="Nome da Disciplina"
-                  variant="outlined"
-                  name="name"
-                  onChange={MudaInput}
-                />
-                <br />
-                <br />
-                <TextField
-                  id="descrição"
-                  label="Descrição"
-                  variant="outlined"
-                  name="description"
-                  onChange={MudaInput}
-                />
+                  <TextField
+                    id="instituicao"
+                    label="Instituição"
+                    variant="outlined"
+                    name="institution"
+                    onChange={MudaInput}
+                    />
+                  <br />
+                  <br />
+                  <TextField
+                      id="nomeDisciplina"
+                      label="Nome da Disciplina"
+                      variant="outlined"
+                      name="name"
+                      onChange={MudaInput}
+                  />
               </div>
             </div>
           </DialogContent>
-
           <DialogActions>
             <div className="c-botao o-center">
               <Button
                 className="o-btn green"
                 variant="contained"
                 color="primary"
-                onClick={submit}>Salvar
-                 </Button>
+                onClick={submit}
+              >
+                Salvar
+               </Button>
 
-              <Button
+               <Button
                 className="o-btn green"
                 variant="contained"
                 color="primary"
-                onClick={handleToggle}>Cancelar
-              </Button>
+                onClick={handleToggle}
+              >
+                Cancelar
+               </Button>
             </div>
           </DialogActions>
-
         </div>
-      </Dialog>
+      </Dialog> */}
+
     </>
 
   )
