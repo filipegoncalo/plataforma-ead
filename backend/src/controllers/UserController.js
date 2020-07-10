@@ -28,6 +28,8 @@ module.exports = {
       const newValue = body[fieldName];
       if (newValue !== undefined) user[fieldName] = newValue;
     });
+
+    user.updated_at = new Date();
     
     if(user.id === userId){
 

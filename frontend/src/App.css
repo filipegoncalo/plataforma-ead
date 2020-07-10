@@ -474,3 +474,23 @@ p {
   margin-right: 20px;
   margin-top: 15px;
 }
+
+.o-tamanho-tela-login {
+  width: 500px;
+}
+
+.o-tamanho-modal-criacao {
+  width: 500px;
+}
+
+.o-tamanho-botao-login {
+  width: 150px;
+}
+
+.o-tamanho-input-modal {
+  width: 100%;
+}
+
+.o-custom-cor-texto {
+  color: #3185FC;
+}

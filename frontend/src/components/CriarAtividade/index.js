@@ -38,17 +38,17 @@ function ListarAtividade({info}) {
 
                     <div className="o-relative o-pb-2">
                         <span className="u-number">A.</span>
-                        <TextField  label="Inserir resposta correta" className="o-custom-atividade o-ml-5 u-incorrect" variant="outlined"  />
+                        <TextField  label="Inserir resposta correta" className="o-custom-atividade o-ml-5 u-correct" variant="outlined"  />
                     </div>
 
                     <div className="o-relative o-pb-2">
                         <span className="u-number">B.</span>
-                        <TextField  label="Inserir resposta incorreta" className="o-custom-atividade o-ml-5 u-correct" variant="outlined"  />
+                        <TextField  label="Inserir resposta incorreta" className="o-custom-atividade o-ml-5 u-incorrect" variant="outlined"  />
                     </div>
 
                     <div className="o-relative o-pb-2">
                         <span className="u-number">C.</span>
-                        <TextField  label="Inserir resposta incorreta" className="o-custom-atividade o-ml-5 u-correct" variant="outlined"  />
+                        <TextField  label="Inserir resposta incorreta" className="o-custom-atividade o-ml-5 u-incorrect" variant="outlined"  />
                     </div>
                         
                 </div>
